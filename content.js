@@ -70,6 +70,21 @@ self.CONTENT = {
   },
 
   // ----------------------------------------------------------
+  // UITLEG BIJ DE FOTO'S
+  // ----------------------------------------------------------
+  // Per foto uit images/: waar, wanneer, het verhaal erachter en een
+  // bijschrift (voorstel van Claude in jouw stem; pas gerust aan).
+  // Hiermee kiezen we welke foto bij welk spel past. Foto's met
+  // overslaan: true gebruiken we nergens.
+  fotoUitleg: {
+    'foto-01': { plek: 'Restaurant, uit eten met mijn gezin', wanneer: '24 december 2025 (kerstavond)', verhaal: 'Kerstavond uit eten met mijn familie, samen met Davinia.', bijschrift: 'Kerstavond met mijn familie, en jij aan mijn zij. 🎄' },
+    'foto-02': { plek: 'Kerstmarkt Düsseldorf, in het reuzenrad', wanneer: '22 december 2025', verhaal: 'Kerstmarkt in Düsseldorf: mijn verjaardagscadeau voor jou, samen met een kerstpyjama.', bijschrift: 'Hoog in het reuzenrad, en het mooiste uitzicht zat gewoon naast me. 🎡' },
+    'foto-03': { plek: 'Düsseldorf, aan het water', wanneer: '22 december 2025', verhaal: 'Kerstmarkt in Düsseldorf, jouw verjaardagscadeau.', bijschrift: 'Koude handen, rode wangen, warm hart. ❄️' },
+    'foto-04': { plek: 'Düsseldorf, op de ijsbaan', wanneer: '22 december 2025', verhaal: 'Kerstmarkt in Düsseldorf, jouw verjaardagscadeau.', bijschrift: 'Op het ijs, maar ik voelde alleen maar warmte. ⛸️' },
+    'foto-05': { plek: 'Düsseldorf, op de ijsbaan', wanneer: '22 december 2025', verhaal: 'Kerstmarkt in Düsseldorf, jouw verjaardagscadeau.', bijschrift: 'Jouw cadeau, maar ik kreeg er zelf ook een herinnering voor altijd bij. 💝' },
+  },
+
+  // ----------------------------------------------------------
   // 2. QUIZ OVER ONS
   // ----------------------------------------------------------
   // Meerkeuzevragen. 'goed' is het nummer van het goede antwoord,
@@ -320,6 +335,12 @@ self.CONTENT = {
       { woord: 'MALTA', uitleg: 'Onze eerste vakantie samen.' },
       { woord: 'QAWRA', uitleg: 'Waar ons hotel stond.' },
       { woord: 'MDINA', uitleg: 'De stille stad waar we door de steegjes liepen.' },
+      { woord: 'KERST', uitleg: 'De kerstmarkt in Düsseldorf en onze eerste kerst samen.' },
+      { woord: 'SAMEN', uitleg: 'Al een heel jaar, en nog lang niet klaar.' },
+      { woord: 'KUSJE', uitleg: 'De eerste, bij de Maas.' },
+      { woord: 'ZOMER', uitleg: 'Zomer 2026: festivals, kermis en Malta.' },
+      { woord: 'FEEST', uitleg: 'Jouw feest op 10 januari.' },
+      { woord: 'CHOCO', uitleg: 'Hoort bij de aardbeien, altijd.' },
     ],
     // Galgje: mag langer zijn, spaties mogen (bv. 'EERSTE DATE').
     galgje: [

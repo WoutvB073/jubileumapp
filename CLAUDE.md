@@ -87,9 +87,9 @@ Een webapp (PWA) als cadeau voor het eenjarig jubileum van Wout en zijn vriendin
   - Aangevuld (2 okt): quizvragen 16-25 (nu 25), momenten in `feiten.momenten`, tijdlijn uitgebreid naar 15 momenten, 12 extra woorden (woordzoeker; MGARR ook in wordle; 4 extra galgjewoorden), briefjes-placeholders voor alle 10 spellen. Foto's per quizvraag: Wout kiest nog (overzicht in `foto-overzicht.jpg`).
   - Voor later: sudoku-startcijfers met 22 en/of 22-11; brieven schrijft Wout zelf.
 - [x] **Stap 3 – Wie van ons twee?** (2 okt 2026): `js/spellen/wie.js`. Stellingen gehusseld; kiezen tussen twee ronde knoppen (W/D in sierletters) of "Allebei"; goed antwoord springt op, fout wiebelt; reactie van Wout; hartjesscore zoals de quiz (hergebruikt de quiz-opmaak voor voortgang/reactie/uitslag). Quiz en Wie scrollen na het antwoorden het antwoordvak in beeld (kleine schermen). Nu 6 stellingen: meer is welkom. Goedgekeurd; nu 11 stellingen.
-  - Correcties (2 okt): Zwarte Cross bij feiten, BBQ 25 juli zonder karaoke, vraag 22/23/25 aangepast, MGARR/TILBURG/GOZO/KARAOKE uit alle woordspellen (Wordle heeft nu 3 woorden: voorstel voor meer gedaan).
+  - Correcties (2 okt): Zwarte Cross bij feiten, BBQ 25 juli zonder karaoke, vraag 22/23/25 aangepast, MGARR/TILBURG/GOZO/KARAOKE uit alle woordspellen (Wordle aangevuld met KERST, SAMEN, KUSJE, ZOMER, FEEST, CHOCO: nu 9 woorden).
 - [ ] **Foto-uitleg (vóór stap 4)**: Wout geeft per foto uitleg, in groepjes (`foto-groepjes/groepje-XX-YY.jpg`, lokaal, niet in git: 01-05, 06-09, 10-13, 14-17, 18-21, 22-25, 26-29, 30-33, 34-36, 37-39). Claude toont een groepje met per foto een gok; Wout antwoordt kort ("12: klopt" / "12: overslaan" / eigen uitleg). Antwoorden gaan naar `fotoUitleg` in `content.js` (plek, wanneer, verhaal, bijschrift in Wouts stem). Daarna voorstel: welke foto bij quiz, memory en Raad de plek. Stap 4 pas na akkoord op de foto's.
-  - Stand: groepje 01-05 getoond, wacht op antwoord.
+  - Stand: 01-05 klaar (01 kerstavond met Wouts gezin, 02-05 kerstmarkt Düsseldorf). Groepje 06-09 getoond, wacht op antwoord.
 - [ ] Stap 4 – Fotospellen
 - [ ] Stap 5 – Tijdlijn
 - [ ] Stap 6 – Woordspel
