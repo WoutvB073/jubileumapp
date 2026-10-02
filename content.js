@@ -58,6 +58,7 @@ self.CONTENT = {
       'Kerst 2025 samen gevierd.',
       '31 dec 2025: oud & nieuw met de vrienden van Wout.',
       '10 jan 2026: feest van Davinia.',
+      'Winter 2025-2026: samen naar de Winter Efteling (TODO: datum?).',
       '14 feb 2026 (Valentijnsdag): concert van CHO in de Ziggo Dome.',
       '15 feb 2026: carnaval samen.',
       '24 t/m 26 apr 2026: Wout 3 dagen bij Davinia in Slagharen, waar ze optrad met de Angels.',
@@ -86,6 +87,11 @@ self.CONTENT = {
     'foto-07': { plek: 'Bij Davinia thuis', wanneer: '24 december 2025 (kerstavond)', verhaal: 'Bij jou thuis, net voordat we met mijn gezin uit eten gingen op kerstavond.', bijschrift: 'Helemaal klaar voor kerstavond, en jij straalde nog meer dan de lichtjes. ✨' },
     'foto-08': { plek: 'Oud & nieuw met mijn vrienden', wanneer: '31 december 2025', verhaal: 'Oud & nieuw gevierd met mijn vrienden.', bijschrift: 'De laatste kus van 2025, de eerste van heel veel in 2026. 🎆' },
     'foto-09': { plek: 'Oud & nieuw met mijn vrienden', wanneer: '31 december 2025', verhaal: 'Oud & nieuw gevierd met mijn vrienden.', bijschrift: 'Het nieuwe jaar in, met jou. Een beter begin bestaat niet. 🥂' },
+    'foto-10': { plek: 'Feest van Davinia', wanneer: '10 januari 2026', verhaal: 'Jouw feest, jij in een gouden jurk.', bijschrift: 'Jouw feest, en ik mocht naast de mooiste in goud staan. ✨' },
+    'foto-11': { plek: 'Feest van Davinia', wanneer: '10 januari 2026', verhaal: 'Jouw feest, jij in een gouden jurk.', bijschrift: 'Dat moment waarop we alleen elkaar nog zagen. 💛' },
+    'foto-12': { plek: 'Feest van Davinia', wanneer: '10 januari 2026', verhaal: 'Jouw feest, jij in een gouden jurk.', bijschrift: 'Midden op het feest, en toch even alleen wij. 💋' },
+    // Let op: onderaan staat een strip met andere mensen; bijsnijden voordat we hem gebruiken.
+    'foto-13': { plek: 'Winter Efteling, attractie Carnaval Festival', wanneer: 'winter 2025-2026 (TODO: datum?)', verhaal: 'Samen naar de Winter Efteling; attractiefoto bij Carnaval Festival.', bijschrift: 'Mutsen op, wangen rood, en Jokie lachte met ons mee. 🎪' },
   },
 
   // ----------------------------------------------------------
