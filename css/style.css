@@ -1,0 +1,593 @@
+/* ============================================================
+   Kleuren en maten — hier pas je de sfeer van de hele app aan
+   ============================================================ */
+:root {
+  --creme: #fff7f2;
+  --wit: #ffffff;
+  --roze-licht: #ffe4ec;
+  --roze: #f6b8ca;
+  --roze-diep: #d9668a;
+  --lila-licht: #f0e8fc;
+  --lila: #cdb8f0;
+  --lila-diep: #8a68c6;
+  --perzik-licht: #ffeadf;
+  --mint-licht: #e5f5ee;
+  --tekst: #5a3848;
+  --tekst-zacht: #8d6b7b;
+  --schaduw: 0 10px 28px -14px rgba(160, 70, 110, 0.45);
+  --schaduw-klein: 0 4px 14px -8px rgba(160, 70, 110, 0.5);
+  --rond: 26px;
+  --rond-klein: 16px;
+
+  --font: ui-rounded, "SF Pro Rounded", "Nunito", "Segoe UI", system-ui, sans-serif;
+  --font-sier: "Snell Roundhand", "Segoe Script", "Brush Script MT", cursive;
+
+  /* Veilige randen (inkeping, thuisbalk) + 16px marge */
+  --rand-boven: max(16px, env(safe-area-inset-top));
+  --rand-onder: max(20px, env(safe-area-inset-bottom));
+  --rand-zij: 16px;
+
+  color-scheme: only light;
+}
+
+/* ============================================================
+   Basis
+   ============================================================ */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--tekst);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.45;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+/* Achtergrondkleur alleen op html: anders bedekt body de kleurvlekken en hartjes */
+html { background: var(--creme); }
+body { background: transparent; }
+
+/* Zachte kleurvlekken op de achtergrond (vast, scrolt niet mee) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(70% 45% at 100% 0%, rgba(246, 184, 202, 0.55) 0%, rgba(246, 184, 202, 0) 70%),
+    radial-gradient(70% 45% at 0% 100%, rgba(205, 184, 240, 0.5) 0%, rgba(205, 184, 240, 0) 70%),
+    var(--creme);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+h1, h2, h3 { margin: 0; line-height: 1.15; }
+p { margin: 0; }
+
+.sier {
+  font-family: var(--font-sier);
+  font-weight: 700;
+  color: var(--roze-diep);
+}
+
+[hidden] { display: none !important; }
+
+.scherm {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: var(--rand-boven) var(--rand-zij) var(--rand-onder);
+  max-width: 520px;
+  margin: 0 auto;
+  animation: binnen 0.45s ease-out;
+}
+
+@keyframes binnen {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   Zwevende hartjes
+   ============================================================ */
+.zweef {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.zweef span {
+  position: absolute;
+  bottom: -40px;
+  color: var(--roze);
+  opacity: 0;
+  animation: zweven linear infinite;
+}
+
+.zweef span:nth-child(3n)   { color: var(--lila); }
+.zweef span:nth-child(3n+1) { color: #f9cdb8; }
+
+@keyframes zweven {
+  0%   { transform: translate(0, 0) rotate(-10deg); opacity: 0; }
+  10%  { opacity: 0.55; }
+  50%  { transform: translate(18px, -55vh) rotate(8deg); }
+  90%  { opacity: 0.45; }
+  100% { transform: translate(-10px, -112vh) rotate(-6deg); opacity: 0; }
+}
+
+/* ============================================================
+   Instructiescherm "Zet mij op je beginscherm"
+   ============================================================ */
+#installeer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.installeer-kaart {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 32px;
+  padding: 30px 22px 26px;
+  text-align: center;
+  box-shadow: var(--schaduw);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.installeer-icoon {
+  width: 88px;
+  height: 88px;
+  border-radius: 22px;
+  box-shadow: var(--schaduw);
+  animation: klop 2.4s ease-in-out infinite;
+}
+
+@keyframes klop {
+  0%, 100% { transform: scale(1); }
+  12%      { transform: scale(1.07); }
+  24%      { transform: scale(1); }
+  36%      { transform: scale(1.05); }
+  48%      { transform: scale(1); }
+}
+
+.installeer-kaart h1 {
+  font-size: 46px;
+  margin: 14px 0 6px;
+}
+
+.installeer-intro {
+  color: var(--tekst-zacht);
+  margin-bottom: 20px;
+}
+
+.installeer-melding {
+  background: var(--perzik-licht);
+  border-radius: var(--rond-klein);
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+.stappen {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  display: grid;
+  gap: 10px;
+}
+
+.stappen li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--roze-licht);
+  border-radius: 20px;
+  padding: 13px 14px;
+}
+
+.stappen li:nth-child(even) { background: var(--lila-licht); }
+
+.stappen small {
+  display: block;
+  color: var(--tekst-zacht);
+  font-size: 13.5px;
+  margin-top: 2px;
+}
+
+.stap-nr {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--wit);
+  color: var(--roze-diep);
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--schaduw-klein);
+}
+
+.ios-icoon {
+  width: 22px;
+  height: 22px;
+  vertical-align: -5px;
+  margin-left: 3px;
+  fill: none;
+  stroke: #2f7cf6;  /* iOS-blauw, zodat ze het knopje herkent */
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ============================================================
+   Hoofdmenu
+   ============================================================ */
+.menu-kop {
+  text-align: center;
+  padding: 14px 0 18px;
+}
+
+.menu-boven {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--tekst-zacht);
+}
+
+.menu-titel {
+  font-size: 58px;
+  margin: 2px 0 4px;
+}
+
+.menu-dagen {
+  display: inline-block;
+  background: var(--wit);
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--roze-diep);
+  box-shadow: var(--schaduw-klein);
+}
+
+.menu-welkom {
+  margin: 14px auto 0;
+  max-width: 330px;
+  color: var(--tekst-zacht);
+  font-size: 15.5px;
+}
+
+.voortgang {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: var(--rond-klein);
+  padding: 12px 16px 14px;
+  margin-bottom: 14px;
+  box-shadow: var(--schaduw-klein);
+}
+
+.voortgang-tekst {
+  font-size: 14.5px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.voortgang-balk {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--roze-licht);
+  overflow: hidden;
+}
+
+.voortgang-vulling {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--roze), var(--lila));
+  transition: width 0.8s ease;
+}
+
+/* Brievenbus: brede knop boven de tegels */
+.brievenbus-knop {
+  width: 100%;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  border-radius: var(--rond);
+  background: linear-gradient(120deg, var(--roze-licht), var(--lila-licht));
+  box-shadow: var(--schaduw);
+  text-align: left;
+  transition: transform 0.15s ease;
+}
+
+.brievenbus-icoon {
+  font-size: 30px;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: var(--wit);
+  border-radius: 50%;
+  flex: none;
+}
+
+.brievenbus-tekst { flex: 1; }
+.brievenbus-tekst b { display: block; font-size: 18px; }
+.brievenbus-tekst small { color: var(--tekst-zacht); font-size: 14px; }
+
+.badge {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: var(--roze-diep);
+  color: var(--wit);
+  font-size: 14px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+}
+
+.badge:empty { display: none; }
+
+/* Speltegels */
+.tegels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.tegel {
+  position: relative;
+  min-height: 148px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 14px 14px 12px;
+  border-radius: var(--rond);
+  background: var(--tegel-kleur, var(--roze-licht));
+  box-shadow: var(--schaduw);
+  text-align: left;
+  transition: transform 0.15s ease;
+}
+
+.tegel:active,
+.brievenbus-knop:active { transform: scale(0.96); }
+
+.tegel-icoon {
+  font-size: 28px;
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  background: var(--wit);
+  border-radius: 50%;
+  margin-bottom: 10px;
+  box-shadow: var(--schaduw-klein);
+}
+
+.tegel-titel {
+  font-size: 16.5px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.tegel-sub {
+  font-size: 13px;
+  color: var(--tekst-zacht);
+  line-height: 1.3;
+  margin-top: 3px;
+}
+
+.tegel-status {
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: var(--roze-diep);
+}
+
+.tegel-nr {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--tekst-zacht);
+  opacity: 0.55;
+}
+
+.pil {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--tekst-zacht);
+}
+
+.tegel.binnenkort .tegel-icoon { filter: saturate(0.6); }
+
+.wiebel { animation: wiebel 0.45s ease; }
+
+@keyframes wiebel {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+  75% { transform: rotate(-2deg); }
+}
+
+.menu-voet {
+  text-align: center;
+  font-size: 13px;
+  color: var(--tekst-zacht);
+  margin: 26px 0 6px;
+}
+
+/* ============================================================
+   Spelscherm
+   ============================================================ */
+.spel-kop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 52px;
+  margin-bottom: 12px;
+}
+
+.terug-knop {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-height: 44px;
+  padding: 0 14px 0 8px;
+  border-radius: 999px;
+  background: var(--wit);
+  box-shadow: var(--schaduw-klein);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--roze-diep);
+}
+
+.terug-knop svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.spel-titel {
+  flex: 1;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 800;
+  padding-right: 80px; /* zelfde breedte als de terug-knop, zodat de titel echt in het midden staat */
+}
+
+.spel-inhoud { position: relative; }
+
+/* Algemene knoppen voor in de spellen */
+.knop {
+  display: block;
+  width: 100%;
+  min-height: 56px;
+  padding: 14px 20px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, var(--roze-diep), #b96bc4);
+  color: var(--wit);
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: var(--schaduw);
+  transition: transform 0.15s ease;
+}
+
+.knop:active { transform: scale(0.97); }
+
+.knop.zacht {
+  background: var(--wit);
+  color: var(--roze-diep);
+}
+
+.melding-kaart {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: var(--rond);
+  padding: 26px 20px;
+  text-align: center;
+  box-shadow: var(--schaduw);
+}
+
+.melding-kaart p { margin: 10px 0 18px; color: var(--tekst-zacht); }
+
+/* ============================================================
+   Toast (kort meldingetje)
+   ============================================================ */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--rand-onder) + 10px);
+  transform: translate(-50%, 30px);
+  width: max-content;
+  max-width: calc(100% - 32px);
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--tekst);
+  color: var(--wit);
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  box-shadow: var(--schaduw);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 50;
+}
+
+.toast.zichtbaar {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ============================================================
+   Liggend: vraag om te draaien (alleen op telefoons)
+   ============================================================ */
+.draai { display: none; }
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .draai {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: var(--creme);
+    text-align: center;
+    font-weight: 700;
+    font-size: 19px;
+  }
+  .draai-icoon {
+    font-size: 48px;
+    animation: draaien 2s ease-in-out infinite;
+  }
+}
+
+@keyframes draaien {
+  0%, 30%   { transform: rotate(-90deg); }
+  60%, 100% { transform: rotate(0); }
+}
+
+/* ============================================================
+   Minder beweging als iemand dat heeft ingesteld
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .zweef { display: none; }
+}

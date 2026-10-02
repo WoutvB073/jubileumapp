@@ -1,0 +1,7 @@
+# Originele (grote) foto's blijven alleen op de pc
+foto-origineel/
+
+# Systeembestanden
+Thumbs.db
+desktop.ini
+.DS_Store

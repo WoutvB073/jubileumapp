@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Voor Davinia</title>
+  <meta name="description" content="Een cadeautje voor ons eerste jaar samen.">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="color-scheme" content="only light">
+  <meta name="theme-color" content="#fff7f2">
+
+  <!-- iPhone: als echte app openen vanaf het beginscherm -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Voor Davinia">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <!-- iPhone-opstartschermen (per schermformaat) -->
+  <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="icons/splash/splash-750x1334.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="icons/splash/splash-828x1792.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="icons/splash/splash-1125x2436.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="icons/splash/splash-1242x2688.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="icons/splash/splash-1170x2532.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="icons/splash/splash-1284x2778.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="icons/splash/splash-1179x2556.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="icons/splash/splash-1290x2796.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="icons/splash/splash-1206x2622.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="icons/splash/splash-1320x2868.png">
+  <link rel="apple-touch-startup-image" media="(device-width: 420px) and (device-height: 912px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="icons/splash/splash-1260x2736.png">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Volgorde is belangrijk: eerst de inhoud, dan de app, dan de spellen. -->
+  <script defer src="content.js"></script>
+  <script defer src="js/app.js"></script>
+  <!-- Spellen: elk in een eigen bestand (komen er per stap bij) -->
+</head>
+<body>
+  <!-- Zwevende hartjes op de achtergrond (puur decoratie) -->
+  <div class="zweef" aria-hidden="true"></div>
+
+  <!-- 1. Instructiescherm: de link is in Safari geopend, nog niet geïnstalleerd -->
+  <section id="installeer" class="scherm" hidden>
+    <div class="installeer-kaart">
+      <img class="installeer-icoon" src="icons/icon-192.png" alt="" width="88" height="88">
+      <h1 class="sier">Hoi Davinia</h1>
+      <p class="installeer-intro">Er staat een cadeautje voor je klaar. Zet mij eerst op je beginscherm, dan word ik een echte app. 💕</p>
+
+      <p class="installeer-melding" id="installeer-melding" hidden></p>
+
+      <ol class="stappen">
+        <li>
+          <span class="stap-nr">1</span>
+          <span>Tik op de <b>Deel-knop</b>
+            <svg class="ios-icoon" viewBox="0 0 24 24" aria-label="Deel-knop"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5" /><path d="M8 10H6.5A1.5 1.5 0 0 0 5 11.5v8A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-8a1.5 1.5 0 0 0-1.5-1.5H16" /></svg>
+            <small>Zie je hem niet? Tik dan eerst op <b>•••</b></small>
+          </span>
+        </li>
+        <li>
+          <span class="stap-nr">2</span>
+          <span>Kies <b>Zet op beginscherm</b>
+            <svg class="ios-icoon" viewBox="0 0 24 24" aria-label="Plus-icoon"><rect x="4" y="4" width="16" height="16" rx="4" /><path d="M12 8.5v7M8.5 12h7" /></svg>
+            <small>Even naar beneden scrollen in het menu</small>
+          </span>
+        </li>
+        <li>
+          <span class="stap-nr">3</span>
+          <span>Laat <b>Open als webapp</b> aan staan en tik op <b>Voeg toe</b></span>
+        </li>
+        <li>
+          <span class="stap-nr">4</span>
+          <span>Open mij via het nieuwe <b>hartjes-icoon</b> op je beginscherm 💗</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 2. Hoofdmenu -->
+  <section id="menu" class="scherm" hidden>
+    <header class="menu-kop">
+      <p class="menu-boven">Voor</p>
+      <h1 class="sier menu-titel" id="menu-naam">Davinia</h1>
+      <p class="menu-dagen" id="menu-dagen"></p>
+      <p class="menu-welkom" id="menu-welkom"></p>
+    </header>
+
+    <div class="voortgang" aria-live="polite">
+      <div class="voortgang-tekst" id="voortgang-tekst"></div>
+      <div class="voortgang-balk"><div class="voortgang-vulling" id="voortgang-vulling"></div></div>
+    </div>
+
+    <button class="brievenbus-knop" id="brievenbus-knop" type="button">
+      <span class="brievenbus-icoon" aria-hidden="true">💌</span>
+      <span class="brievenbus-tekst">
+        <b>Brievenbus</b>
+        <small id="brievenbus-sub">Briefjes voor jou</small>
+      </span>
+      <span class="badge" id="brievenbus-badge"></span>
+    </button>
+
+    <div class="tegels" id="tegels"></div>
+
+    <p class="menu-voet">Gemaakt met heel veel liefde, door Wout</p>
+  </section>
+
+  <!-- 3. Spelscherm: hier bouwt elk spel zich op -->
+  <section id="spel" class="scherm" hidden>
+    <header class="spel-kop">
+      <button class="terug-knop" id="terug-knop" type="button" aria-label="Terug naar het menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+        <span>Menu</span>
+      </button>
+      <h2 class="spel-titel" id="spel-titel"></h2>
+    </header>
+    <div class="spel-inhoud" id="spel-inhoud"></div>
+  </section>
+
+  <!-- Liggend scherm: vriendelijk vragen om te draaien -->
+  <div class="draai" aria-hidden="true">
+    <div>
+      <div class="draai-icoon">📱</div>
+      <p>Draai je telefoon even rechtop 💗</p>
+    </div>
+  </div>
+
+  <!-- Kort meldingetje onderin -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

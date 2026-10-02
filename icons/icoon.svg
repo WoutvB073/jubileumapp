@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- Bron van alle app-iconen. Twee hartjes: Wout en Davinia. -->
+  <defs>
+    <linearGradient id="achter" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd6e1"/>
+      <stop offset="1" stop-color="#d8c3f4"/>
+    </linearGradient>
+    <linearGradient id="roze" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f08aa8"/>
+      <stop offset="1" stop-color="#d9668a"/>
+    </linearGradient>
+    <filter id="schaduw" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#a04670" flood-opacity="0.28"/>
+    </filter>
+    <path id="hart" d="M50 90 C 22 70 4 52 4 32 C 4 17 15 7 28 7 C 38 7 46 13 50 22 C 54 13 62 7 72 7 C 85 7 96 17 96 32 C 96 52 78 70 50 90 Z"/>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#achter)"/>
+  <g id="kunst">
+    <!-- Groot crème hart -->
+    <g filter="url(#schaduw)"><use href="#hart" fill="#fffaf6" transform="translate(200 210) rotate(-8 300 300) scale(5.4)"/></g>
+    <!-- Klein roze hart, half eroverheen -->
+    <g filter="url(#schaduw)"><use href="#hart" fill="url(#roze)" transform="translate(500 470) rotate(12 150 150) scale(3.1)"/></g>
+    <!-- Twinkels -->
+    <g fill="#ffffff" opacity="0.9">
+      <path d="M770 220 l14 38 38 14 -38 14 -14 38 -14 -38 -38 -14 38 -14z"/>
+      <path d="M215 735 l9 25 25 9 -25 9 -9 25 -9 -25 -25 -9 25 -9z"/>
+    </g>
+  </g>
+</svg>
