@@ -119,6 +119,9 @@ self.CONTENT = {
     'foto-34': { plek: 'Malta, boottocht vanuit Mgarr, op een supboard', wanneer: '3 augustus 2026', verhaal: 'Boottocht vanuit Mgarr; vanaf de boot het turquoise water in.', bijschrift: 'Water zo helder als ik me voel bij jou. 🌊' },
     'foto-35': { plek: 'Malta, boottocht vanuit Mgarr, bij de kliffen', wanneer: '3 augustus 2026', verhaal: 'Boottocht vanuit Mgarr, langs kliffen en grotten.', bijschrift: 'Zon, zout water en jij naast me: meer had ik niet nodig. ⛵' },
     'foto-36': { plek: 'Malta, boottocht vanuit Mgarr, suppen langs de kust', wanneer: '3 augustus 2026', verhaal: 'Boottocht vanuit Mgarr; samen suppen langs de rotsen.', bijschrift: 'Samen op één board: ik peddel, jij geniet. Prima taakverdeling. 🏄' },
+    'foto-37': { plek: 'Malta, boottocht vanuit Mgarr, met kleimaskers op', wanneer: '3 augustus 2026', verhaal: 'Boottocht vanuit Mgarr; samen met een groen kleimasker op de boot.', bijschrift: 'Groen in het gezicht, maar nog nooit zo verliefd geweest. 💚' },
+    'foto-38': { plek: 'Malta, dakterras met zwembad van ons hotel in Qawra', wanneer: '30 juli t/m 6 augustus 2026', verhaal: 'Ons hotel in Qawra had een dakterras met zwembad.', bijschrift: 'Ons eigen plekje in de zon, bovenop Qawra. ☀️' },
+    'foto-39': { plek: 'Feest van mijn oom en tante', wanneer: 'TODO: datum?', verhaal: 'Samen op het feest van mijn oom en tante.', bijschrift: 'Mijn familie vierde feest, en ik had de mooiste date van de avond. 🪩' },
   },
 
   // ----------------------------------------------------------
