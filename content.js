@@ -111,6 +111,11 @@ self.CONTENT = {
     'foto-27': { plek: 'Kermis in Tilburg', wanneer: '25 juli 2026', verhaal: 'Na de BBQ bij vrienden van jouw gezin samen naar de kermis in Tilburg.', bijschrift: 'Een kus tussen alle kermislichtjes. ✨' },
     'foto-28': { plek: 'Indoor skibaan, in de stoeltjeslift', wanneer: '27 juli 2026', verhaal: 'Indoor skiën: jouw verjaardagscadeau voor mij.', bijschrift: 'Jouw cadeau voor mij, en het beste deel was naast jou in de lift. ⛷️' },
     'foto-29': { plek: 'Parkeergarage, op weg naar Malta', wanneer: '30 juli 2026', verhaal: 'Vertrek naar Malta: een week samen in Qawra.', bijschrift: 'Koffers in de auto, Malta here we come! ✈️' },
+    'foto-30': { plek: 'Malta, boulevard van Qawra/Buġibba bij zonsondergang', wanneer: '30 juli t/m 6 augustus 2026', verhaal: 'Een week Malta, hotel in Qawra.', bijschrift: 'De zon ging onder, maar mijn favoriete uitzicht stond naast me. 🌅' },
+    // Let op: er zit een vlekje op de lens (op zijn knie); foto-32 is dezelfde dag en mooier.
+    'foto-31': { plek: 'Malta, Mdina (de stille stad)', wanneer: '30 juli t/m 6 augustus 2026', verhaal: 'Samen door de steegjes van Mdina.', bijschrift: 'Een stille stad, en wij er middenin. 🏰' },
+    'foto-32': { plek: 'Malta, Mdina, voor een rode deur', wanneer: '30 juli t/m 6 augustus 2026', verhaal: 'Samen door de steegjes van Mdina.', bijschrift: 'Achter elke deur in Mdina een verhaal; het mooiste liep naast mij. 🚪' },
+    'foto-33': { plek: 'Malta, een dorpsfeest (festa) met banieren en lichtjes', wanneer: '30 juli t/m 6 augustus 2026', verhaal: "'s Avonds door een versierde straat tijdens een Maltees dorpsfeest.", bijschrift: 'De hele straat versierd, maar jij was het mooiste dat ik die avond zag. ✨' },
   },
 
   // ----------------------------------------------------------
