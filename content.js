@@ -426,29 +426,35 @@ self.CONTENT = {
   // 5. TIJDLIJN
   // ----------------------------------------------------------
   // De momenten staan hier in de JUISTE volgorde (oudste eerst).
-  // Het spel husselt ze zelf door elkaar.
-  // TODO (stap 5): bij elk moment een foto kiezen uit images/.
+  // vast: 'begin' en vast: 'eind' zijn het begin- en eindpunt van elke
+  // ronde (22-11-2025 en 22-11-2026). Het spel kiest per ronde een paar
+  // momenten daartussen en husselt ze door elkaar.
+  // Momenten vóór het beginpunt (de eerste dates) zitten niet in de rondes,
+  // maar staan wel in het overzicht van ons hele jaar aan het eind.
+  // 'foto' mag je weglaten.
   tijdlijn: [
-    { datum: 'het begin',        titel: 'Een DM op Instagram',   tekst: 'Ik stuurde het eerste berichtje. Beste beslissing ooit.' },
-    { datum: 'eerste date',      titel: 'Terras, arcade, ijsje', tekst: 'En dat ijsje opgegeten bij de Maas.' },
-    { datum: 'tweede date',      titel: 'Brownies bakken',       tekst: 'De keuken overleefde het net.' },
-    { datum: 'derde date',       titel: 'Onze eerste kus',       tekst: "'s Avonds buiten liggen bij de Maas." },
-    { datum: '22 november 2025', titel: 'Officieel samen',       tekst: 'In de auto bij de Maas, nadat we onze eerste date hadden nagedaan.' },
-    { datum: '22 december 2025', titel: 'Kerstmarkt Düsseldorf', tekst: 'Jouw verjaardagscadeau, met een kerstpyjama erbij.' },
-    { datum: '24 december 2025', titel: 'Kerstavond',            tekst: 'Uit eten met jouw gezin en je oma.' },
-    { datum: '31 december 2025', titel: 'Oud & nieuw',           tekst: 'Het nieuwe jaar in met mijn vrienden, en met jou.' },
-    { datum: '26 januari 2026',  titel: 'Winter Efteling',       tekst: 'Mutsen op, en Jokie op de foto.' },
-    { datum: '14 februari 2026', titel: 'CHO op Valentijnsdag',  tekst: 'Samen in de Ziggo Dome.' },
-    { datum: '15 februari 2026', titel: 'Carnaval',              tekst: 'Een dag later meteen weer feest.' },
-    { datum: '16 april 2026',    titel: 'Bollenvelden',          tekst: 'Tulpen zover je kon kijken, en wij in een gele klomp.' },
-    { datum: '24 april 2026',    titel: 'Slagharen',             tekst: 'Drie dagen bij jou, en jij op het podium met de Angels.' },
-    { datum: '22 mei 2026',      titel: 'Half jaar in Utrecht',  tekst: 'Een half jaar samen, een dagje Utrecht.' },
-    { datum: '4 juli 2026',      titel: 'Vunzige Deuntjes',      tekst: 'Jij moest dansen, ik stond trots te kijken.' },
-    { datum: '25 juli 2026',     titel: 'BBQ en kermis',         tekst: 'BBQ bij vrienden van jouw gezin, daarna de kermis in Tilburg.' },
-    { datum: '27 juli 2026',     titel: 'Indoor skiën',          tekst: 'Jouw verjaardagscadeau voor mij: samen de piste op.' },
-    { datum: '30 juli 2026',     titel: 'Malta',                 tekst: "Qawra, de Blue Lagoon, sudoku's en cocktails." },
-    { datum: '12 september 2026', titel: 'Feest oom en tante',  tekst: 'Mijn familie vierde feest, en ik had de mooiste date.' },
-    { datum: '22 november 2026', titel: 'Eén jaar samen',        tekst: 'En dit is pas het begin. 💗' },
+    { datum: "het begin", titel: "Een DM op Instagram", tekst: "Ik stuurde het eerste berichtje. Beste beslissing ooit." },
+    { datum: "eerste date", titel: "Terras, arcade, ijsje", tekst: "En dat ijsje opgegeten bij de Maas." },
+    { datum: "tweede date", titel: "Brownies bakken", tekst: "De keuken overleefde het net." },
+    { datum: "derde date", titel: "Onze eerste kus", tekst: "'s Avonds buiten liggen bij de Maas." },
+    { datum: "22 november 2025", titel: "Officieel samen", tekst: "In de auto bij de Maas, nadat we onze eerste date hadden nagedaan.", vast: 'begin' },
+    { datum: "6 december 2025", titel: "Uit eten met mijn gezin", tekst: "En jij hoorde er gewoon bij.", foto: 'images/foto-01.jpg' },
+    { datum: "22 december 2025", titel: "Kerstmarkt Düsseldorf", tekst: "Jouw verjaardagscadeau, met een kerstpyjama erbij.", foto: 'images/foto-05.jpg' },
+    { datum: "24 december 2025", titel: "Kerstavond", tekst: "Uit eten met jouw gezin en je oma.", foto: 'images/foto-07.jpg' },
+    { datum: "31 december 2025", titel: "Oud & nieuw", tekst: "Het nieuwe jaar in met mijn vrienden, en met jou.", foto: 'images/foto-09.jpg' },
+    { datum: "10 januari 2026", titel: "Jouw feest", tekst: "Jij in een gouden jurk, ik kon mijn ogen niet van je afhouden.", foto: 'images/foto-12.jpg' },
+    { datum: "26 januari 2026", titel: "Winter Efteling", tekst: "Mutsen op, en Jokie op de foto.", foto: 'images/foto-13.jpg' },
+    { datum: "14 februari 2026", titel: "CHO op Valentijnsdag", tekst: "Samen in de Ziggo Dome.", foto: 'images/foto-21.jpg' },
+    { datum: "15 februari 2026", titel: "Carnaval", tekst: "Een dag later meteen weer feest.", foto: 'images/foto-15.jpg' },
+    { datum: "16 april 2026", titel: "Bollenvelden", tekst: "Tulpen zover je kon kijken, en wij in een gele klomp.", foto: 'images/foto-16.jpg' },
+    { datum: "24 april 2026", titel: "Slagharen", tekst: "Drie dagen bij jou, en jij op het podium met de Angels.", foto: 'images/foto-20.jpg' },
+    { datum: "22 mei 2026", titel: "Half jaar in Utrecht", tekst: "Een half jaar samen, een dagje Utrecht." },
+    { datum: "4 juli 2026", titel: "Vunzige Deuntjes", tekst: "Jij moest dansen, ik stond trots te kijken.", foto: 'images/foto-23.jpg' },
+    { datum: "25 juli 2026", titel: "BBQ en kermis", tekst: "BBQ bij vrienden van jouw gezin, daarna de kermis in Tilburg.", foto: 'images/foto-26.jpg' },
+    { datum: "27 juli 2026", titel: "Indoor skiën", tekst: "Jouw verjaardagscadeau voor mij: samen de piste op.", foto: 'images/foto-28.jpg' },
+    { datum: "30 juli 2026", titel: "Malta", tekst: "Qawra, de Blue Lagoon, sudoku's en cocktails.", foto: 'images/foto-30.jpg' },
+    { datum: "12 september 2026", titel: "Feest oom en tante", tekst: "Mijn familie vierde feest, en ik had de mooiste date.", foto: 'images/foto-39.jpg' },
+    { datum: "22 november 2026", titel: "Eén jaar samen", tekst: "En dit is pas het begin. 💗", vast: 'eind' },
   ],
 
   // ----------------------------------------------------------
@@ -512,13 +518,15 @@ self.CONTENT = {
   sudoku: {
     // De startcijfers verwerken 22 en/of 22-11 (onze datum); dat regelt het spel zelf.
     // Elk opgelost 3x3-vak speelt één herinnering vrij: precies 9 stuks.
+    // Verschijnt als de héle sudoku af is: de herinnering zonder foto.
+    slotHerinnering: 'En het busongeluk? Toen helemaal niet grappig, nu het verhaal dat we nog jaren gaan vertellen. 🚌💗',
     maltaHerinneringen: [
       { foto: 'images/foto-29.jpg', bijschrift: "Koffers in de auto: op naar Malta! ✈️" },
-      { foto: 'images/foto-38.jpg', bijschrift: "Ons dakterras met zwembad, bovenop Qawra. ☀️" },
+      { foto: 'images/foto-38.jpg', bijschrift: "Ons dakterras met zwembad: bijkomen na een dag waterpark. ☀️" },
       { foto: 'images/foto-30.jpg', bijschrift: "Zonsondergang aan de boulevard van Qawra. 🌅" },
       { foto: 'images/foto-31.jpg', bijschrift: "Door de stille straatjes van Mdina. 🏰" },
       { foto: 'images/foto-33.jpg', bijschrift: "Een Maltees dorpsfeest vol lichtjes. ✨" },
-      { foto: 'images/foto-34.jpg', bijschrift: "Vanaf de boot het turquoise water in. 🌊" },
+      { foto: 'images/foto-34.jpg', bijschrift: "Water zo blauw als de Blue Lagoon. 🌊" },
       { foto: 'images/foto-35.jpg', bijschrift: "Kliffen, grotten en jij. ⛵" },
       { foto: 'images/foto-36.jpg', bijschrift: "Samen suppen langs de rotsen. 🏄" },
       { foto: 'images/foto-37.jpg', bijschrift: "Groene kleimaskers op de boot. 💚" },

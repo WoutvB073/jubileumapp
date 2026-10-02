@@ -1061,3 +1061,188 @@ p { margin: 0; }
   object-fit: cover;
   object-position: center 30%;
 }
+
+/* ============================================================
+   Spel: Tijdlijn
+   ============================================================ */
+.tl-uitleg {
+  text-align: center;
+  color: var(--tekst-zacht);
+  font-size: 15px;
+  margin: 0 auto 12px;
+  max-width: 320px;
+}
+
+.tl-lijst {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+/* Vaste begin- en eindpunten */
+.tl-vast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--rond-klein);
+  background: linear-gradient(120deg, var(--roze-licht), var(--lila-licht));
+  border: 2px dashed rgba(217, 102, 138, 0.35);
+}
+
+.tl-vast-hart { font-size: 22px; }
+.tl-vast-tekst b { display: block; font-size: 16px; }
+.tl-vast-tekst small { color: var(--tekst-zacht); font-size: 13px; font-weight: 700; }
+
+/* Sleepbare kaartjes */
+.tl-kaart {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 6px 6px 6px 6px;
+  border-radius: var(--rond-klein);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--schaduw-klein);
+  touch-action: none;           /* de vinger sleept het kaartje, niet de pagina */
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: grab;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.25s ease;
+}
+
+.tl-lijst.stil .tl-kaart { transition: none; }
+
+.tl-kaart.sleept {
+  position: relative;
+  z-index: 5;
+  transition: none;
+  box-shadow: 0 18px 30px -12px rgba(160, 70, 110, 0.55);
+  cursor: grabbing;
+}
+
+.tl-foto {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  background: var(--roze-licht);
+}
+
+.tl-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.tl-titel {
+  flex: 1;
+  font-weight: 800;
+  font-size: 16.5px;
+  line-height: 1.25;
+}
+
+.tl-greep {
+  flex: none;
+  width: 36px;
+  text-align: center;
+  font-size: 22px;
+  color: var(--roze);
+}
+
+.tl-kaart.goed { background: var(--mint-licht); box-shadow: inset 0 0 0 2px #74bd9c, var(--schaduw-klein); }
+.tl-kaart.fout { background: var(--roze-licht); box-shadow: inset 0 0 0 2px var(--roze), var(--schaduw-klein); animation: wiebel 0.45s ease; }
+.tl-lijst.klaar .tl-kaart { cursor: default; }
+
+.tl-melding {
+  text-align: center;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+/* Na een ronde en aan het eind: het verhaal als tijdlijn */
+.tl-ronde-klaar { margin-bottom: 14px; }
+
+.tl-verhaal {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0 0 0 22px;
+  position: relative;
+}
+
+/* De lijn */
+.tl-verhaal::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 10px;
+  bottom: 10px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(var(--roze), var(--lila));
+}
+
+.tl-punt {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  border-radius: var(--rond-klein);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--schaduw-klein);
+  animation: binnen 0.45s ease-out both;
+}
+
+/* Het bolletje op de lijn */
+.tl-punt::before {
+  content: "";
+  position: absolute;
+  left: -21px;
+  top: 16px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--wit);
+  border: 3px solid var(--roze-diep);
+}
+
+.tl-punt.vast { background: linear-gradient(120deg, var(--roze-licht), var(--lila-licht)); }
+.tl-punt.vast::before { background: var(--roze-diep); }
+
+.tl-punt-tekst { flex: 1; }
+.tl-punt-datum { display: block; font-size: 13px; font-weight: 800; color: var(--roze-diep); text-transform: uppercase; letter-spacing: 0.04em; }
+.tl-punt-titel { display: block; font-size: 17px; margin: 1px 0 2px; }
+.tl-punt-verhaal { display: block; font-size: 14.5px; color: var(--tekst-zacht); line-height: 1.4; }
+
+.tl-punt-foto {
+  flex: none;
+  width: 76px;
+  height: 76px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tl-punt-foto img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+
+/* Ons hele jaar: grotere foto's onder de tekst */
+.tl-verhaal.groot .tl-punt { flex-direction: column; }
+.tl-verhaal.groot .tl-punt-foto { width: 100%; height: auto; aspect-ratio: 4 / 3; }
+
+.tl-verder { margin-bottom: 8px; }
+
+/* Lage schermen (bijv. iPhone SE): tijdlijn iets compacter */
+@media (max-height: 700px) {
+  .tl-uitleg { font-size: 14px; margin-bottom: 8px; }
+  .tl-lijst { gap: 6px; }
+  .tl-kaart { min-height: 54px; padding: 5px; }
+  .tl-foto { width: 44px; height: 44px; }
+  .tl-titel { font-size: 15.5px; }
+  .tl-vast { padding: 6px 12px; }
+}
