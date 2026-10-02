@@ -63,6 +63,7 @@ Een webapp (PWA) als cadeau voor het eenjarig jubileum van Wout en zijn vriendin
 10. **Dit of dat**: Davinia raadt wat Wout zou kiezen; zijn antwoorden staan in `content.js`.
 11. **Brievenbus**: bij het voltooien van spellen worden korte liefdesbriefjes vrijgespeeld, terug te lezen via het hoofdmenu.
 12. **Kleuren op nummer**: een foto wordt in de browser (canvas, kleurkwantisatie) omgezet in een raster van vakjes (bijv. 30x40, instelbaar per foto in `content.js`) met 8–12 kleuren. Elk vakje toont een cijfer; onderaan het genummerde palet. Kies een kleur en tik of veeg over vakjes; vakjes van de gekozen kleur lichten op. Inzoomen en schuiven met twee vingers. Voortgang bewaard. Als alles klaar is: uitzoomen naar de pixelversie, daarna de echte foto met een lief bijschrift. Meerdere foto's mogelijk. **Bij deze stap eerst Wout een eigen foto laten testen** om rastergrootte en aantal kleuren te kiezen.
+13. **Allerlaatste stap, na alle solospellen — NOG NIET BOUWEN: online UNO-variant** in het thema van de app, die Wout en Davinia allebei op hun eigen telefoon tegen elkaar kunnen spelen (UNO was hét kaartspel op Malta). Let op: dit botst met "geen backend" — er moet iets zijn dat de twee telefoons verbindt. Bij deze stap eerst met Wout de opties bespreken (bijv. een gratis realtime-dienst, of telefoons direct koppelen via WebRTC met een code), voordat er iets gebouwd wordt.
 
 ## Werkwijze
 - Na elke stap: **stop**, vertel welke bestanden gemaakt of gewijzigd zijn, werk "Voortgang" hieronder bij, en leg uit hoe Wout commit, naar GitHub pusht en het op zijn iPhone test.
@@ -90,12 +91,13 @@ Een webapp (PWA) als cadeau voor het eenjarig jubileum van Wout en zijn vriendin
   - Correcties (2 okt): Zwarte Cross bij feiten, BBQ 25 juli zonder karaoke, vraag 22/23/25 aangepast, MGARR/TILBURG/GOZO/KARAOKE uit alle woordspellen (Wordle aangevuld met KERST, SAMEN, KUSJE, ZOMER, FEEST, CHOCO: nu 9 woorden).
 - [x] **Foto-uitleg (vóór stap 4)**: Wout geeft per foto uitleg, in groepjes (`foto-groepjes/groepje-XX-YY.jpg`, lokaal, niet in git: 01-05, 06-09, 10-13, 14-17, 18-21, 22-25, 26-29, 30-33, 34-36, 37-39). Claude toont een groepje met per foto een gok; Wout antwoordt kort ("12: klopt" / "12: overslaan" / eigen uitleg). Antwoorden gaan naar `fotoUitleg` in `content.js` (plek, wanneer, verhaal, bijschrift in Wouts stem). Daarna voorstel: welke foto bij quiz, memory en Raad de plek. Stap 4 pas na akkoord op de foto's.
   - Stand: 01-36 klaar (01 + 07 kerstavond, 02-06 kerstmarkt Düsseldorf, 08-09 oud & nieuw, 10-12 feest Davinia, 13 Winter Efteling: mag ook elders in de app; onderste strip met andere mensen bijsnijden). 14 Winter Efteling, 15 carnaval, 16-19 bollenvelden 16 apr 2026 (19 = bijna kopie van 16), 20 Slagharen, 21 CHO. Winter Efteling = 26 jan 2026. Overal verwerkt (momenten, tijdlijn, quiz 26-27, KLOMP/TULPEN/EFTELING). 22-25 Vunzige Deuntjes na het dansen (4 bijna gelijke foto's). 26-27 kermis Tilburg, 28 indoor skiën 27 jul 2026 (haar verjaardagscadeau voor Wout; moment, tijdlijn en quiz 28 toegevoegd), 29 vertrek Malta. 30 Qawra zonsondergang, 31-32 Mdina (31 heeft vlekje op lens), 33 festa. 34-36 boottocht Mgarr 3 aug (badkleding, openbare repo: bij het voorstel expliciet laten bevestigen). 37 boottocht, 38 dakterras hotel Qawra, 39 feest oom en tante (datum onbekend). **Alle 39 klaar.**
-  - **Voorstel fotokeuze (wacht op akkoord):**
+  - **Fotokeuze (goedgekeurd 2 okt; badkleding 34-38 mag ook online):**
     - Quiz (foto bij de vraag): 10→30, 11→29, 16→04, 17→06, 18→21, 21→20, 22→24, 24→37, 25→08, 26→14. Idee "foto na het antwoord" (onthult anders het antwoord): 23→27, 27→18, 28→28.
     - Memory (8 paren): 02, 09, 11, 16, 20, 22, 28, 30.
     - Raad de plek/datum: 03 (datum), 07 (welke avond), 10 (welk feest), 15 (datum), 17 (datum), 26 (datum), 32 (plek), 39 (welk feest).
-    - Badkleding in het voorstel: alleen 37 (quiz 24). 34-36 en 38 niet gebruikt (openbare repo).
-    - Nog niet gebruikt (voor tijdlijn/sudoku later): 01, 05, 12, 13 (bijsnijden), 19, 23, 25, 31, 33-36, 38.
+    - Malta-herinneringen (sudoku): 29, 38, 30, 31, 33, 34, 35, 36, 37.
+    - Online staan alleen foto's die in content.js gebruikt worden (`git add -f`). Nog niet gebruikt: 01, 05, 12, 13 (bijsnijden), 19, 23, 25.
+    - Correcties: foto-01 = 6 dec 2025 uit eten met Wouts gezin; kerstavond 24 dec = uit eten met Davinia's gezin en oma (moment + tijdlijn); foto-39 = feest oom en tante 12 sep 2026 (tijdlijn). Quizvraag 29 (UNO). Quiz kent nu `fotoNa` (foto pas na het antwoord).
 - [ ] Stap 4 – Fotospellen
 - [ ] Stap 5 – Tijdlijn
 - [ ] Stap 6 – Woordspel
@@ -105,3 +107,4 @@ Een webapp (PWA) als cadeau voor het eenjarig jubileum van Wout en zijn vriendin
 - [ ] Stap 10 – Dit of dat
 - [ ] Stap 11 – Brievenbus
 - [ ] Stap 12 – Kleuren op nummer
+- [ ] Stap 13 – Online UNO samen (nog niet bouwen; eerst opties bespreken)

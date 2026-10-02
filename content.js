@@ -54,7 +54,9 @@ self.CONTENT = {
     optreden: 'Davinia treedt op (o.a. met de Angels, een illusionistengroep); Wout gaat soms kijken.',
     // Momenten door het jaar heen, in volgorde.
     momenten: [
+      '6 dec 2025: uit eten met het gezin van Wout.',
       '22 dec 2025: kerstmarkt in Düsseldorf, Wouts verjaardagscadeau voor Davinia, samen met een kerstpyjama.',
+      "24 dec 2025 (kerstavond): uit eten met Davinia's gezin en haar oma.",
       'Kerst 2025 samen gevierd.',
       '31 dec 2025: oud & nieuw met de vrienden van Wout.',
       '10 jan 2026: feest van Davinia.',
@@ -68,7 +70,8 @@ self.CONTENT = {
       'Davinia heeft ook op Zwarte Cross gedanst; daar was Wout niet bij.',
       '25 jul 2026: BBQ bij vrienden van haar gezin, daarna de kermis in Tilburg.',
       '27 jul 2026: indoor skiën, het verjaardagscadeau van Davinia voor Wout.',
-      '30 jul t/m 6 aug 2026: Malta (boottocht vanuit Mgarr op 3 aug).',
+      '30 jul t/m 6 aug 2026: Malta (boottocht vanuit Mgarr op 3 aug; UNO was het kaartspel van de vakantie).',
+      '12 sep 2026: feest van de oom en tante van Wout.',
     ],
   },
 
@@ -80,13 +83,13 @@ self.CONTENT = {
   // Hiermee kiezen we welke foto bij welk spel past. Foto's met
   // overslaan: true gebruiken we nergens.
   fotoUitleg: {
-    'foto-01': { plek: 'Restaurant, uit eten met mijn gezin', wanneer: '24 december 2025 (kerstavond)', verhaal: 'Kerstavond uit eten met mijn familie, samen met Davinia.', bijschrift: 'Kerstavond met mijn familie, en jij aan mijn zij. 🎄' },
+    'foto-01': { plek: 'Restaurant, uit eten met mijn gezin', wanneer: '6 december 2025', verhaal: 'Samen uit eten met mijn gezin.', bijschrift: 'Uit eten met mijn gezin, en jij hoorde er gewoon bij. 🍽️' },
     'foto-02': { plek: 'Kerstmarkt Düsseldorf, in het reuzenrad', wanneer: '22 december 2025', verhaal: 'Kerstmarkt in Düsseldorf: mijn verjaardagscadeau voor jou, samen met een kerstpyjama.', bijschrift: 'Hoog in het reuzenrad, en het mooiste uitzicht zat gewoon naast me. 🎡' },
     'foto-03': { plek: 'Düsseldorf, aan het water', wanneer: '22 december 2025', verhaal: 'Kerstmarkt in Düsseldorf, jouw verjaardagscadeau.', bijschrift: 'Koude handen, rode wangen, warm hart. ❄️' },
     'foto-04': { plek: 'Düsseldorf, op de ijsbaan', wanneer: '22 december 2025', verhaal: 'Kerstmarkt in Düsseldorf, jouw verjaardagscadeau.', bijschrift: 'Op het ijs, maar ik voelde alleen maar warmte. ⛸️' },
     'foto-05': { plek: 'Düsseldorf, op de ijsbaan', wanneer: '22 december 2025', verhaal: 'Kerstmarkt in Düsseldorf, jouw verjaardagscadeau.', bijschrift: 'Jouw cadeau, maar ik kreeg er zelf ook een herinnering voor altijd bij. 💝' },
     'foto-06': { plek: 'Düsseldorf', wanneer: '22 december 2025', verhaal: 'Kerstmarkt in Düsseldorf, jouw verjaardagscadeau.', bijschrift: 'Een spiegel, jij en ik. Meer heeft een goede foto niet nodig. ✌️' },
-    'foto-07': { plek: 'Bij Davinia thuis', wanneer: '24 december 2025 (kerstavond)', verhaal: 'Bij jou thuis, net voordat we met mijn gezin uit eten gingen op kerstavond.', bijschrift: 'Helemaal klaar voor kerstavond, en jij straalde nog meer dan de lichtjes. ✨' },
+    'foto-07': { plek: 'Bij Davinia thuis', wanneer: '24 december 2025 (kerstavond)', verhaal: 'Bij jou thuis, net voordat we op kerstavond uit eten gingen met jouw gezin en je oma.', bijschrift: 'Helemaal klaar voor kerstavond, en jij straalde nog meer dan de lichtjes. ✨' },
     'foto-08': { plek: 'Oud & nieuw met mijn vrienden', wanneer: '31 december 2025', verhaal: 'Oud & nieuw gevierd met mijn vrienden.', bijschrift: 'De laatste kus van 2025, de eerste van heel veel in 2026. 🎆' },
     'foto-09': { plek: 'Oud & nieuw met mijn vrienden', wanneer: '31 december 2025', verhaal: 'Oud & nieuw gevierd met mijn vrienden.', bijschrift: 'Het nieuwe jaar in, met jou. Een beter begin bestaat niet. 🥂' },
     'foto-10': { plek: 'Feest van Davinia', wanneer: '10 januari 2026', verhaal: 'Jouw feest, jij in een gouden jurk.', bijschrift: 'Jouw feest, en ik mocht naast de mooiste in goud staan. ✨' },
@@ -121,7 +124,7 @@ self.CONTENT = {
     'foto-36': { plek: 'Malta, boottocht vanuit Mgarr, suppen langs de kust', wanneer: '3 augustus 2026', verhaal: 'Boottocht vanuit Mgarr; samen suppen langs de rotsen.', bijschrift: 'Samen op één board: ik peddel, jij geniet. Prima taakverdeling. 🏄' },
     'foto-37': { plek: 'Malta, boottocht vanuit Mgarr, met kleimaskers op', wanneer: '3 augustus 2026', verhaal: 'Boottocht vanuit Mgarr; samen met een groen kleimasker op de boot.', bijschrift: 'Groen in het gezicht, maar nog nooit zo verliefd geweest. 💚' },
     'foto-38': { plek: 'Malta, dakterras met zwembad van ons hotel in Qawra', wanneer: '30 juli t/m 6 augustus 2026', verhaal: 'Ons hotel in Qawra had een dakterras met zwembad.', bijschrift: 'Ons eigen plekje in de zon, bovenop Qawra. ☀️' },
-    'foto-39': { plek: 'Feest van mijn oom en tante', wanneer: 'TODO: datum?', verhaal: 'Samen op het feest van mijn oom en tante.', bijschrift: 'Mijn familie vierde feest, en ik had de mooiste date van de avond. 🪩' },
+    'foto-39': { plek: 'Feest van mijn oom en tante', wanneer: '12 september 2026', verhaal: 'Samen op het feest van mijn oom en tante.', bijschrift: 'Mijn familie vierde feest, en ik had de mooiste date van de avond. 🪩' },
   },
 
   // ----------------------------------------------------------
@@ -133,6 +136,8 @@ self.CONTENT = {
   // husselt de opties bij elk spelletje zelf door elkaar.
   //
   // 'foto' mag je weglaten. 'reactie' verschijnt na het antwoorden.
+  // 'fotoNa': een foto die pas ná het antwoord verschijnt (onder de reactie),
+  // voor vragen waar de foto het antwoord zou verraden.
   quiz: [
     {
       vraag: 'Hoe begon ons echte contact?',
@@ -190,12 +195,14 @@ self.CONTENT = {
     },
     {
       vraag: 'In welke plaats op Malta zat ons hotel?',
+      foto: 'images/foto-30.jpg',
       opties: ['Qawra', 'Valletta', 'Sliema', 'Mdina'],
       goed: 0,
       reactie: 'Qawra. Een week lang dezelfde weg naar het strand, en toch elke dag anders. ☀️',
     },
     {
       vraag: 'Van wanneer tot wanneer waren we op Malta?',
+      foto: 'images/foto-29.jpg',
       opties: ['30 juli t/m 6 augustus', '22 t/m 29 juli', '1 t/m 8 augustus', '6 t/m 13 augustus'],
       goed: 0,
       reactie: 'Acht dagen die veel te snel voorbij waren.',
@@ -226,18 +233,21 @@ self.CONTENT = {
     },
     {
       vraag: 'Naar welke stad gingen we voor de kerstmarkt?',
+      foto: 'images/foto-04.jpg',
       opties: ['Düsseldorf', 'Keulen', 'Aken', 'Maastricht'],
       goed: 0,
       reactie: 'Lichtjes, glühwein en jij met rode wangen van de kou. Mijn beste cadeau-idee ooit. 🎄',
     },
     {
       vraag: 'Wat kreeg je naast de kerstmarkt nog voor je verjaardag?',
+      foto: 'images/foto-06.jpg',
       opties: ['Een kerstpyjama', 'Een kerstmuts', 'Een fotoboek', 'Een sieraad'],
       goed: 0,
       reactie: 'Een kerstpyjama. Officieel voor jou, stiekem ook een beetje voor mij. 🎁',
     },
     {
       vraag: 'Naar welk concert gingen we op Valentijnsdag?',
+      foto: 'images/foto-21.jpg',
       opties: ['CHO in de Ziggo Dome', 'Snelle in de Ziggo Dome', 'CHO in AFAS Live', 'Kris Kross Amsterdam in de Ziggo Dome'],
       goed: 0,
       reactie: 'Valentijnsdag in de Ziggo Dome. Ik keek volgens mij vaker naar jou dan naar het podium. 🎤',
@@ -256,51 +266,65 @@ self.CONTENT = {
     },
     {
       vraag: 'Met welke groep trad je op in Slagharen?',
+      foto: 'images/foto-20.jpg',
       opties: ['De Angels', 'De Stars', 'De Illusions', 'De Magics'],
       goed: 0,
       reactie: 'De Angels. Ik zat in het publiek en dacht alleen maar: die daar, dat is mijn vriendin. ✨',
     },
     {
       vraag: 'Op welk festival danste je terwijl ik stond te kijken?',
+      foto: 'images/foto-24.jpg',
       opties: ['Vunzige Deuntjes', 'Pinkpop', 'Lowlands', 'Defqon'],
       goed: 0,
       reactie: 'Jij op het podium. Ik was de trotste persoon in het hele publiek. 💃',
     },
     {
       vraag: 'Waar gingen we heen na de BBQ bij vrienden van je gezin?',
+      fotoNa: 'images/foto-27.jpg',
       opties: ['De kermis in Tilburg', 'Het strand', 'Naar huis', 'De kermis in Den Bosch'],
       goed: 0,
       reactie: 'Eerst lekker eten, daarna de kermis op. Zo’n avond waarop alles gewoon klopte. 🎡',
     },
     {
       vraag: 'Waar vertrok onze boottocht op Malta?',
+      foto: 'images/foto-37.jpg',
       opties: ['Mgarr', 'Valletta', 'Sliema', 'Qawra'],
       goed: 0,
       reactie: 'Vanuit Mgarr de zee op. Zon, zout water en jij naast me: meer had ik niet nodig. ⛵',
     },
     {
       vraag: 'Met wie vierden we oud & nieuw?',
+      foto: 'images/foto-08.jpg',
       opties: ['Met mijn vrienden', 'Met jouw familie', "Met z'n tweeën", 'Met mijn familie'],
       goed: 0,
       reactie: 'Het nieuwe jaar in met mijn vrienden, en met jou. Toen wist ik al: dit wordt een goed jaar. 🎆',
     },
     {
       vraag: 'Bij welke attractie in de Winter Efteling gingen we samen met Jokie op de foto?',
+      foto: 'images/foto-14.jpg',
       opties: ['Carnaval Festival', 'Droomvlucht', 'Python', 'Joris en de Draak'],
       goed: 0,
       reactie: 'Mutsen op en lachen naar de camera. Jokie was er duidelijk ook blij mee. 🎪',
     },
     {
       vraag: 'Waar stonden we op 16 april samen in een gigantische gele klomp?',
+      fotoNa: 'images/foto-18.jpg',
       opties: ['Bij de bollenvelden', 'In Volendam', 'In de Efteling', 'Op de kermis'],
       goed: 0,
       reactie: 'Tulpen zover je kon kijken, en wij samen in één klomp. Typisch Nederlands, typisch ons. 🌷',
     },
     {
       vraag: 'Wat gaf jij mij voor mijn verjaardag?',
+      fotoNa: 'images/foto-28.jpg',
       opties: ['Samen indoor skiën', 'Concertkaartjes', 'Een weekendje weg', 'Een horloge'],
       goed: 0,
       reactie: 'Samen de piste op, midden in de zomer. Het beste cadeau, vooral door wie ernaast zat in de lift. ⛷️',
+    },
+    {
+      vraag: 'Welk kaartspel speelden we het meest op Malta?',
+      opties: ['UNO', 'Pesten', 'Klaverjassen', 'Poker'],
+      goed: 0,
+      reactie: 'UNO, avond na avond. Ik zeg niet wie er vaker won… maar jij weet het heus wel. 😏',
     },
   ],
 
@@ -326,32 +350,74 @@ self.CONTENT = {
   // 4. FOTOSPELLEN
   // ----------------------------------------------------------
   fotos: {
-    // Memory: elke foto komt twee keer in het spel. 6 tot 8 foto's is fijn.
-    // TODO (stap 4): kies hier foto's uit images/foto-01.jpg t/m foto-39.jpg.
+    // Memory: elke foto komt twee keer in het spel (8 foto's = 16 kaartjes).
     memory: [
-      'images/voorbeeld-1.jpg',
-      'images/voorbeeld-2.jpg',
-      'images/voorbeeld-3.jpg',
-      'images/voorbeeld-4.jpg',
-      'images/voorbeeld-5.jpg',
-      'images/voorbeeld-6.jpg',
+      'images/foto-02.jpg',
+      'images/foto-09.jpg',
+      'images/foto-11.jpg',
+      'images/foto-16.jpg',
+      'images/foto-20.jpg',
+      'images/foto-22.jpg',
+      'images/foto-28.jpg',
+      'images/foto-30.jpg',
     ],
-    // Raad de plek of datum bij een foto.
-    // TODO (stap 4): vervangen door echte foto's met echte vragen.
+    // Raad de plek of datum bij een foto. Het goede antwoord staat eerst; de app husselt.
     raadDePlek: [
       {
-        foto: 'images/voorbeeld-7.jpg',
-        vraag: 'Waar is deze foto gemaakt?',
-        opties: ['Comino', 'Mdina', 'Valletta', 'Qawra'],
+        foto: 'images/foto-03.jpg',
+        vraag: "Wanneer is deze foto gemaakt?",
+        opties: ["22 december 2025","24 december 2025","31 december 2025","26 januari 2026"],
         goed: 0,
-        reactie: 'De Blue Lagoon. Dat water leek nep.',
+        reactie: "De kerstmarkt in Düsseldorf, jouw verjaardagscadeau. Koude handen, warm hart. ❄️",
       },
       {
-        foto: 'images/voorbeeld-8.jpg',
-        vraag: 'Wanneer was dit?',
-        opties: ['Augustus', 'Maart', 'Juni', 'September'],
+        foto: 'images/foto-07.jpg',
+        vraag: "Welke avond was dit?",
+        opties: ["Kerstavond 2025","Oud & nieuw","Jouw feest op 10 januari","Het feest van mijn oom en tante"],
         goed: 0,
-        reactie: 'Onze laatste dagen op Malta.',
+        reactie: "Kerstavond, net voordat we met jouw gezin en je oma uit eten gingen. ✨",
+      },
+      {
+        foto: 'images/foto-10.jpg',
+        vraag: "Op welk feest is deze foto gemaakt?",
+        opties: ["Jouw feest op 10 januari","Oud & nieuw","Het feest van mijn oom en tante","Kerstavond"],
+        goed: 0,
+        reactie: "Jouw feest, jij in goud. Ik kon mijn ogen niet van je afhouden. ✨",
+      },
+      {
+        foto: 'images/foto-15.jpg',
+        vraag: "Wanneer is deze foto gemaakt?",
+        opties: ["15 februari 2026","14 februari 2026","26 januari 2026","10 januari 2026"],
+        goed: 0,
+        reactie: "Carnaval, één dag na CHO op Valentijnsdag. Wat een weekend. 🎭",
+      },
+      {
+        foto: 'images/foto-17.jpg',
+        vraag: "Wanneer stonden we in dit lijstje?",
+        opties: ["16 april 2026","24 april 2026","22 mei 2026","4 juli 2026"],
+        goed: 0,
+        reactie: "Ons dagje bollenvelden. Duizenden tulpen, en toch keek ik alleen naar jou. 🌷",
+      },
+      {
+        foto: 'images/foto-26.jpg',
+        vraag: "Wanneer is deze foto gemaakt?",
+        opties: ["25 juli 2026","4 juli 2026","27 juli 2026","22 mei 2026"],
+        goed: 0,
+        reactie: "Na de BBQ bij vrienden van jouw gezin, de kermis in Tilburg op. 🎡",
+      },
+      {
+        foto: 'images/foto-32.jpg',
+        vraag: "Waar is deze foto gemaakt?",
+        opties: ["Mdina","Valletta","Qawra","Sliema"],
+        goed: 0,
+        reactie: "Mdina, de stille stad. Achter elke deur een verhaal. 🏰",
+      },
+      {
+        foto: 'images/foto-39.jpg',
+        vraag: "Op welk feest is deze foto gemaakt?",
+        opties: ["Het feest van mijn oom en tante","Jouw feest op 10 januari","Oud & nieuw","Vunzige Deuntjes"],
+        goed: 0,
+        reactie: "Het feest van mijn oom en tante, 12 september. Ik had de mooiste date van de avond. 🪩",
       },
     ],
   },
@@ -369,6 +435,7 @@ self.CONTENT = {
     { datum: 'derde date',       titel: 'Onze eerste kus',       tekst: "'s Avonds buiten liggen bij de Maas." },
     { datum: '22 november 2025', titel: 'Officieel samen',       tekst: 'In de auto bij de Maas, nadat we onze eerste date hadden nagedaan.' },
     { datum: '22 december 2025', titel: 'Kerstmarkt Düsseldorf', tekst: 'Jouw verjaardagscadeau, met een kerstpyjama erbij.' },
+    { datum: '24 december 2025', titel: 'Kerstavond',            tekst: 'Uit eten met jouw gezin en je oma.' },
     { datum: '31 december 2025', titel: 'Oud & nieuw',           tekst: 'Het nieuwe jaar in met mijn vrienden, en met jou.' },
     { datum: '26 januari 2026',  titel: 'Winter Efteling',       tekst: 'Mutsen op, en Jokie op de foto.' },
     { datum: '14 februari 2026', titel: 'CHO op Valentijnsdag',  tekst: 'Samen in de Ziggo Dome.' },
@@ -380,6 +447,7 @@ self.CONTENT = {
     { datum: '25 juli 2026',     titel: 'BBQ en kermis',         tekst: 'BBQ bij vrienden van jouw gezin, daarna de kermis in Tilburg.' },
     { datum: '27 juli 2026',     titel: 'Indoor skiën',          tekst: 'Jouw verjaardagscadeau voor mij: samen de piste op.' },
     { datum: '30 juli 2026',     titel: 'Malta',                 tekst: "Qawra, de Blue Lagoon, sudoku's en cocktails." },
+    { datum: '12 september 2026', titel: 'Feest oom en tante',  tekst: 'Mijn familie vierde feest, en ik had de mooiste date.' },
     { datum: '22 november 2026', titel: 'Eén jaar samen',        tekst: 'En dit is pas het begin. 💗' },
   ],
 
@@ -444,17 +512,16 @@ self.CONTENT = {
   sudoku: {
     // De startcijfers verwerken 22 en/of 22-11 (onze datum); dat regelt het spel zelf.
     // Elk opgelost 3x3-vak speelt één herinnering vrij: precies 9 stuks.
-    // TODO (stap 8): bij elke herinnering een echte foto kiezen.
     maltaHerinneringen: [
-      { foto: 'images/voorbeeld-1.jpg', bijschrift: 'Aankomst in Qawra' },
-      { foto: 'images/voorbeeld-2.jpg', bijschrift: 'De Blue Lagoon op Comino' },
-      { foto: 'images/voorbeeld-3.jpg', bijschrift: 'Door de straatjes van Valletta' },
-      { foto: 'images/voorbeeld-4.jpg', bijschrift: 'Mdina, de stille stad' },
-      { foto: 'images/voorbeeld-5.jpg', bijschrift: 'Een dag in het waterpark' },
-      { foto: 'images/voorbeeld-6.jpg', bijschrift: 'Onze boottocht' },
-      { foto: 'images/voorbeeld-7.jpg', bijschrift: 'Cocktails en vragenspellen' },
-      { foto: 'images/voorbeeld-8.jpg', bijschrift: "Sudoku's, altijd sudoku's" },
-      { foto: 'images/voorbeeld-1.jpg', bijschrift: 'Het busongeluk, nu een grappig verhaal' },
+      { foto: 'images/foto-29.jpg', bijschrift: "Koffers in de auto: op naar Malta! ✈️" },
+      { foto: 'images/foto-38.jpg', bijschrift: "Ons dakterras met zwembad, bovenop Qawra. ☀️" },
+      { foto: 'images/foto-30.jpg', bijschrift: "Zonsondergang aan de boulevard van Qawra. 🌅" },
+      { foto: 'images/foto-31.jpg', bijschrift: "Door de stille straatjes van Mdina. 🏰" },
+      { foto: 'images/foto-33.jpg', bijschrift: "Een Maltees dorpsfeest vol lichtjes. ✨" },
+      { foto: 'images/foto-34.jpg', bijschrift: "Vanaf de boot het turquoise water in. 🌊" },
+      { foto: 'images/foto-35.jpg', bijschrift: "Kliffen, grotten en jij. ⛵" },
+      { foto: 'images/foto-36.jpg', bijschrift: "Samen suppen langs de rotsen. 🏄" },
+      { foto: 'images/foto-37.jpg', bijschrift: "Groene kleimaskers op de boot. 💚" },
     ],
   },
 

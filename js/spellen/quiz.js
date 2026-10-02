@@ -39,6 +39,7 @@
     return {
       vraag: vraag.vraag || '',
       foto: vraag.foto || null,
+      fotoNa: vraag.fotoNa || null,
       reactie: vraag.reactie || '',
       opties: gehusseld.map((o) => o.tekst),
       goed: gehusseld.findIndex((o) => o.wasGoed),
@@ -50,6 +51,17 @@
     if (klasse) e.className = klasse;
     if (tekst != null) e.textContent = tekst;
     return e;
+  }
+
+  /* Een foto in een lijstje. Laadt hij niet, dan verdwijnt het lijstje. */
+  function maakFoto(src, klasse) {
+    const lijst = el('div', klasse);
+    const img = el('img');
+    img.src = src;
+    img.alt = '';
+    img.addEventListener('error', () => lijst.remove());
+    lijst.append(img);
+    return lijst;
   }
 
   /* ----------------------------------------------------------
@@ -72,17 +84,7 @@
 
     const kaart = el('div', 'quiz-kaart');
 
-    if (v.foto) {
-      const lijst = el('div', 'quiz-foto');
-      const img = el('img');
-      img.src = v.foto;
-      img.alt = '';
-      img.loading = 'lazy';
-      // Laadt de foto niet? Dan halen we het vlak gewoon weg.
-      img.addEventListener('error', () => lijst.remove());
-      lijst.append(img);
-      kaart.append(lijst);
-    }
+    if (v.foto) kaart.append(maakFoto(v.foto, 'quiz-foto'));
 
     kaart.append(el('h3', 'quiz-vraag', v.vraag));
 
@@ -133,6 +135,8 @@
     if (v.reactie) {
       na.append(el('p', 'quiz-reactie', v.reactie));
     }
+    // Foto die het antwoord zou verraden: pas nu laten zien.
+    if (v.fotoNa) na.append(maakFoto(v.fotoNa, 'quiz-foto quiz-foto-na'));
 
     const verder = el('button', 'knop', bij + 1 < vragen.length ? 'Volgende vraag' : 'Naar de uitslag');
     verder.type = 'button';

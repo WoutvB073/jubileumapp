@@ -643,6 +643,13 @@ p { margin: 0; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%; /* staande foto's: gezichten zitten meestal in het bovenste deel */
+}
+
+/* Foto die pas na het antwoord verschijnt, onder de reactie */
+.quiz-foto-na {
+  margin: 0 0 16px;
+  animation: binnen 0.5s ease-out;
 }
 
 .quiz-vraag {
