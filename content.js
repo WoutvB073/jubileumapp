@@ -62,8 +62,9 @@ self.CONTENT = {
       '15 feb 2026: carnaval samen.',
       '24 t/m 26 apr 2026: Wout 3 dagen bij Davinia in Slagharen, waar ze optrad met de Angels.',
       '22 mei 2026: half jaar samen, dagje Utrecht.',
-      '4 jul 2026: festival Vunzige Deuntjes, waar Davinia zelf moest dansen.',
-      '25 jul 2026: BBQ met karaoke bij vrienden van haar gezin, daarna de kermis in Tilburg.',
+      '4 jul 2026: festival Vunzige Deuntjes, waar Davinia zelf moest dansen (Wout stond te kijken).',
+      'Davinia heeft ook op Zwarte Cross gedanst; daar was Wout niet bij.',
+      '25 jul 2026: BBQ bij vrienden van haar gezin, daarna de kermis in Tilburg.',
       '30 jul t/m 6 aug 2026: Malta (boottocht vanuit Mgarr op 3 aug).',
     ],
   },
@@ -205,16 +206,16 @@ self.CONTENT = {
       reactie: 'De Angels. Ik zat in het publiek en dacht alleen maar: die daar, dat is mijn vriendin. ✨',
     },
     {
-      vraag: 'Op welk festival moest jij dansen?',
-      opties: ['Vunzige Deuntjes', 'Lowlands', 'Zwarte Cross', 'Defqon'],
+      vraag: 'Op welk festival danste je terwijl ik stond te kijken?',
+      opties: ['Vunzige Deuntjes', 'Pinkpop', 'Lowlands', 'Defqon'],
       goed: 0,
       reactie: 'Jij op het podium. Ik was de trotste persoon in het hele publiek. 💃',
     },
     {
-      vraag: 'Waar gingen we heen na de karaoke-BBQ?',
+      vraag: 'Waar gingen we heen na de BBQ bij vrienden van je gezin?',
       opties: ['De kermis in Tilburg', 'Het strand', 'Naar huis', 'De kermis in Den Bosch'],
       goed: 0,
-      reactie: 'Eerst karaoke, toen de kermis. Mijn stem is er nog steeds niet helemaal van hersteld. 🎡',
+      reactie: 'Eerst lekker eten, daarna de kermis op. Zo’n avond waarop alles gewoon klopte. 🎡',
     },
     {
       vraag: 'Waar vertrok onze boottocht op Malta?',
@@ -224,7 +225,7 @@ self.CONTENT = {
     },
     {
       vraag: 'Met wie vierden we oud & nieuw?',
-      opties: ['Met Wouts vrienden', 'Met jouw familie', "Met z'n tweeën", 'Met mijn familie'],
+      opties: ['Met mijn vrienden', 'Met jouw familie', "Met z'n tweeën", 'Met mijn familie'],
       goed: 0,
       reactie: 'Het nieuwe jaar in met mijn vrienden, en met jou. Toen wist ik al: dit wordt een goed jaar. 🎆',
     },
@@ -241,6 +242,11 @@ self.CONTENT = {
     { stelling: 'Wie zei als eerste "ik hou van jou"?',               antwoord: 'Wout',    reactie: 'Ik hield het niet meer binnen. En ik meende het meteen. 💗' },
     { stelling: 'Wie kan nooit kiezen wat we gaan eten?',             antwoord: 'Allebei', reactie: '"Maakt mij niet uit." "Mij ook niet." En een uur later nog niets besloten. 🍕' },
     { stelling: 'Wie is het meest competitief?',                      antwoord: 'Allebei', reactie: 'Allebei even erg… maar Wout wint altijd 😉' },
+    { stelling: 'Wie kan beter koken?',                               antwoord: 'Davinia', reactie: 'Jij kookt, ik doe de afwas. Eerlijke verdeling, toch? 🍳' },
+    { stelling: "Wie maakt de meeste foto's?",                        antwoord: 'Davinia', reactie: 'Zonder jou had ik van ons hele jaar ongeveer drie foto’s gehad. 📸' },
+    { stelling: 'Wie is het eerst moe op een festival of feest?',     antwoord: 'Allebei', reactie: 'Eerst de hele avond los, en dan allebei tegelijk op zoek naar een plekje om te zitten. 😅' },
+    { stelling: 'Wie zou het eerst verdwalen in Mdina?',              antwoord: 'Davinia', reactie: 'Al die steegjes lijken op elkaar. Gelukkig liep ik naast je. 🧭' },
+    { stelling: 'Wie stuurt de meeste berichtjes overdag?',           antwoord: 'Wout',    reactie: 'Dat ben ik… maar dat komt ook doordat jij vaak aan het dansen bent 💃' },
   ],
 
   // ----------------------------------------------------------
@@ -296,7 +302,7 @@ self.CONTENT = {
     { datum: '24 april 2026',    titel: 'Slagharen',             tekst: 'Drie dagen bij jou, en jij op het podium met de Angels.' },
     { datum: '22 mei 2026',      titel: 'Half jaar in Utrecht',  tekst: 'Een half jaar samen, een dagje Utrecht.' },
     { datum: '4 juli 2026',      titel: 'Vunzige Deuntjes',      tekst: 'Jij moest dansen, ik stond trots te kijken.' },
-    { datum: '25 juli 2026',     titel: 'Karaoke en kermis',     tekst: 'BBQ met karaoke, daarna de kermis in Tilburg.' },
+    { datum: '25 juli 2026',     titel: 'BBQ en kermis',         tekst: 'BBQ bij vrienden van jouw gezin, daarna de kermis in Tilburg.' },
     { datum: '30 juli 2026',     titel: 'Malta',                 tekst: "Qawra, de Blue Lagoon, sudoku's en cocktails." },
     { datum: '22 november 2026', titel: 'Eén jaar samen',        tekst: 'En dit is pas het begin. 💗' },
   ],
@@ -314,7 +320,6 @@ self.CONTENT = {
       { woord: 'MALTA', uitleg: 'Onze eerste vakantie samen.' },
       { woord: 'QAWRA', uitleg: 'Waar ons hotel stond.' },
       { woord: 'MDINA', uitleg: 'De stille stad waar we door de steegjes liepen.' },
-      { woord: 'MGARR', uitleg: 'Waar onze boottocht op Malta begon.' },
     ],
     // Galgje: mag langer zijn, spaties mogen (bv. 'EERSTE DATE').
     galgje: [
@@ -378,7 +383,7 @@ self.CONTENT = {
     // Het spel kiest per keer een deel van deze lijst (wordt in stap 9 bepaald).
     woorden: [
       'MAAS', 'MALTA', 'QAWRA', 'MDINA', 'VALLETTA', 'COMINO', 'BROWNIES', 'AARDBEI', 'CHOCOLA', 'TERRAS', 'ARCADE', 'SUDOKU',
-      'DUSSELDORF', 'KERSTMARKT', 'PYJAMA', 'CARNAVAL', 'UTRECHT', 'SLAGHAREN', 'ANGELS', 'KERMIS', 'KARAOKE', 'TILBURG', 'MGARR', 'GOZO',
+      'DUSSELDORF', 'KERSTMARKT', 'PYJAMA', 'CARNAVAL', 'UTRECHT', 'SLAGHAREN', 'ANGELS', 'KERMIS',
     ],
     // Kleine kruiswoordpuzzel: woord + hint.
     kruiswoord: [
