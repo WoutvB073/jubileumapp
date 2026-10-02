@@ -19,7 +19,7 @@ const SPELLEN = [
   { id: 'woordspel',      titel: 'Woordspellen',      sub: 'Wordle en galgje',            icoon: '🔤', kleur: 'var(--lila-licht)' },
   { id: 'hartjesblokken', titel: 'Hartjesblokken',    sub: 'Puzzel de foto scherp',       icoon: '💗', kleur: 'var(--perzik-licht)' },
   { id: 'sudoku',         titel: 'Malta-sudoku',      sub: 'Net als op vakantie',         icoon: '☀️', kleur: 'var(--roze-licht)' },
-  { id: 'woordzoeker',    titel: 'Woordzoeker',       sub: 'Vind al onze woorden',        icoon: '🔍', kleur: 'var(--lila-licht)' },
+  { id: 'woordzoeker',    titel: 'Woordpuzzels',      sub: 'Zoeken en kruisen',           icoon: '🔍', kleur: 'var(--lila-licht)' },
   { id: 'ditofdat',       titel: 'Dit of dat',        sub: 'Wat zou Wout kiezen?',        icoon: '⚖️', kleur: 'var(--perzik-licht)' },
   { id: 'kleuren',        titel: 'Kleuren op nummer', sub: 'Kleur ons in',                icoon: '🎨', kleur: 'var(--mint-licht)' },
 ];

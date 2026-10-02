@@ -557,13 +557,16 @@ self.CONTENT = {
   // 9. WOORDZOEKER EN KRUISWOORD
   // ----------------------------------------------------------
   woordzoeker: {
-    // Woorden zonder spaties, max 10 letters.
-    // Het spel kiest per keer een deel van deze lijst (wordt in stap 9 bepaald).
-    woorden: [
-      'MAAS', 'MALTA', 'QAWRA', 'MDINA', 'VALLETTA', 'COMINO', 'BROWNIES', 'AARDBEI', 'CHOCOLA', 'TERRAS', 'ARCADE', 'SUDOKU',
-      'DUSSELDORF', 'KERSTMARKT', 'PYJAMA', 'CARNAVAL', 'UTRECHT', 'SLAGHAREN', 'ANGELS', 'KERMIS', 'TULPEN', 'EFTELING',
+    // Woordzoekers: woorden staan horizontaal, verticaal of schuin (nooit achterstevoren).
+    // De letters die overblijven vormen samen de 'zin' (spaties en leestekens tellen niet).
+    // Past de zin niet precies (bijv. na het wijzigen van woorden), dan vult het spel
+    // de rest op met willekeurige letters. Vraag Claude dan om de zin aan te passen.
+    puzzels: [
+      { titel: 'Malta', grootte: 9, woorden: ['MALTA', 'QAWRA', 'MDINA', 'VALLETTA', 'COMINO', 'SUDOKU', 'TERRAS'], zin: 'Eén puzzel per cocktail was echt een eerlijke ruil' },
+      { titel: 'Thuis', grootte: 9, woorden: ['MAAS', 'BROWNIES', 'AARDBEI', 'CHOCOLA', 'PYJAMA', 'TULPEN', 'ARCADE'], zin: 'Samen bakken telt in mijn boek echt als een date' },
+      { titel: 'Onderweg', grootte: 10, woorden: ['DUSSELDORF', 'KERSTMARKT', 'CARNAVAL', 'SLAGHAREN', 'EFTELING', 'UTRECHT', 'KERMIS', 'ANGELS'], zin: 'Volgend jaar gewoon weer zoveel uitjes graag' },
     ],
-    // Kleine kruiswoordpuzzel: woord + hint.
+    // Kruiswoordpuzzel: woord + hint. De gemarkeerde vakjes vormen samen het oplossingswoord.
     kruiswoord: [
       { woord: 'MAAS',      hint: 'Ons plekje' },
       { woord: 'MALTA',     hint: 'Onze eerste vakantie samen' },
@@ -573,7 +576,9 @@ self.CONTENT = {
       { woord: 'INSTAGRAM', hint: 'Waar ik je als eerste een berichtje stuurde' },
       { woord: 'COCKTAIL',  hint: 'Met een vragenspel erbij, op Malta' },
       { woord: 'SUDOKU',    hint: 'Onze vakantieverslaving' },
+      { woord: 'UNO',       hint: 'Hét kaartspel van Malta. Wie er won, laten we in het midden.' },
     ],
+    kruiswoordOplossing: 'SAMEN',
   },
 
   // ----------------------------------------------------------
