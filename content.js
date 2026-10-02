@@ -61,6 +61,7 @@ self.CONTENT = {
       'Winter 2025-2026: samen naar de Winter Efteling (TODO: datum?).',
       '14 feb 2026 (Valentijnsdag): concert van CHO in de Ziggo Dome.',
       '15 feb 2026: carnaval samen.',
+      'Voorjaar 2026: tulpenvelden bij Tulip Experience Amsterdam (TODO: datum?).',
       '24 t/m 26 apr 2026: Wout 3 dagen bij Davinia in Slagharen, waar ze optrad met de Angels.',
       '22 mei 2026: half jaar samen, dagje Utrecht.',
       '4 jul 2026: festival Vunzige Deuntjes, waar Davinia zelf moest dansen (Wout stond te kijken).',
@@ -92,6 +93,10 @@ self.CONTENT = {
     'foto-12': { plek: 'Feest van Davinia', wanneer: '10 januari 2026', verhaal: 'Jouw feest, jij in een gouden jurk.', bijschrift: 'Midden op het feest, en toch even alleen wij. 💋' },
     // Let op: onderaan staat een strip met andere mensen; bijsnijden voordat we hem gebruiken.
     'foto-13': { plek: 'Winter Efteling, attractie Carnaval Festival', wanneer: 'winter 2025-2026 (TODO: datum?)', verhaal: 'Samen naar de Winter Efteling; attractiefoto bij Carnaval Festival.', bijschrift: 'Mutsen op, wangen rood, en Jokie lachte met ons mee. 🎪' },
+    'foto-14': { plek: 'Winter Efteling', wanneer: 'winter 2025-2026 (zelfde dag als foto-13)', verhaal: 'Samen naar de Winter Efteling.', bijschrift: 'Koud buiten, maar met jou tegen me aan merkte ik daar niks van. ✌️' },
+    'foto-15': { plek: 'Carnaval, verkleed', wanneer: '15 februari 2026', verhaal: 'Carnaval samen gevierd, een dag na CHO op Valentijnsdag.', bijschrift: 'Skibril op, sjaal om: het mooiste carnavalskoppel van het zuiden. 🎭' },
+    'foto-16': { plek: 'Tulpenveld (Tulip Experience Amsterdam), in de gele klomp', wanneer: 'voorjaar 2026 (TODO: datum?)', verhaal: 'Samen naar de tulpenvelden van Tulip Experience Amsterdam.', bijschrift: 'Duizenden tulpen, en toch keek ik alleen naar jou. 🌷' },
+    'foto-17': { plek: 'Tulpenveld (Tulip Experience Amsterdam)', wanneer: 'voorjaar 2026 (zelfde dag als foto-16)', verhaal: 'Samen naar de tulpenvelden van Tulip Experience Amsterdam.', bijschrift: 'Een lijstje om ons heen, en dat mag zo blijven. 🖼️' },
   },
 
   // ----------------------------------------------------------
