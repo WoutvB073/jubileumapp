@@ -82,6 +82,10 @@ self.CONTENT = {
     'foto-03': { plek: 'Düsseldorf, aan het water', wanneer: '22 december 2025', verhaal: 'Kerstmarkt in Düsseldorf, jouw verjaardagscadeau.', bijschrift: 'Koude handen, rode wangen, warm hart. ❄️' },
     'foto-04': { plek: 'Düsseldorf, op de ijsbaan', wanneer: '22 december 2025', verhaal: 'Kerstmarkt in Düsseldorf, jouw verjaardagscadeau.', bijschrift: 'Op het ijs, maar ik voelde alleen maar warmte. ⛸️' },
     'foto-05': { plek: 'Düsseldorf, op de ijsbaan', wanneer: '22 december 2025', verhaal: 'Kerstmarkt in Düsseldorf, jouw verjaardagscadeau.', bijschrift: 'Jouw cadeau, maar ik kreeg er zelf ook een herinnering voor altijd bij. 💝' },
+    'foto-06': { plek: 'Düsseldorf', wanneer: '22 december 2025', verhaal: 'Kerstmarkt in Düsseldorf, jouw verjaardagscadeau.', bijschrift: 'Een spiegel, jij en ik. Meer heeft een goede foto niet nodig. ✌️' },
+    'foto-07': { plek: 'Bij Davinia thuis', wanneer: '24 december 2025 (kerstavond)', verhaal: 'Bij jou thuis, net voordat we met mijn gezin uit eten gingen op kerstavond.', bijschrift: 'Helemaal klaar voor kerstavond, en jij straalde nog meer dan de lichtjes. ✨' },
+    'foto-08': { plek: 'Oud & nieuw met mijn vrienden', wanneer: '31 december 2025', verhaal: 'Oud & nieuw gevierd met mijn vrienden.', bijschrift: 'De laatste kus van 2025, de eerste van heel veel in 2026. 🎆' },
+    'foto-09': { plek: 'Oud & nieuw met mijn vrienden', wanneer: '31 december 2025', verhaal: 'Oud & nieuw gevierd met mijn vrienden.', bijschrift: 'Het nieuwe jaar in, met jou. Een beter begin bestaat niet. 🥂' },
   },
 
   // ----------------------------------------------------------
