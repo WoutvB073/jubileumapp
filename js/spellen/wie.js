@@ -163,7 +163,7 @@
     wortel.textContent = '';
     const kaart = el('div', 'quiz-uitslag-kaart');
     kaart.append(el('p', 'quiz-hartjes', '💗'.repeat(score) + '🤍'.repeat(3 - score)));
-    kaart.append(el('h3', 'sier', score === 3 ? 'Jij kent ons door en door!' : 'Lief geprobeerd 💗'));
+    kaart.append(el('h3', 'sier', score === 3 ? 'Jij kent ons door en door!' : 'Netjes geprobeerd'));
     kaart.append(el('p', 'quiz-score', `${goedGeteld} van de ${totaal} goed`));
 
     let tekst;

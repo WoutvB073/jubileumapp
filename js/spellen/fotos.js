@@ -331,10 +331,10 @@
       const kaart = el('div', 'quiz-uitslag-kaart');
       kaart.append(
         el('p', 'quiz-hartjes', hartjesTekst(hartjes)),
-        el('h3', 'sier', hartjes === 3 ? 'Jij weet het allemaal nog!' : 'Lief geprobeerd 💗'),
+        el('h3', 'sier', hartjes === 3 ? 'Jij weet het allemaal nog!' : 'Netjes geprobeerd'),
         el('p', 'quiz-score', `${goedGeteld} van de ${vragen.length} goed`),
         el('p', 'quiz-slot', hartjes === 3
-          ? 'Elke plek, elke datum. Jij onthoudt onze momenten net zo goed als ik.'
+          ? 'Elke plek, elke datum. Jij onthoudt het beter dan ik, eerlijk gezegd.'
           : 'Zoveel momenten in één jaar, logisch dat ze een beetje door elkaar lopen. Dat betekent gewoon dat we veel samen hebben gedaan.'),
         knop('knop', 'Nog een keer', startRaad),
         knop('knop zacht', 'Terug naar fotospellen', toonKeuze),

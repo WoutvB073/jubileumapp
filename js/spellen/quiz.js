@@ -174,11 +174,11 @@
     const kaart = el('div', 'quiz-uitslag-kaart');
 
     kaart.append(el('p', 'quiz-hartjes', '💗'.repeat(score) + '🤍'.repeat(3 - score)));
-    kaart.append(el('h3', 'sier', score === 3 ? 'Jij kent ons!' : 'Lief geprobeerd 💗'));
+    kaart.append(el('h3', 'sier', score === 3 ? 'Jij kent ons!' : 'Netjes geprobeerd'));
     kaart.append(el('p', 'quiz-score', `${goedGeteld} van de ${totaal} goed`));
 
     let tekst;
-    if (score === 3) tekst = 'Bijna alles goed. Ik wist het wel: niemand kent ons beter dan jij.';
+    if (score === 3) tekst = 'Bijna alles goed. Je hebt dus echt opgelet.';
     else if (score === 2) tekst = 'Mooi gedaan. En de vragen die je miste, vertel ik je gewoon nog een keer.';
     else tekst = 'Geeft niets. Dan hebben we een goede smoes om alles nog eens door te nemen.';
     kaart.append(el('p', 'quiz-slot', tekst));

@@ -21,6 +21,13 @@ Een webapp (PWA) als cadeau voor het eenjarig jubileum van Wout en zijn vriendin
 - Alle teksten in het Nederlands.
 - Alleen licht thema (`color-scheme: only light`), statusbalk `default`.
 
+## Toon (geldt voor de hele app)
+- Wout is niet zoetsappig, de app dus ook niet. Teksten zijn **luchtig, nuchter en met humor**, met knipogen naar hun echte momenten.
+- Liefdevol mag, maar **kort en gewoon**. Geen overdreven romantische zinnen.
+- **Verboden:** "forever", "zielsverwant", "voor altijd", "mijn alles", en dingen als "nog nooit zo verliefd", "mijn ogen niet van je afhouden", "het mooiste uitzicht stond naast me".
+- Goed voorbeeld: "Jij kookt, ik doe de afwas. Eerlijke verdeling, toch?" / "Skiën in juli. Jouw cadeau, en ik ben nog heel."
+- Geldt voor content.js én vaste teksten in de spellen (uitslagen, meldingen). Nieuwe teksten altijd zo schrijven.
+
 ## Inhoud apart van de code
 - Alle persoonlijke inhoud (quizvragen, woorden, foto's met bijschriften, tijdlijnmomenten, berichtjes, liefdesbriefjes, Wouts antwoorden) staat in **één bestand: `content.js`**, met voorbeelden en TODO's zodat Wout het zelf invult. Tot die tijd nette placeholder-inhoud.
 - Foto's in `/images`, verkleind tot max **1200px breed als JPG**. Hulpscript: zet originelen in `foto-origineel/` (niet in git) en dubbelklik `tools/verklein-fotos.cmd`.
