@@ -82,7 +82,7 @@ Een webapp (PWA) als cadeau voor het eenjarig jubileum van Wout en zijn vriendin
 ## Voortgang
 - [x] **Stap 1 – Basis** (2 okt 2026, goedgekeurd): installatiescherm, PWA (manifest, iconen, opstartschermen, service worker), hoofdmenu met 10 speltegels + brievenbus ("binnenkort"), `content.js` met placeholder-inhoud en ideeën, placeholder-foto's, fotoverkleinscript. Repo `WoutvB073/jubileumapp` (openbaar), Pages vanaf `main` / root: https://woutvb073.github.io/jubileumapp/
   - Wouts eigen foto's: 39 JPG's (uit een WhatsApp-zip, geen HEIC, geen GPS) verkleind naar `images/foto-01.jpg` t/m `foto-39.jpg`. Staan **voorlopig in `.gitignore`** (niet online) tot Wout akkoord geeft om ze in de openbare repo te zetten. Originelen in `foto-origineel/` (nooit in git).
-- [ ] Stap 2 – Quiz over ons
+- [x] **Stap 2 – Quiz over ons** (2 okt 2026): 15 meerkeuzevragen uit `content.js`, opties worden per spelletje gehusseld, per vraag een reactie van Wout, hartjesscore 0-3 aan het eind (3 vanaf 80% goed, 2 vanaf 50%). `content.js` is gevuld met alle echte inhoud: feiten, 15 quizvragen, 6 'wie van ons twee', de tijdlijn, de woorden voor wordle/galgje/woordzoeker/kruiswoord. Foto's bij de quizvragen volgen nog (Wout kiest ze uit images/foto-01 t/m 39).
 - [ ] Stap 3 – Wie van ons twee?
 - [ ] Stap 4 – Fotospellen
 - [ ] Stap 5 – Tijdlijn

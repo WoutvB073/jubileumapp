@@ -2,8 +2,8 @@
   ============================================================
   CONTENT.JS — alle persoonlijke inhoud van de app
   ============================================================
-  Hier vul jij (Wout) alles zelf in. De code van de spelletjes
-  hoef je niet aan te raken.
+  Hier staat alles wat over jullie tweeën gaat. De code van de
+  spelletjes hoef je niet aan te raken.
 
   Spelregels voor dit bestand:
   - Tekst staat altijd tussen aanhalingstekens: 'zo' of "zo".
@@ -11,13 +11,13 @@
     eromheen: "Davinia's lievelingseten".
   - Na elk item in een lijst komt een komma.
   - Foto's: zet ze in de map images/ (verkleind, zie README in die map)
-    en schrijf hier het pad, bijvoorbeeld 'images/eerste-date.jpg'.
+    en schrijf hier het pad, bijvoorbeeld 'images/foto-07.jpg'.
   - Zoek op "TODO" om te zien wat je nog moet invullen.
   - Opgeslagen en de app doet raar? Waarschijnlijk een komma of
     aanhalingsteken vergeten. Vraag Claude om te helpen zoeken.
 
-  Nu staan er overal voorbeeld-foto's (images/voorbeeld-1.jpg t/m 8)
-  en voorbeeldteksten in, zodat alles al werkt.
+  De reacties na een antwoord ('reactie') zijn een voorzet van Claude.
+  Pas ze vooral aan naar je eigen woorden.
 */
 
 self.CONTENT = {
@@ -28,11 +28,29 @@ self.CONTENT = {
   algemeen: {
     naamZij: 'Davinia',
     naamIk: 'Wout',
-    // TODO: de echte datum waarop jullie samen zijn (jaar-maand-dag).
-    samenSinds: '2025-11-15',
+    // De dag dat jullie officieel samen zijn: 22 november 2025.
+    samenSinds: '2025-11-22',
+    // Terugkerende thema's in de hele app.
+    onsGetal: 22,
+    onsPlekje: 'de Maas',
     // Korte tekst bovenaan het hoofdmenu.
-    // TODO: maak hem persoonlijk.
     welkom: 'Een jaar vol ons. Speel alles in je eigen tempo, er is geen haast. 💕',
+  },
+
+  // ----------------------------------------------------------
+  // FEITEN OVER ONS
+  // ----------------------------------------------------------
+  // Niet voor één spel, maar als bron voor alle spellen (en voor Claude,
+  // als er later nieuwe vragen of hints bij moeten komen).
+  feiten: {
+    begin: 'We kenden elkaar via school. Het echte contact begon toen Wout haar een DM stuurde op Instagram.',
+    eersteDate: "Een terras met een arcadehal erbij, daarna een ijsje bij de McDonald's en opgegeten bij de Maas.",
+    tweedeDate: 'Samen brownies gebakken.',
+    derdeDate: "De eerste kus, 's avonds buiten liggend bij de Maas.",
+    officieel: '22 november: Wout vroeg haar verkering in de auto bij de Maas. Die dag hadden ze hun eerste date nagedaan.',
+    onsGetal: '22 is ons getal, de Maas is ons plekje.',
+    etenSamen: "Af en toe McDonald's, en aardbeien met chocola.",
+    malta: "Malta, 30 juli t/m 6 augustus, hotel in Qawra. Comino en de Blue Lagoon, Valletta, Mdina, een waterpark, een boottocht, een busongeluk (nu een grappig verhaal), 's avonds cocktails met vragenspellen en veel sudoku's.",
   },
 
   // ----------------------------------------------------------
@@ -40,36 +58,100 @@ self.CONTENT = {
   // ----------------------------------------------------------
   // Meerkeuzevragen. 'goed' is het nummer van het goede antwoord,
   // beginnend bij 0 (0 = eerste optie, 1 = tweede, enz.).
-  // 'foto' mag je weglaten. 'reactie' verschijnt na het antwoorden.
+  // Hieronder staat het goede antwoord overal als eerste; de app
+  // husselt de opties bij elk spelletje zelf door elkaar.
   //
-  // Ideeën voor vragen:
-  // - Waar hadden we onze eerste date? / Wat aten we toen?
-  // - Wie zei het eerst "ik hou van je"? En waar?
-  // - Wat is mijn lievelingsbijnaam voor jou?
-  // - Welk liedje doet ons altijd aan elkaar denken?
-  // - Wat bestel ik altijd bij de afhaal?
-  // - Welk cijfer gaf ik onze eerste vakantie?
-  // - Wat was het eerste cadeautje dat ik je gaf?
-  // - Welke film hebben we het vaakst samen gekeken?
+  // 'foto' mag je weglaten. 'reactie' verschijnt na het antwoorden.
   quiz: [
     {
-      vraag: 'Waar hadden we onze allereerste date?',            // TODO
-      foto: 'images/voorbeeld-1.jpg',                           // TODO (of weglaten)
-      opties: ['In de bioscoop', 'Op een terrasje', 'Bij het strand', 'In een museum'],
-      goed: 1,
-      reactie: 'Ik was zó zenuwachtig dat ik mijn koffie bijna omgooide. ☕',
-    },
-    {
-      vraag: 'Wie zei als eerste "ik hou van jou"?',             // TODO
-      opties: ['Wout', 'Davinia', 'Tegelijk', 'Nog steeds niemand 😉'],
+      vraag: 'Hoe begon ons echte contact?',
+      opties: ['Wout stuurde een DM op Instagram', 'Davinia stuurde een Snapchat', 'We spraken af na school', 'Via een vriendin'],
       goed: 0,
-      reactie: 'En ik meende het meteen. 💗',
+      reactie: 'Ik heb dat berichtje echt vier keer herschreven voor ik op verzenden durfde te drukken. 📱',
     },
     {
-      vraag: 'Wat bestel ik altijd bij de afhaal?',              // TODO
-      opties: ['Pizza', 'Sushi', 'Shoarma', 'Iets anders, maar wel het lekkerste'],
-      goed: 1,
-      reactie: 'Voorspelbaar? Misschien. Lekker? Zeker.',
+      vraag: 'Waar zaten we op onze eerste date?',
+      opties: ['Op een terras met een arcadehal', 'In de bioscoop', 'Bij het bowlen', 'In een restaurant'],
+      goed: 0,
+      reactie: 'Een terrasje én een arcadehal. Ik wist niet of ik je wilde imponeren of verslaan. 🕹️',
+    },
+    {
+      vraag: 'Waar aten we ons eerste ijsje op?',
+      opties: ['Bij de Maas', 'In het park', 'In de auto', 'Op het terras'],
+      goed: 0,
+      reactie: 'Het begin van ons plekje. Hoe vaak zijn we daar nu al geweest?',
+    },
+    {
+      vraag: 'Wat deden we op onze tweede date?',
+      opties: ['Brownies bakken', 'Pizza bestellen', 'Film kijken', 'Shoppen'],
+      goed: 0,
+      reactie: 'Brownies bakken. Nog steeds de beste smoes om een hele avond in de keuken te blijven hangen. 🍫',
+    },
+    {
+      vraag: 'Waar was onze eerste kus?',
+      opties: ["Bij de Maas, 's avonds buiten", 'In de auto', 'Bij het afscheid op de eerste date', 'Bij jou thuis'],
+      goed: 0,
+      reactie: 'Buiten liggen bij de Maas, en toen durfde ik eindelijk. 💗',
+    },
+    {
+      vraag: 'Op welke date was onze eerste kus?',
+      opties: ['De derde', 'De eerste', 'De tweede', 'De vijfde'],
+      goed: 0,
+      reactie: 'Derde keer goed. Ik hield het gewoon even spannend.',
+    },
+    {
+      vraag: 'Wanneer werden we officieel?',
+      opties: ['22 november', '22 oktober', '12 november', '2 december'],
+      goed: 0,
+      reactie: '22 november. Sindsdien ons getal. 💫',
+    },
+    {
+      vraag: 'Wat deden we op de dag dat ik je verkering vroeg?',
+      opties: ['Onze eerste date naspelen', 'Uit eten', 'Naar de film', 'Een dagje weg'],
+      goed: 0,
+      reactie: 'Alles nog een keer precies hetzelfde, zodat het einde anders kon zijn.',
+    },
+    {
+      vraag: 'Waar vroeg ik je verkering?',
+      opties: ['In de auto bij de Maas', 'Op het terras', 'Bij jou thuis', 'Op een bankje in de stad'],
+      goed: 0,
+      reactie: 'In de auto bij de Maas. Mijn handen trilden meer dan ik toegaf. 🚗',
+    },
+    {
+      vraag: 'In welke plaats op Malta zat ons hotel?',
+      opties: ['Qawra', 'Valletta', 'Sliema', 'Mdina'],
+      goed: 0,
+      reactie: 'Qawra. Een week lang dezelfde weg naar het strand, en toch elke dag anders. ☀️',
+    },
+    {
+      vraag: 'Van wanneer tot wanneer waren we op Malta?',
+      opties: ['30 juli t/m 6 augustus', '22 t/m 29 juli', '1 t/m 8 augustus', '6 t/m 13 augustus'],
+      goed: 0,
+      reactie: 'Acht dagen die veel te snel voorbij waren.',
+    },
+    {
+      vraag: 'Welke lekkernij eten we graag samen?',
+      opties: ['Aardbeien met chocola', 'Pannenkoeken', 'Sushi', 'Popcorn'],
+      goed: 0,
+      reactie: 'Aardbeien met chocola. Nooit genoeg aardbeien, altijd te veel chocola. 🍓',
+    },
+    {
+      vraag: "Wat deden we 's avonds op Malta bij de cocktails?",
+      opties: ['Vragenspellen', 'Karaoke', 'Kaarten', 'Dansen'],
+      goed: 0,
+      reactie: 'Vragenspellen. Ik dacht dat ik je al kende, en toch leerde ik die avonden nieuwe dingen. 🍹',
+    },
+    {
+      vraag: 'Wat ging er mis op Malta?',
+      opties: ['We hadden een busongeluk', 'We misten ons vliegtuig', 'We raakten de hotelsleutel kwijt', 'Alles regende weg'],
+      goed: 0,
+      reactie: 'Toen helemaal niet grappig. Nu een verhaal dat we blijven vertellen. 🚌',
+    },
+    {
+      vraag: 'Wat is ons getal?',
+      opties: ['22', '7', '11', '14'],
+      goed: 0,
+      reactie: '22. Ik zie het nu overal, en ik denk elke keer aan jou.',
     },
   ],
 
@@ -77,17 +159,13 @@ self.CONTENT = {
   // 3. WIE VAN ONS TWEE?
   // ----------------------------------------------------------
   // 'antwoord' is 'Wout', 'Davinia' of 'Allebei'.
-  //
-  // Ideeën:
-  // - Wie is het vaakst te laat? / Wie kan het slechtst tegen kou?
-  // - Wie valt als eerste in slaap bij een film?
-  // - Wie pikt altijd de dekens? / Wie zingt het hardst in de auto?
-  // - Wie zei als eerste sorry na onze eerste ruzie?
-  // - Wie kan beter koken? / Wie is de beste planner?
   wieVanOns: [
-    { stelling: 'Wie valt als eerste in slaap tijdens een film?', antwoord: 'Davinia', reactie: 'Halverwege de film, elke keer. Schattig. 😴' },  // TODO
-    { stelling: 'Wie pikt \'s nachts altijd de dekens?',          antwoord: 'Wout',    reactie: 'Ik ontken alles.' },                               // TODO
-    { stelling: 'Wie zingt het hardst mee in de auto?',           antwoord: 'Allebei', reactie: 'De buren weten ervan. 🎤' },                       // TODO
+    { stelling: 'Wie is meestal te laat?',                            antwoord: 'Davinia', reactie: 'Ik reken er inmiddels gewoon tien minuten bij. 🕐' },
+    { stelling: 'Wie valt als eerste in slaap bij een film?',         antwoord: 'Davinia', reactie: 'Halverwege, elke keer. En dan nog volhouden dat je wakker was. 😴' },
+    { stelling: 'Wie heeft het langst nodig om zich klaar te maken?', antwoord: 'Davinia', reactie: 'Het resultaat is het wachten altijd waard. 💄' },
+    { stelling: 'Wie zei als eerste "ik hou van jou"?',               antwoord: 'Wout',    reactie: 'Ik hield het niet meer binnen. En ik meende het meteen. 💗' },
+    { stelling: 'Wie kan nooit kiezen wat we gaan eten?',             antwoord: 'Allebei', reactie: '"Maakt mij niet uit." "Mij ook niet." En een uur later nog niets besloten. 🍕' },
+    { stelling: 'Wie is het meest competitief?',                      antwoord: 'Allebei', reactie: 'Allebei even erg… maar Wout wint altijd 😉' },
   ],
 
   // ----------------------------------------------------------
@@ -95,9 +173,9 @@ self.CONTENT = {
   // ----------------------------------------------------------
   fotos: {
     // Memory: elke foto komt twee keer in het spel. 6 tot 8 foto's is fijn.
-    // Tip: vierkante-achtige foto's met één duidelijk onderwerp werken het best.
+    // TODO (stap 4): kies hier foto's uit images/foto-01.jpg t/m foto-39.jpg.
     memory: [
-      'images/voorbeeld-1.jpg',   // TODO
+      'images/voorbeeld-1.jpg',
       'images/voorbeeld-2.jpg',
       'images/voorbeeld-3.jpg',
       'images/voorbeeld-4.jpg',
@@ -105,20 +183,21 @@ self.CONTENT = {
       'images/voorbeeld-6.jpg',
     ],
     // Raad de plek of datum bij een foto.
+    // TODO (stap 4): vervangen door echte foto's met echte vragen.
     raadDePlek: [
       {
-        foto: 'images/voorbeeld-7.jpg',                                   // TODO
+        foto: 'images/voorbeeld-7.jpg',
         vraag: 'Waar is deze foto gemaakt?',
-        opties: ['Valletta', 'Mdina', 'Gozo', 'Sliema'],
-        goed: 2,
-        reactie: 'Die dag met de boot naar Gozo. Wat een uitzicht. ⛵',
+        opties: ['Comino', 'Mdina', 'Valletta', 'Qawra'],
+        goed: 0,
+        reactie: 'De Blue Lagoon. Dat water leek nep.',
       },
       {
-        foto: 'images/voorbeeld-8.jpg',                                   // TODO
+        foto: 'images/voorbeeld-8.jpg',
         vraag: 'Wanneer was dit?',
-        opties: ['Januari', 'Maart', 'Juni', 'September'],
-        goed: 2,
-        reactie: 'De langste dag van het jaar, en hij was nog te kort.',
+        opties: ['Augustus', 'Maart', 'Juni', 'September'],
+        goed: 0,
+        reactie: 'Onze laatste dagen op Malta.',
       },
     ],
   },
@@ -126,17 +205,17 @@ self.CONTENT = {
   // ----------------------------------------------------------
   // 5. TIJDLIJN
   // ----------------------------------------------------------
-  // Zet de momenten hier in de JUISTE volgorde (oudste eerst).
+  // De momenten staan hier in de JUISTE volgorde (oudste eerst).
   // Het spel husselt ze zelf door elkaar.
-  //
-  // Ideeën: eerste ontmoeting, eerste date, eerste kus, officieel samen,
-  // eerste vakantie (Malta!), elkaars familie ontmoeten, eerste
-  // feestdag samen, iets geks dat jullie samen deden.
+  // TODO (stap 5): bij elk moment een foto kiezen uit images/.
   tijdlijn: [
-    { datum: 'november 2025', titel: 'Onze eerste date', foto: 'images/voorbeeld-1.jpg', tekst: 'Het begin van alles.' },          // TODO
-    { datum: 'december 2025', titel: 'Kerst samen',      foto: 'images/voorbeeld-2.jpg', tekst: 'Te veel gegeten, nul spijt.' },   // TODO
-    { datum: 'voorjaar 2026', titel: 'Malta',            foto: 'images/voorbeeld-3.jpg', tekst: 'Zon, zee en sudoku’s.' },          // TODO
-    { datum: 'zomer 2026',    titel: 'Festival',         foto: 'images/voorbeeld-4.jpg', tekst: 'Tot de laatste plaat.' },          // TODO
+    { datum: 'het begin',        titel: 'Een DM op Instagram',   tekst: 'Ik stuurde het eerste berichtje. Beste beslissing ooit.' },
+    { datum: 'eerste date',      titel: 'Terras, arcade, ijsje', tekst: 'En dat ijsje opgegeten bij de Maas.' },
+    { datum: 'tweede date',      titel: 'Brownies bakken',       tekst: 'De keuken overleefde het net.' },
+    { datum: 'derde date',       titel: 'Onze eerste kus',       tekst: "'s Avonds buiten liggen bij de Maas." },
+    { datum: '22 november 2025', titel: 'Officieel samen',       tekst: 'In de auto bij de Maas, nadat we onze eerste date hadden nagedaan.' },
+    { datum: '30 juli 2026',     titel: 'Malta',                 tekst: "Qawra, de Blue Lagoon, sudoku's en cocktails." },
+    { datum: '22 november 2026', titel: 'Eén jaar samen',        tekst: 'En dit is pas het begin. 💗' },
   ],
 
   // ----------------------------------------------------------
@@ -144,17 +223,23 @@ self.CONTENT = {
   // ----------------------------------------------------------
   woordspel: {
     // Wordle: precies 5 letters, zonder spaties of accenten.
-    // 'uitleg' verschijnt als het woord geraden is.
+    // Let op: woorden met IJ (zoals IJSJE) laten we hier weg, want IJ
+    // telt in het Nederlands soms als één letter en dat is verwarrend
+    // in een lettergokspel. In galgje en de woordzoeker behandelen we
+    // IJ gewoon als twee losse letters: I en J.
     wordle: [
-      { woord: 'MALTA', uitleg: 'Onze reis vol zon en sudoku’s.' },        // TODO
-      { woord: 'KUSJE', uitleg: 'Daar krijg ik er nooit genoeg van.' },     // TODO
-      { woord: 'PIZZA', uitleg: 'Vrijdagavond = pizza-avond.' },            // TODO
+      { woord: 'MALTA', uitleg: 'Onze eerste vakantie samen.' },
+      { woord: 'QAWRA', uitleg: 'Waar ons hotel stond.' },
+      { woord: 'MDINA', uitleg: 'De stille stad waar we door de steegjes liepen.' },
     ],
     // Galgje: mag langer zijn, spaties mogen (bv. 'EERSTE DATE').
     galgje: [
-      { woord: 'ZONSONDERGANG', hint: 'Mooiste moment van de dag in Malta' }, // TODO
-      { woord: 'EERSTE DATE',   hint: 'Waar het allemaal begon' },          // TODO
-      { woord: 'KNUFFELBEER',   hint: 'Hoe ik je soms noem' },              // TODO
+      { woord: 'BROWNIES',    hint: 'Wat we bakten op onze tweede date' },
+      { woord: 'VERKERING',   hint: 'Wat ik je vroeg in de auto bij de Maas' },
+      { woord: 'BLUE LAGOON', hint: 'Dat onwerkelijk blauwe water op Comino' },
+      { woord: 'AARDBEIEN',   hint: 'Met chocola, natuurlijk' },
+      { woord: 'INSTAGRAM',   hint: 'Waar ons eerste berichtje stond' },
+      { woord: 'BOOTTOCHT',   hint: 'Een van onze leukste dagen op Malta' },
     ],
   },
 
@@ -163,18 +248,17 @@ self.CONTENT = {
   // ----------------------------------------------------------
   hartjesblokken: {
     // Deze foto staat vervaagd op de achtergrond en wordt steeds scherper.
-    achtergrondFoto: 'images/voorbeeld-5.jpg',   // TODO
+    achtergrondFoto: 'images/voorbeeld-5.jpg',   // TODO (stap 7)
     // Bij elke weggespeelde rij verschijnt kort één van deze berichtjes.
-    // Kort houden (max ± 8 woorden), het verschijnt maar even.
     berichtjes: [
-      'Jij maakt elke dag beter 💗',   // TODO: maak ze persoonlijk
+      'Jij maakt elke dag beter 💗',
       'Ik ben zo trots op jou',
       'Jouw lach is mijn favoriet',
       'Nog heel veel jaren, graag',
       'Jij bent mijn thuis',
-      'Ik denk de hele dag aan je',
-      'Beste beslissing ooit: jij',
-      'Mijn hart zegt: Davinia',
+      '22 blijft ons getal',
+      'Tot bij de Maas 🌙',
+      'Beste beslissing ooit: dat ene berichtje',
     ],
   },
 
@@ -183,16 +267,17 @@ self.CONTENT = {
   // ----------------------------------------------------------
   sudoku: {
     // Elk opgelost 3x3-vak speelt één herinnering vrij: precies 9 stuks.
+    // TODO (stap 8): bij elke herinnering een echte foto kiezen.
     maltaHerinneringen: [
-      { foto: 'images/voorbeeld-1.jpg', bijschrift: 'Eerste avond in Valletta' },   // TODO
-      { foto: 'images/voorbeeld-2.jpg', bijschrift: 'Pastizzi als ontbijt' },       // TODO
-      { foto: 'images/voorbeeld-3.jpg', bijschrift: 'De Blue Lagoon' },             // TODO
-      { foto: 'images/voorbeeld-4.jpg', bijschrift: 'Sudoku op het terras' },       // TODO
-      { foto: 'images/voorbeeld-5.jpg', bijschrift: 'Verdwaald in Mdina' },         // TODO
-      { foto: 'images/voorbeeld-6.jpg', bijschrift: 'Zonsondergang bij de kust' },  // TODO
-      { foto: 'images/voorbeeld-7.jpg', bijschrift: 'Met de boot naar Gozo' },      // TODO
-      { foto: 'images/voorbeeld-8.jpg', bijschrift: 'Ijsje nummer drie die dag' },  // TODO
-      { foto: 'images/voorbeeld-1.jpg', bijschrift: 'Laatste avond, nog niet naar huis' }, // TODO
+      { foto: 'images/voorbeeld-1.jpg', bijschrift: 'Aankomst in Qawra' },
+      { foto: 'images/voorbeeld-2.jpg', bijschrift: 'De Blue Lagoon op Comino' },
+      { foto: 'images/voorbeeld-3.jpg', bijschrift: 'Door de straatjes van Valletta' },
+      { foto: 'images/voorbeeld-4.jpg', bijschrift: 'Mdina, de stille stad' },
+      { foto: 'images/voorbeeld-5.jpg', bijschrift: 'Een dag in het waterpark' },
+      { foto: 'images/voorbeeld-6.jpg', bijschrift: 'Onze boottocht' },
+      { foto: 'images/voorbeeld-7.jpg', bijschrift: 'Cocktails en vragenspellen' },
+      { foto: 'images/voorbeeld-8.jpg', bijschrift: "Sudoku's, altijd sudoku's" },
+      { foto: 'images/voorbeeld-1.jpg', bijschrift: 'Het busongeluk, nu een grappig verhaal' },
     ],
   },
 
@@ -200,14 +285,18 @@ self.CONTENT = {
   // 9. WOORDZOEKER EN KRUISWOORD
   // ----------------------------------------------------------
   woordzoeker: {
-    // Woorden zonder spaties, max 10 letters. 8 tot 12 woorden is fijn.
-    woorden: ['MALTA', 'KUSJE', 'SUDOKU', 'PIZZA', 'ZEE', 'KNUFFEL', 'DATE', 'LIEFDE', 'SAMEN', 'HARTJE'], // TODO
-    // Kleine kruiswoordpuzzel: woord + hint (optioneel, 5 tot 8 stuks).
+    // Woorden zonder spaties, max 10 letters.
+    woorden: ['MAAS', 'MALTA', 'QAWRA', 'MDINA', 'VALLETTA', 'COMINO', 'BROWNIES', 'AARDBEI', 'CHOCOLA', 'TERRAS', 'ARCADE', 'SUDOKU'],
+    // Kleine kruiswoordpuzzel: woord + hint.
     kruiswoord: [
-      { woord: 'MALTA',  hint: 'Ons sudoku-eiland' },             // TODO
-      { woord: 'KOFFIE', hint: 'Wat we dronken op onze eerste date' }, // TODO
-      { woord: 'NOVEMBER', hint: 'De maand waarin het begon' },   // TODO
-      { woord: 'KNUFFEL', hint: 'Altijd goed, nooit genoeg' },    // TODO
+      { woord: 'MAAS',      hint: 'Ons plekje' },
+      { woord: 'MALTA',     hint: 'Onze eerste vakantie samen' },
+      { woord: 'QAWRA',     hint: 'Waar ons hotel stond' },
+      { woord: 'BROWNIES',  hint: 'Tweede date in de keuken' },
+      { woord: 'ARCADE',    hint: 'Stond naast ons eerste terras' },
+      { woord: 'INSTAGRAM', hint: 'Waar ik je als eerste een berichtje stuurde' },
+      { woord: 'COCKTAIL',  hint: 'Met een vragenspel erbij, op Malta' },
+      { woord: 'SUDOKU',    hint: 'Onze vakantieverslaving' },
     ],
   },
 
@@ -215,14 +304,11 @@ self.CONTENT = {
   // 10. DIT OF DAT
   // ----------------------------------------------------------
   // Davinia raadt wat JIJ zou kiezen. 'mijnKeuze' is 'a' of 'b'.
-  //
-  // Ideeën: strand of bergen, zoet of hartig, ochtend of avond,
-  // film of serie, pizza of pasta, katten of honden, thee of koffie,
-  // vroeg op vakantie of uitslapen, bellen of appen, zomer of winter.
+  // TODO (stap 10): vul hier je eigen keuzes in.
   ditOfDat: [
-    { a: 'Strand', b: 'Bergen', mijnKeuze: 'a', reactie: 'Zolang jij erbij bent, maakt het eigenlijk niet uit.' }, // TODO
-    { a: 'Pizza',  b: 'Pasta',  mijnKeuze: 'a', reactie: 'Was dit echt een vraag?' },                             // TODO
-    { a: 'Film',   b: 'Serie',  mijnKeuze: 'b', reactie: 'Nog één aflevering… 📺' },                              // TODO
+    { a: 'Aardbeien met chocola',  b: "McDonald's",            mijnKeuze: 'a', reactie: 'Al is het een moeilijke keuze.' },
+    { a: 'Een avond bij de Maas',  b: 'Een avond op de bank',  mijnKeuze: 'a', reactie: 'Zolang jij erbij bent, maakt het eigenlijk niet uit.' },
+    { a: 'Strand op Malta',        b: 'Waterpark',             mijnKeuze: 'b', reactie: 'Ik wilde die glijbanen gewoon nog een keer.' },
   ],
 
   // ----------------------------------------------------------
@@ -232,14 +318,12 @@ self.CONTENT = {
   // 'vrijBij' is de naam van het spel:
   //   quiz, wie, fotos, tijdlijn, woordspel, hartjesblokken,
   //   sudoku, woordzoeker, ditofdat, kleuren
-  // Tip: schrijf ze op een rustig moment, kort en echt. Bijvoorbeeld:
-  // iets wat je nog nooit hebt gezegd, een herinnering waar je vaak aan
-  // denkt, waarom je verliefd werd, waar je naar uitkijkt.
+  // TODO: deze schrijf je zelf. Kort en echt is mooier dan lang.
   brieven: [
-    { vrijBij: 'quiz',     titel: 'Over die eerste date', tekst: 'Lieve Davinia,\n\nTODO: schrijf hier je eerste briefje.\n\nXxx Wout' },
-    { vrijBij: 'wie',      titel: 'Wat ik aan je zie',    tekst: 'TODO' },
-    { vrijBij: 'fotos',    titel: 'Mijn favoriete foto',  tekst: 'TODO' },
-    { vrijBij: 'tijdlijn', titel: 'Ons jaar',             tekst: 'TODO' },
+    { vrijBij: 'quiz',     titel: 'Over dat eerste berichtje', tekst: 'Lieve Davinia,\n\nTODO: schrijf hier je eerste briefje.\n\nXxx Wout' },
+    { vrijBij: 'wie',      titel: 'Wat ik aan je zie',         tekst: 'TODO' },
+    { vrijBij: 'fotos',    titel: 'Mijn favoriete foto',       tekst: 'TODO' },
+    { vrijBij: 'tijdlijn', titel: 'Ons jaar',                  tekst: 'TODO' },
   ],
 
   // ----------------------------------------------------------
