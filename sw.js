@@ -4,7 +4,7 @@
   BELANGRIJK: verhoog VERSIE bij elke wijziging die online gaat.
   Nieuw spelbestand? Zet het pad ook in KERN hieronder.
 */
-const VERSIE = 'v2';
+const VERSIE = 'v3';
 const CACHE = 'jubileum-' + VERSIE;
 
 // De bestanden die de app nodig heeft om te starten.

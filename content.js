@@ -50,7 +50,22 @@ self.CONTENT = {
     officieel: '22 november: Wout vroeg haar verkering in de auto bij de Maas. Die dag hadden ze hun eerste date nagedaan.',
     onsGetal: '22 is ons getal, de Maas is ons plekje.',
     etenSamen: "Af en toe McDonald's, en aardbeien met chocola.",
-    malta: "Malta, 30 juli t/m 6 augustus, hotel in Qawra. Comino en de Blue Lagoon, Valletta, Mdina, een waterpark, een boottocht, een busongeluk (nu een grappig verhaal), 's avonds cocktails met vragenspellen en veel sudoku's.",
+    malta: "Malta, 30 juli t/m 6 augustus, hotel in Qawra. Comino en de Blue Lagoon, Valletta, Mdina, een waterpark, een boottocht (3 augustus, vanuit Mgarr), een busongeluk (nu een grappig verhaal), 's avonds cocktails met vragenspellen en veel sudoku's.",
+    optreden: 'Davinia treedt op (o.a. met de Angels, een illusionistengroep); Wout gaat soms kijken.',
+    // Momenten door het jaar heen, in volgorde.
+    momenten: [
+      '22 dec 2025: kerstmarkt in Düsseldorf, Wouts verjaardagscadeau voor Davinia, samen met een kerstpyjama.',
+      'Kerst 2025 samen gevierd.',
+      '31 dec 2025: oud & nieuw met de vrienden van Wout.',
+      '10 jan 2026: feest van Davinia.',
+      '14 feb 2026 (Valentijnsdag): concert van CHO in de Ziggo Dome.',
+      '15 feb 2026: carnaval samen.',
+      '24 t/m 26 apr 2026: Wout 3 dagen bij Davinia in Slagharen, waar ze optrad met de Angels.',
+      '22 mei 2026: half jaar samen, dagje Utrecht.',
+      '4 jul 2026: festival Vunzige Deuntjes, waar Davinia zelf moest dansen.',
+      '25 jul 2026: BBQ met karaoke bij vrienden van haar gezin, daarna de kermis in Tilburg.',
+      '30 jul t/m 6 aug 2026: Malta (boottocht vanuit Mgarr op 3 aug).',
+    ],
   },
 
   // ----------------------------------------------------------
@@ -153,6 +168,66 @@ self.CONTENT = {
       goed: 0,
       reactie: '22. Ik zie het nu overal, en ik denk elke keer aan jou.',
     },
+    {
+      vraag: 'Naar welke stad gingen we voor de kerstmarkt?',
+      opties: ['Düsseldorf', 'Keulen', 'Aken', 'Maastricht'],
+      goed: 0,
+      reactie: 'Lichtjes, glühwein en jij met rode wangen van de kou. Mijn beste cadeau-idee ooit. 🎄',
+    },
+    {
+      vraag: 'Wat kreeg je naast de kerstmarkt nog voor je verjaardag?',
+      opties: ['Een kerstpyjama', 'Een kerstmuts', 'Een fotoboek', 'Een sieraad'],
+      goed: 0,
+      reactie: 'Een kerstpyjama. Officieel voor jou, stiekem ook een beetje voor mij. 🎁',
+    },
+    {
+      vraag: 'Naar welk concert gingen we op Valentijnsdag?',
+      opties: ['CHO in de Ziggo Dome', 'Snelle in de Ziggo Dome', 'CHO in AFAS Live', 'Kris Kross Amsterdam in de Ziggo Dome'],
+      goed: 0,
+      reactie: 'Valentijnsdag in de Ziggo Dome. Ik keek volgens mij vaker naar jou dan naar het podium. 🎤',
+    },
+    {
+      vraag: 'Waar gingen we heen toen we een half jaar samen waren?',
+      opties: ['Utrecht', 'Amsterdam', 'Rotterdam', 'Den Bosch'],
+      goed: 0,
+      reactie: 'Een half jaar, en ik wist toen al niet meer hoe het was zonder jou.',
+    },
+    {
+      vraag: 'Hoeveel dagen was ik bij je in Slagharen?',
+      opties: ['3', '1', '2', '5'],
+      goed: 0,
+      reactie: 'Drie dagen. Ik had er zo nog drie aan vastgeplakt.',
+    },
+    {
+      vraag: 'Met welke groep trad je op in Slagharen?',
+      opties: ['De Angels', 'De Stars', 'De Illusions', 'De Magics'],
+      goed: 0,
+      reactie: 'De Angels. Ik zat in het publiek en dacht alleen maar: die daar, dat is mijn vriendin. ✨',
+    },
+    {
+      vraag: 'Op welk festival moest jij dansen?',
+      opties: ['Vunzige Deuntjes', 'Lowlands', 'Zwarte Cross', 'Defqon'],
+      goed: 0,
+      reactie: 'Jij op het podium. Ik was de trotste persoon in het hele publiek. 💃',
+    },
+    {
+      vraag: 'Waar gingen we heen na de karaoke-BBQ?',
+      opties: ['De kermis in Tilburg', 'Het strand', 'Naar huis', 'De kermis in Den Bosch'],
+      goed: 0,
+      reactie: 'Eerst karaoke, toen de kermis. Mijn stem is er nog steeds niet helemaal van hersteld. 🎡',
+    },
+    {
+      vraag: 'Waar vertrok onze boottocht op Malta?',
+      opties: ['Mgarr', 'Valletta', 'Sliema', 'Qawra'],
+      goed: 0,
+      reactie: 'Vanuit Mgarr de zee op. Zon, zout water en jij naast me: meer had ik niet nodig. ⛵',
+    },
+    {
+      vraag: 'Met wie vierden we oud & nieuw?',
+      opties: ['Met Wouts vrienden', 'Met jouw familie', "Met z'n tweeën", 'Met mijn familie'],
+      goed: 0,
+      reactie: 'Het nieuwe jaar in met mijn vrienden, en met jou. Toen wist ik al: dit wordt een goed jaar. 🎆',
+    },
   ],
 
   // ----------------------------------------------------------
@@ -214,6 +289,14 @@ self.CONTENT = {
     { datum: 'tweede date',      titel: 'Brownies bakken',       tekst: 'De keuken overleefde het net.' },
     { datum: 'derde date',       titel: 'Onze eerste kus',       tekst: "'s Avonds buiten liggen bij de Maas." },
     { datum: '22 november 2025', titel: 'Officieel samen',       tekst: 'In de auto bij de Maas, nadat we onze eerste date hadden nagedaan.' },
+    { datum: '22 december 2025', titel: 'Kerstmarkt Düsseldorf', tekst: 'Jouw verjaardagscadeau, met een kerstpyjama erbij.' },
+    { datum: '31 december 2025', titel: 'Oud & nieuw',           tekst: 'Het nieuwe jaar in met mijn vrienden, en met jou.' },
+    { datum: '14 februari 2026', titel: 'CHO op Valentijnsdag',  tekst: 'Samen in de Ziggo Dome.' },
+    { datum: '15 februari 2026', titel: 'Carnaval',              tekst: 'Een dag later meteen weer feest.' },
+    { datum: '24 april 2026',    titel: 'Slagharen',             tekst: 'Drie dagen bij jou, en jij op het podium met de Angels.' },
+    { datum: '22 mei 2026',      titel: 'Half jaar in Utrecht',  tekst: 'Een half jaar samen, een dagje Utrecht.' },
+    { datum: '4 juli 2026',      titel: 'Vunzige Deuntjes',      tekst: 'Jij moest dansen, ik stond trots te kijken.' },
+    { datum: '25 juli 2026',     titel: 'Karaoke en kermis',     tekst: 'BBQ met karaoke, daarna de kermis in Tilburg.' },
     { datum: '30 juli 2026',     titel: 'Malta',                 tekst: "Qawra, de Blue Lagoon, sudoku's en cocktails." },
     { datum: '22 november 2026', titel: 'Eén jaar samen',        tekst: 'En dit is pas het begin. 💗' },
   ],
@@ -231,6 +314,7 @@ self.CONTENT = {
       { woord: 'MALTA', uitleg: 'Onze eerste vakantie samen.' },
       { woord: 'QAWRA', uitleg: 'Waar ons hotel stond.' },
       { woord: 'MDINA', uitleg: 'De stille stad waar we door de steegjes liepen.' },
+      { woord: 'MGARR', uitleg: 'Waar onze boottocht op Malta begon.' },
     ],
     // Galgje: mag langer zijn, spaties mogen (bv. 'EERSTE DATE').
     galgje: [
@@ -240,6 +324,10 @@ self.CONTENT = {
       { woord: 'AARDBEIEN',   hint: 'Met chocola, natuurlijk' },
       { woord: 'INSTAGRAM',   hint: 'Waar ons eerste berichtje stond' },
       { woord: 'BOOTTOCHT',   hint: 'Een van onze leukste dagen op Malta' },
+      { woord: 'KERSTMARKT',  hint: 'Jouw verjaardagscadeau in Düsseldorf' },
+      { woord: 'SLAGHAREN',   hint: 'Drie dagen bij jou, jij op het podium' },
+      { woord: 'KERSTPYJAMA', hint: 'Het cadeautje dat erbij hoorde' },
+      { woord: 'CARNAVAL',    hint: 'Een dag na Valentijn alweer feest' },
     ],
   },
 
@@ -266,6 +354,7 @@ self.CONTENT = {
   // 8. SUDOKU (Malta)
   // ----------------------------------------------------------
   sudoku: {
+    // De startcijfers verwerken 22 en/of 22-11 (onze datum); dat regelt het spel zelf.
     // Elk opgelost 3x3-vak speelt één herinnering vrij: precies 9 stuks.
     // TODO (stap 8): bij elke herinnering een echte foto kiezen.
     maltaHerinneringen: [
@@ -286,7 +375,11 @@ self.CONTENT = {
   // ----------------------------------------------------------
   woordzoeker: {
     // Woorden zonder spaties, max 10 letters.
-    woorden: ['MAAS', 'MALTA', 'QAWRA', 'MDINA', 'VALLETTA', 'COMINO', 'BROWNIES', 'AARDBEI', 'CHOCOLA', 'TERRAS', 'ARCADE', 'SUDOKU'],
+    // Het spel kiest per keer een deel van deze lijst (wordt in stap 9 bepaald).
+    woorden: [
+      'MAAS', 'MALTA', 'QAWRA', 'MDINA', 'VALLETTA', 'COMINO', 'BROWNIES', 'AARDBEI', 'CHOCOLA', 'TERRAS', 'ARCADE', 'SUDOKU',
+      'DUSSELDORF', 'KERSTMARKT', 'PYJAMA', 'CARNAVAL', 'UTRECHT', 'SLAGHAREN', 'ANGELS', 'KERMIS', 'KARAOKE', 'TILBURG', 'MGARR', 'GOZO',
+    ],
     // Kleine kruiswoordpuzzel: woord + hint.
     kruiswoord: [
       { woord: 'MAAS',      hint: 'Ons plekje' },
@@ -319,11 +412,18 @@ self.CONTENT = {
   //   quiz, wie, fotos, tijdlijn, woordspel, hartjesblokken,
   //   sudoku, woordzoeker, ditofdat, kleuren
   // TODO: deze schrijf je zelf. Kort en echt is mooier dan lang.
+  // Titels mag je ook aanpassen. \n is een nieuwe regel, \n\n een witregel.
   brieven: [
-    { vrijBij: 'quiz',     titel: 'Over dat eerste berichtje', tekst: 'Lieve Davinia,\n\nTODO: schrijf hier je eerste briefje.\n\nXxx Wout' },
-    { vrijBij: 'wie',      titel: 'Wat ik aan je zie',         tekst: 'TODO' },
-    { vrijBij: 'fotos',    titel: 'Mijn favoriete foto',       tekst: 'TODO' },
-    { vrijBij: 'tijdlijn', titel: 'Ons jaar',                  tekst: 'TODO' },
+    { vrijBij: 'quiz',           titel: 'Over dat eerste berichtje', tekst: 'Lieve Davinia,\n\nTODO: schrijf hier je briefje.\n\nXxx Wout' },
+    { vrijBij: 'wie',            titel: 'Wat ik aan je zie',         tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
+    { vrijBij: 'fotos',          titel: 'Mijn favoriete foto',       tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
+    { vrijBij: 'tijdlijn',       titel: 'Ons jaar',                  tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
+    { vrijBij: 'woordspel',      titel: 'Woorden die ik niet zeg',   tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
+    { vrijBij: 'hartjesblokken', titel: 'Stukje voor stukje',        tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
+    { vrijBij: 'sudoku',         titel: 'Terug naar Malta',          tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
+    { vrijBij: 'woordzoeker',    titel: 'Wat ik in jou vond',        tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
+    { vrijBij: 'ditofdat',       titel: 'Mijn keuze',                tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
+    { vrijBij: 'kleuren',        titel: 'Voor altijd',               tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
   ],
 
   // ----------------------------------------------------------
