@@ -4,7 +4,7 @@
   BELANGRIJK: verhoog VERSIE bij elke wijziging die online gaat.
   Nieuw spelbestand? Zet het pad ook in KERN hieronder.
 */
-const VERSIE = 'v21';
+const VERSIE = 'v22';
 const CACHE = 'jubileum-' + VERSIE;
 
 // De bestanden die de app nodig heeft om te starten.
@@ -25,6 +25,7 @@ const KERN = [
   'js/spellen/tijdlijn.js',
   'js/spellen/woordspel.js',
   'js/spellen/hartjesblokken.js',
+  'js/spellen/sudoku.js',
 ];
 
 // content.js inlezen (moet bovenaan, niet later). Een wijziging in content.js

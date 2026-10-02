@@ -1656,3 +1656,313 @@ p { margin: 0; }
   .hb-lade { height: 96px; }
   .hb-stuk { --c: 16px; }
 }
+
+/* ============================================================
+   Spel: Malta-sudoku (zee- en zandtinten)
+   ============================================================ */
+:root {
+  --zee: #d4eef2;
+  --zee-midden: #a9dbe3;
+  --zee-diep: #4f97a8;
+  --zee-tekst: #2c5a66;
+  --zand: #fbf1e1;
+  --kalksteen: #ecd9b6;
+}
+
+.sd-intro {
+  text-align: center;
+  background: linear-gradient(180deg, var(--zee) 0%, var(--zand) 100%);
+  border-radius: var(--rond);
+  padding: 16px 18px 18px;
+  margin-bottom: 16px;
+  box-shadow: var(--schaduw-klein);
+  color: var(--zee-tekst);
+}
+
+.sd-intro p { margin: 0 0 6px; }
+.sd-intro-titel { font-size: 24px; letter-spacing: 6px; }
+.sd-intro-klein { font-size: 14px; opacity: 0.8; }
+
+.sd-niveau { margin-bottom: 14px; }
+.sd-niveau-titel { font-size: 18px; font-weight: 800; color: var(--zee-tekst); }
+.sd-niveau-sub { font-size: 13.5px; color: var(--tekst-zacht); margin-bottom: 8px; }
+
+.sd-puzzels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.sd-puzzel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 6px 12px;
+  border-radius: 18px;
+  background: var(--zand);
+  border: 2px solid var(--kalksteen);
+  box-shadow: var(--schaduw-klein);
+  transition: transform 0.15s ease;
+}
+
+.sd-puzzel:active { transform: scale(0.96); }
+.sd-puzzel.klaar { background: var(--zee); border-color: var(--zee-midden); }
+.sd-puzzel-naam { font-weight: 800; font-size: 15px; color: var(--zee-tekst); }
+.sd-puzzel-status { font-size: 13px; color: var(--roze-diep); letter-spacing: 1px; }
+
+.sd-album-knop {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+  padding: 12px 16px;
+  border-radius: var(--rond);
+  background: linear-gradient(120deg, var(--zee), var(--lila-licht));
+  box-shadow: var(--schaduw);
+  text-align: left;
+}
+
+.sd-album-knop .tegel-icoon { margin: 0; }
+.sd-album-tekst { flex: 1; font-weight: 800; font-size: 17px; }
+
+/* --- Het spel --- */
+.sd-titel {
+  text-align: center;
+  font-weight: 800;
+  color: var(--zee-tekst);
+  margin: -4px 0 8px;
+}
+
+.sd-raster {
+  /* Zo groot als past: raster + gereedschap + cijferbalk altijd in beeld */
+  width: min(100%, calc(100vh - 300px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
+  margin: 0 auto;
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);   /* vaste rijen: vakjes blijven vierkant */
+  gap: 3px;
+  padding: 3px;
+  border-radius: 14px;
+  background: var(--zee-diep);
+  box-shadow: var(--schaduw);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@supports (height: 100dvh) {
+  .sd-raster { width: min(100%, calc(100dvh - 300px - env(safe-area-inset-top) - env(safe-area-inset-bottom))); }
+}
+
+.sd-blok {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  min-height: 0;
+  gap: 1px;
+  background: var(--zee-midden);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.sd-raster > .sd-blok:nth-child(1) { border-top-left-radius: 11px; }
+.sd-raster > .sd-blok:nth-child(3) { border-top-right-radius: 11px; }
+.sd-raster > .sd-blok:nth-child(7) { border-bottom-left-radius: 11px; }
+.sd-raster > .sd-blok:nth-child(9) { border-bottom-right-radius: 11px; }
+
+.sd-vak {
+  min-height: 0;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+  background: var(--zand);
+  font-size: clamp(17px, 5.4vw, 24px);
+  font-weight: 600;
+  color: var(--roze-diep);
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+}
+
+.sd-vak.start { color: var(--zee-tekst); font-weight: 800; }
+.sd-vak.buur { background: #eef6f2; }
+.sd-vak.zelfde { background: var(--lila-licht); }
+.sd-vak.gekozen { background: #f9df9f; }
+.sd-vak.botsing { color: #d4373f; background: #fde3e3; }
+.sd-vak.gekozen.botsing { background: #fbc9c9; }
+.sd-vak.schud { animation: schud 0.35s ease; }
+
+.sd-blok.af .sd-vak:not(.gekozen):not(.buur):not(.zelfde) { background: #f3f9f2; }
+.sd-blok.juich { animation: juich 0.7s ease; }
+
+@keyframes juich {
+  0%, 100% { filter: none; }
+  40% { filter: brightness(1.08) drop-shadow(0 0 6px #fff); }
+}
+
+/* Potloodnotities: 3x3 mini-cijfers */
+.sd-notities {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  font-size: clamp(8px, 2.4vw, 11px);
+  font-weight: 700;
+  color: #8a9ca1;
+  line-height: 1;
+  padding: 2px;
+}
+
+.sd-notities span { display: grid; place-items: center; }
+.sd-notities span.zelfde { color: var(--lila-diep); }
+
+.sd-raster.opgelost .sd-vak { color: var(--zee-tekst); }
+
+/* Gereedschap en cijferbalk */
+.sd-tools {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 10px 0 8px;
+}
+
+.sd-tool {
+  height: 42px;
+  border-radius: 999px;
+  background: var(--wit);
+  box-shadow: var(--schaduw-klein);
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--zee-tekst);
+}
+
+.sd-tool:disabled { opacity: 0.4; }
+.sd-tool.aan { background: var(--zee-diep); color: var(--wit); }
+
+.sd-cijfers {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 5px;
+}
+
+.sd-cijfer {
+  position: relative;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--wit);
+  box-shadow: 0 2px 0 rgba(79, 151, 168, 0.25), var(--schaduw-klein);
+  color: var(--zee-tekst);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease, opacity 0.2s ease;
+}
+
+.sd-cijfer:active { transform: translateY(1px) scale(0.95); }
+.sd-cijfer-groot { font-size: 24px; font-weight: 800; line-height: 1; }
+.sd-cijfer-rest { font-size: 10.5px; font-weight: 700; color: #8a9ca1; height: 12px; margin-top: 2px; }
+.sd-cijfer.op { opacity: 0.3; }
+.sd-cijfer.potlood { background: var(--zee); }
+.sd-cijfer.potlood .sd-cijfer-groot { font-size: 18px; color: #6b8a91; }
+
+/* Opgelost */
+.sd-klaar {
+  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: var(--rond);
+  padding: 18px 16px;
+  text-align: center;
+  box-shadow: var(--schaduw);
+  animation: binnen 0.4s ease-out;
+}
+
+.sd-klaar .knop + .knop { margin-top: 10px; }
+
+.sd-slotkaart {
+  margin: 12px 0 14px;
+  padding: 12px 14px;
+  border-radius: var(--rond-klein);
+  background: linear-gradient(120deg, var(--zee), var(--zand));
+  text-align: left;
+  color: var(--zee-tekst);
+}
+
+.sd-slotkaart b { display: block; margin-bottom: 2px; }
+.sd-slotkaart p { margin: 0; color: var(--tekst); }
+.sd-slotkaart.dicht { opacity: 0.6; }
+
+/* Herinnering over het scherm */
+.sd-laag {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 20px 16px;
+  background: rgba(44, 90, 102, 0.35);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  animation: binnen 0.3s ease-out;
+  transition: opacity 0.25s ease;
+}
+
+.sd-laag.weg { opacity: 0; }
+
+.sd-herinnering {
+  width: min(100%, 420px);
+  background: var(--wit);
+  border-radius: var(--rond);
+  padding: 16px 16px 18px;
+  text-align: center;
+  box-shadow: var(--schaduw);
+}
+
+.sd-herinnering-kop { font-weight: 800; color: var(--zee-tekst); margin-bottom: 10px; }
+
+.sd-herinnering img {
+  display: block;
+  width: 100%;
+  max-height: 52vh;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: var(--rond-klein);
+  margin-bottom: 10px;
+}
+
+.sd-herinnering-tekst { margin-bottom: 14px; }
+
+/* Album: herinneringen op de plek van hun blok */
+.sd-album {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 6px;
+  border-radius: 18px;
+  background: var(--zee-diep);
+  box-shadow: var(--schaduw);
+}
+
+.sd-album-vak {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--zand);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.sd-album-vak img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.sd-slot { font-size: 22px; opacity: 0.6; }
+.sd-album-nr { font-size: 13px; font-weight: 700; color: var(--tekst-zacht); }
+
+@media (max-height: 700px) {
+  .sd-cijfer { height: 50px; }
+  .sd-tool { height: 38px; }
+  .sd-tools { margin: 8px 0 6px; }
+}
