@@ -98,7 +98,7 @@ Een webapp (PWA) als cadeau voor het eenjarig jubileum van Wout en zijn vriendin
     - Malta-herinneringen (sudoku): 29, 38, 30, 31, 33, 34, 35, 36, 37.
     - Online staan alleen foto's die in content.js gebruikt worden (`git add -f`). Nog niet gebruikt: 01, 05, 12, 13 (bijsnijden), 19, 23, 25.
     - Correcties: foto-01 = 6 dec 2025 uit eten met Wouts gezin; kerstavond 24 dec = uit eten met Davinia's gezin en oma (moment + tijdlijn); foto-39 = feest oom en tante 12 sep 2026 (tijdlijn). Quizvraag 29 (UNO). Quiz kent nu `fotoNa` (foto pas na het antwoord).
-- [ ] Stap 4 – Fotospellen
+- [x] **Stap 4 – Fotospellen** (2 okt 2026): `js/spellen/fotos.js`. Keuzescherm met twee spelletjes, elk een eigen score (`opslag: memory, raad`); tegel = gemiddelde zodra beide gespeeld. Memory: 4x4, 3D-flip (met -webkit-backface-visibility voor Safari), 3 hartjes bij ≤14 zetten, 2 bij ≤20; daarna album met de 8 foto's + bijschrift uit `fotoUitleg`. Raad de plek/datum: 8 foto-vragen, zelfde opmaak en score als de quiz. *Wacht op akkoord.*
 - [ ] Stap 5 – Tijdlijn
 - [ ] Stap 6 – Woordspel
 - [ ] Stap 7 – Hartjesblokken

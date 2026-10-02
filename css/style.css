@@ -878,3 +878,186 @@ p { margin: 0; }
   padding: 18px 16px 20px;
   box-shadow: var(--schaduw);
 }
+
+/* ============================================================
+   Spel: Fotospellen (memory en raad de plek)
+   (vragen, reactie en uitslag: zie de quiz)
+   ============================================================ */
+.fotos-intro {
+  text-align: center;
+  color: var(--tekst-zacht);
+  margin: 0 auto 16px;
+  max-width: 340px;
+}
+
+.fotos-keuzes {
+  display: grid;
+  gap: 14px;
+}
+
+.fotos-keuze {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto auto;
+  column-gap: 14px;
+  align-items: center;
+  padding: 18px 18px 16px;
+  border-radius: var(--rond);
+  background: linear-gradient(120deg, var(--roze-licht), var(--lila-licht));
+  box-shadow: var(--schaduw);
+  text-align: left;
+  transition: transform 0.15s ease;
+}
+
+.fotos-keuze:nth-child(2) { background: linear-gradient(120deg, var(--perzik-licht), var(--roze-licht)); }
+.fotos-keuze:active { transform: scale(0.97); }
+.fotos-keuze .tegel-icoon { grid-row: 1 / 4; margin: 0; }
+.fotos-keuze-titel { font-size: 19px; font-weight: 800; }
+.fotos-keuze-sub { font-size: 14px; color: var(--tekst-zacht); }
+.fotos-keuze-status { margin-top: 6px; color: var(--roze-diep); letter-spacing: 1px; }
+
+.fotos-terug {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--roze-diep);
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: var(--schaduw-klein);
+}
+
+/* --- Memory --- */
+.mem-stand {
+  text-align: center;
+  font-weight: 700;
+  color: var(--tekst-zacht);
+  margin-bottom: 12px;
+}
+
+.mem-raster {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.mem-kaart {
+  aspect-ratio: 1;
+  -webkit-perspective: 600px;
+  perspective: 600px;
+}
+
+.mem-binnen {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transition: transform 0.45s ease;
+}
+
+.mem-kaart.om .mem-binnen { transform: rotateY(180deg); }
+
+.mem-rug,
+.mem-voor {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  box-shadow: var(--schaduw-klein);
+}
+
+.mem-rug {
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(140deg, var(--roze), var(--lila));
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.45), var(--schaduw-klein);
+}
+
+.mem-voor {
+  transform: rotateY(180deg);
+  background: var(--roze-licht);
+}
+
+.mem-voor img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+/* Gevonden paar: roze randje (binnen het kaartje), hartje erop en even opveren */
+.mem-kaart.gevonden .mem-voor::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3px solid var(--roze-diep);
+  border-radius: inherit;
+}
+.mem-kaart.gevonden .mem-voor::after {
+  content: "♥";
+  position: absolute;
+  right: 4px;
+  bottom: 2px;
+  font-size: 16px;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.mem-kaart.gevonden { animation: hop 0.6s ease; }
+
+/* Foto's met bijschrift na de memory */
+.fotos-album {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.fotos-album-foto {
+  margin: 0;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: var(--rond);
+  overflow: hidden;
+  box-shadow: var(--schaduw);
+}
+
+.fotos-album-foto img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.fotos-album-foto figcaption { padding: 12px 16px 14px; }
+.fotos-album-tekst { display: block; font-weight: 700; }
+.fotos-album-wanneer { display: block; font-size: 14px; color: var(--tekst-zacht); margin-top: 2px; }
+
+.fotos-knoppen {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* --- Raad de plek of datum --- */
+.raad-foto {
+  margin: 0 0 16px;
+  border-radius: var(--rond-klein);
+  overflow: hidden;
+  background: var(--roze-licht);
+  aspect-ratio: 1;
+}
+
+.raad-foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
