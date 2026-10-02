@@ -116,6 +116,9 @@ self.CONTENT = {
     'foto-31': { plek: 'Malta, Mdina (de stille stad)', wanneer: '30 juli t/m 6 augustus 2026', verhaal: 'Samen door de steegjes van Mdina.', bijschrift: 'Een stille stad, en wij er middenin. 🏰' },
     'foto-32': { plek: 'Malta, Mdina, voor een rode deur', wanneer: '30 juli t/m 6 augustus 2026', verhaal: 'Samen door de steegjes van Mdina.', bijschrift: 'Achter elke deur in Mdina een verhaal; het mooiste liep naast mij. 🚪' },
     'foto-33': { plek: 'Malta, een dorpsfeest (festa) met banieren en lichtjes', wanneer: '30 juli t/m 6 augustus 2026', verhaal: "'s Avonds door een versierde straat tijdens een Maltees dorpsfeest.", bijschrift: 'De hele straat versierd, maar jij was het mooiste dat ik die avond zag. ✨' },
+    'foto-34': { plek: 'Malta, boottocht vanuit Mgarr, op een supboard', wanneer: '3 augustus 2026', verhaal: 'Boottocht vanuit Mgarr; vanaf de boot het turquoise water in.', bijschrift: 'Water zo helder als ik me voel bij jou. 🌊' },
+    'foto-35': { plek: 'Malta, boottocht vanuit Mgarr, bij de kliffen', wanneer: '3 augustus 2026', verhaal: 'Boottocht vanuit Mgarr, langs kliffen en grotten.', bijschrift: 'Zon, zout water en jij naast me: meer had ik niet nodig. ⛵' },
+    'foto-36': { plek: 'Malta, boottocht vanuit Mgarr, suppen langs de kust', wanneer: '3 augustus 2026', verhaal: 'Boottocht vanuit Mgarr; samen suppen langs de rotsen.', bijschrift: 'Samen op één board: ik peddel, jij geniet. Prima taakverdeling. 🏄' },
   },
 
   // ----------------------------------------------------------
