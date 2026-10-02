@@ -67,6 +67,7 @@ self.CONTENT = {
       '4 jul 2026: festival Vunzige Deuntjes, waar Davinia zelf moest dansen (Wout stond te kijken).',
       'Davinia heeft ook op Zwarte Cross gedanst; daar was Wout niet bij.',
       '25 jul 2026: BBQ bij vrienden van haar gezin, daarna de kermis in Tilburg.',
+      '27 jul 2026: indoor skiën, het verjaardagscadeau van Davinia voor Wout.',
       '30 jul t/m 6 aug 2026: Malta (boottocht vanuit Mgarr op 3 aug).',
     ],
   },
@@ -106,6 +107,10 @@ self.CONTENT = {
     'foto-23': { plek: 'Festival Vunzige Deuntjes, na het dansen', wanneer: '4 juli 2026', verhaal: 'Jij moest dansen op Vunzige Deuntjes; daarna samen over het festival.', bijschrift: 'Een kus voor de danseres. Verdiend. 💋' },
     'foto-24': { plek: 'Festival Vunzige Deuntjes, na het dansen', wanneer: '4 juli 2026', verhaal: 'Jij moest dansen op Vunzige Deuntjes; daarna samen over het festival.', bijschrift: 'Die lach na het optreden: daar doe ik het voor. 😄' },
     'foto-25': { plek: 'Festival Vunzige Deuntjes, na het dansen', wanneer: '4 juli 2026', verhaal: 'Jij moest dansen op Vunzige Deuntjes; daarna samen over het festival.', bijschrift: 'Zoals jij naar mij kijkt, zo kijk ik ook naar jou. 🥰' },
+    'foto-26': { plek: 'Kermis in Tilburg', wanneer: '25 juli 2026', verhaal: 'Na de BBQ bij vrienden van jouw gezin samen naar de kermis in Tilburg.', bijschrift: 'Lichtjes, draaimolens en jij: mijn favoriete attractie. 🎡' },
+    'foto-27': { plek: 'Kermis in Tilburg', wanneer: '25 juli 2026', verhaal: 'Na de BBQ bij vrienden van jouw gezin samen naar de kermis in Tilburg.', bijschrift: 'Een kus tussen alle kermislichtjes. ✨' },
+    'foto-28': { plek: 'Indoor skibaan, in de stoeltjeslift', wanneer: '27 juli 2026', verhaal: 'Indoor skiën: jouw verjaardagscadeau voor mij.', bijschrift: 'Jouw cadeau voor mij, en het beste deel was naast jou in de lift. ⛷️' },
+    'foto-29': { plek: 'Parkeergarage, op weg naar Malta', wanneer: '30 juli 2026', verhaal: 'Vertrek naar Malta: een week samen in Qawra.', bijschrift: 'Koffers in de auto, Malta here we come! ✈️' },
   },
 
   // ----------------------------------------------------------
@@ -280,6 +285,12 @@ self.CONTENT = {
       goed: 0,
       reactie: 'Tulpen zover je kon kijken, en wij samen in één klomp. Typisch Nederlands, typisch ons. 🌷',
     },
+    {
+      vraag: 'Wat gaf jij mij voor mijn verjaardag?',
+      opties: ['Samen indoor skiën', 'Concertkaartjes', 'Een weekendje weg', 'Een horloge'],
+      goed: 0,
+      reactie: 'Samen de piste op, midden in de zomer. Het beste cadeau, vooral door wie ernaast zat in de lift. ⛷️',
+    },
   ],
 
   // ----------------------------------------------------------
@@ -356,6 +367,7 @@ self.CONTENT = {
     { datum: '22 mei 2026',      titel: 'Half jaar in Utrecht',  tekst: 'Een half jaar samen, een dagje Utrecht.' },
     { datum: '4 juli 2026',      titel: 'Vunzige Deuntjes',      tekst: 'Jij moest dansen, ik stond trots te kijken.' },
     { datum: '25 juli 2026',     titel: 'BBQ en kermis',         tekst: 'BBQ bij vrienden van jouw gezin, daarna de kermis in Tilburg.' },
+    { datum: '27 juli 2026',     titel: 'Indoor skiën',          tekst: 'Jouw verjaardagscadeau voor mij: samen de piste op.' },
     { datum: '30 juli 2026',     titel: 'Malta',                 tekst: "Qawra, de Blue Lagoon, sudoku's en cocktails." },
     { datum: '22 november 2026', titel: 'Eén jaar samen',        tekst: 'En dit is pas het begin. 💗' },
   ],
