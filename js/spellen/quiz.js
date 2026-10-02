@@ -146,6 +146,8 @@
       }
     });
     na.append(verder);
+    // Antwoordvak in beeld brengen (valt op kleine schermen anders onder de rand).
+    requestAnimationFrame(() => na.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
   }
 
   /* ----------------------------------------------------------

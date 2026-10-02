@@ -84,8 +84,9 @@ Een webapp (PWA) als cadeau voor het eenjarig jubileum van Wout en zijn vriendin
   - Wouts eigen foto's: 39 JPG's (uit een WhatsApp-zip, geen HEIC, geen GPS) verkleind naar `images/foto-01.jpg` t/m `foto-39.jpg`. Staan **voorlopig in `.gitignore`** (niet online) tot Wout akkoord geeft om ze in de openbare repo te zetten. Originelen in `foto-origineel/` (nooit in git).
   - **Eigen foto's online zetten:** `images/foto-*.jpg` blijft in `.gitignore`; alleen foto's die echt in `content.js` gebruikt worden gaan online met `git add -f images/foto-XX.jpg`. Overzicht met nummers: `foto-overzicht.jpg` (lokaal, niet in git).
 - [x] **Stap 2 – Quiz over ons** (2 okt 2026, online; per ongeluk gebouwd in de IntervalFit-sessie, die het daarna deels terugdraaide — hersteld en gecommit in deze sessie): 15 meerkeuzevragen uit `content.js`, opties worden per spelletje gehusseld, per vraag een reactie van Wout, hartjesscore 0-3 aan het eind (3 vanaf 80% goed, 2 vanaf 50%). `content.js` is gevuld met alle echte inhoud: feiten, 15 quizvragen, 6 'wie van ons twee', de tijdlijn, de woorden voor wordle/galgje/woordzoeker/kruiswoord. Foto's bij de quizvragen volgen nog (Wout kiest ze uit images/foto-01 t/m 39).
-  - **Nog open:** het "aanvullingsblok" van Wout (quizvragen 16-25, extra momenten, extra woorden, tijdlijn uitbreiden) en de sectie "Voor later" zijn nooit aangekomen; Wout plakt ze nog.
-- [ ] Stap 3 – Wie van ons twee?
+  - Aangevuld (2 okt): quizvragen 16-25 (nu 25), momenten in `feiten.momenten`, tijdlijn uitgebreid naar 15 momenten, 12 extra woorden (woordzoeker; MGARR ook in wordle; 4 extra galgjewoorden), briefjes-placeholders voor alle 10 spellen. Foto's per quizvraag: Wout kiest nog (overzicht in `foto-overzicht.jpg`).
+  - Voor later: sudoku-startcijfers met 22 en/of 22-11; brieven schrijft Wout zelf.
+- [x] **Stap 3 – Wie van ons twee?** (2 okt 2026): `js/spellen/wie.js`. Stellingen gehusseld; kiezen tussen twee ronde knoppen (W/D in sierletters) of "Allebei"; goed antwoord springt op, fout wiebelt; reactie van Wout; hartjesscore zoals de quiz (hergebruikt de quiz-opmaak voor voortgang/reactie/uitslag). Quiz en Wie scrollen na het antwoorden het antwoordvak in beeld (kleine schermen). Nu 6 stellingen: meer is welkom. *Wacht op akkoord.*
 - [ ] Stap 4 – Fotospellen
 - [ ] Stap 5 – Tijdlijn
 - [ ] Stap 6 – Woordspel

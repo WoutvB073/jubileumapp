@@ -4,7 +4,7 @@
   BELANGRIJK: verhoog VERSIE bij elke wijziging die online gaat.
   Nieuw spelbestand? Zet het pad ook in KERN hieronder.
 */
-const VERSIE = 'v3';
+const VERSIE = 'v4';
 const CACHE = 'jubileum-' + VERSIE;
 
 // De bestanden die de app nodig heeft om te starten.
@@ -20,6 +20,7 @@ const KERN = [
   'icons/icon-512.png',
   // Spellen (komen er per stap bij):
   'js/spellen/quiz.js',
+  'js/spellen/wie.js',
 ];
 
 // content.js inlezen (moet bovenaan, niet later). Een wijziging in content.js
