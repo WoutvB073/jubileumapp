@@ -16,7 +16,7 @@ const SPELLEN = [
   { id: 'wie',            titel: 'Wie van ons twee?', sub: 'Wout of Davinia?',            icoon: '👫', kleur: 'var(--lila-licht)' },
   { id: 'fotos',          titel: 'Fotospellen',       sub: 'Memory en raad de plek',      icoon: '📸', kleur: 'var(--perzik-licht)' },
   { id: 'tijdlijn',       titel: 'Tijdlijn',          sub: 'Zet ons jaar op volgorde',    icoon: '🗓️', kleur: 'var(--roze-licht)' },
-  { id: 'woordspel',      titel: 'Woordspel',         sub: 'Raad onze woorden',           icoon: '🔤', kleur: 'var(--lila-licht)' },
+  { id: 'woordspel',      titel: 'Woordspellen',      sub: 'Wordle en galgje',            icoon: '🔤', kleur: 'var(--lila-licht)' },
   { id: 'hartjesblokken', titel: 'Hartjesblokken',    sub: 'Puzzel de foto scherp',       icoon: '💗', kleur: 'var(--perzik-licht)' },
   { id: 'sudoku',         titel: 'Malta-sudoku',      sub: 'Net als op vakantie',         icoon: '☀️', kleur: 'var(--roze-licht)' },
   { id: 'woordzoeker',    titel: 'Woordzoeker',       sub: 'Vind al onze woorden',        icoon: '🔍', kleur: 'var(--lila-licht)' },

@@ -462,34 +462,41 @@ self.CONTENT = {
   // ----------------------------------------------------------
   woordspel: {
     // Wordle: precies 5 letters, zonder spaties of accenten.
+    // 'uitleg' (en 'foto', mag weg) verschijnt als het woord geraden is.
     // Let op: woorden met IJ (zoals IJSJE) laten we hier weg, want IJ
     // telt in het Nederlands soms als één letter en dat is verwarrend
     // in een lettergokspel. In galgje en de woordzoeker behandelen we
     // IJ gewoon als twee losse letters: I en J.
     wordle: [
-      { woord: 'MALTA', uitleg: 'Onze eerste vakantie samen.' },
-      { woord: 'QAWRA', uitleg: 'Waar ons hotel stond.' },
-      { woord: 'MDINA', uitleg: 'De stille stad waar we door de steegjes liepen.' },
-      { woord: 'KERST', uitleg: 'De kerstmarkt in Düsseldorf en onze eerste kerst samen.' },
-      { woord: 'SAMEN', uitleg: 'Al een heel jaar, en nog lang niet klaar.' },
-      { woord: 'KUSJE', uitleg: 'De eerste, bij de Maas.' },
-      { woord: 'ZOMER', uitleg: 'Zomer 2026: festivals, kermis en Malta.' },
-      { woord: 'FEEST', uitleg: 'Jouw feest op 10 januari.' },
-      { woord: 'CHOCO', uitleg: 'Hoort bij de aardbeien, altijd.' },
-      { woord: 'KLOMP', uitleg: 'Die gele reuzenklomp in de bollenvelden.' },
+      { woord: "MALTA", uitleg: "Onze eerste vakantie samen.", foto: 'images/foto-30.jpg' },
+      { woord: "QAWRA", uitleg: "Waar ons hotel stond, met dat dakterras.", foto: 'images/foto-38.jpg' },
+      { woord: "MDINA", uitleg: "De stille stad waar we door de steegjes liepen.", foto: 'images/foto-32.jpg' },
+      { woord: "KERST", uitleg: "De kerstmarkt in Düsseldorf en onze eerste kerst samen.", foto: 'images/foto-02.jpg' },
+      { woord: "SAMEN", uitleg: "Al een heel jaar, en nog lang niet klaar.", foto: 'images/foto-09.jpg' },
+      { woord: "KUSJE", uitleg: "De eerste, bij de Maas." },
+      { woord: "ZOMER", uitleg: "Zomer 2026: festivals, kermis en Malta.", foto: 'images/foto-22.jpg' },
+      { woord: "FEEST", uitleg: "Jouw feest op 10 januari.", foto: 'images/foto-10.jpg' },
+      { woord: "CHOCO", uitleg: "Hoort bij de aardbeien, altijd." },
+      { woord: "KLOMP", uitleg: "Die gele reuzenklomp in de bollenvelden.", foto: 'images/foto-16.jpg' },
     ],
-    // Galgje: mag langer zijn, spaties mogen (bv. 'EERSTE DATE').
+    // Galgje (met een smeltend ijsje): mag langer zijn, spaties mogen.
+    // 'hint' staat erbij tijdens het raden, 'herinnering' (en 'foto') daarna.
     galgje: [
-      { woord: 'BROWNIES',    hint: 'Wat we bakten op onze tweede date' },
-      { woord: 'VERKERING',   hint: 'Wat ik je vroeg in de auto bij de Maas' },
-      { woord: 'BLUE LAGOON', hint: 'Dat onwerkelijk blauwe water op Comino' },
-      { woord: 'AARDBEIEN',   hint: 'Met chocola, natuurlijk' },
-      { woord: 'INSTAGRAM',   hint: 'Waar ons eerste berichtje stond' },
-      { woord: 'BOOTTOCHT',   hint: 'Een van onze leukste dagen op Malta' },
-      { woord: 'KERSTMARKT',  hint: 'Jouw verjaardagscadeau in Düsseldorf' },
-      { woord: 'SLAGHAREN',   hint: 'Drie dagen bij jou, jij op het podium' },
-      { woord: 'KERSTPYJAMA', hint: 'Het cadeautje dat erbij hoorde' },
-      { woord: 'CARNAVAL',    hint: 'Een dag na Valentijn alweer feest' },
+      { woord: "BROWNIES", hint: "Wat we bakten op onze tweede date", herinnering: "De keuken overleefde het net. De brownies ook, heel even. 🍫" },
+      { woord: "VERKERING", hint: "Wat ik je vroeg in de auto bij de Maas", herinnering: "22 november, in de auto bij de Maas. Het mooiste ja dat ik ooit kreeg. 💗" },
+      { woord: "BLUE LAGOON", hint: "Dat onwerkelijk blauwe water op Comino", herinnering: "Water zo blauw dat het nep leek. 🌊", foto: 'images/foto-34.jpg' },
+      { woord: "AARDBEIEN", hint: "Met chocola, natuurlijk", herinnering: "Nooit genoeg aardbeien, altijd te veel chocola. 🍓" },
+      { woord: "INSTAGRAM", hint: "Waar ons eerste berichtje stond", herinnering: "Vier keer herschreven voor ik op verzenden durfde te drukken. 📱" },
+      { woord: "BOOTTOCHT", hint: "Een van onze leukste dagen op Malta", herinnering: "Vanuit Mgarr de zee op: suppen, kliffen en kleimaskers. ⛵", foto: 'images/foto-35.jpg' },
+      { woord: "KERSTMARKT", hint: "Jouw verjaardagscadeau in Düsseldorf", herinnering: "Reuzenrad, ijsbaan en jij met rode wangen van de kou. 🎄", foto: 'images/foto-04.jpg' },
+      { woord: "SLAGHAREN", hint: "Drie dagen bij jou, jij op het podium", herinnering: "Jij op het podium met de Angels, ik de trotste in het publiek. ✨", foto: 'images/foto-20.jpg' },
+      { woord: "KERSTPYJAMA", hint: "Het cadeautje dat erbij hoorde", herinnering: "Officieel voor jou, stiekem ook een beetje voor mij. 🎁" },
+      { woord: "CARNAVAL", hint: "Een dag na Valentijn alweer feest", herinnering: "Skibril op, sjaal om: het mooiste carnavalskoppel. 🎭", foto: 'images/foto-15.jpg' },
+      { woord: "ARCADEHAL", hint: "Stond naast het terras van onze eerste date", herinnering: "Ik wist niet of ik je wilde imponeren of verslaan. 🕹️" },
+      { woord: "BOLLENVELDEN", hint: "Waar we samen in een gele klomp stonden", herinnering: "Duizenden tulpen, en toch keek ik alleen naar jou. 🌷", foto: 'images/foto-16.jpg' },
+      { woord: "ZIGGO DOME", hint: "Waar we op Valentijnsdag CHO zagen", herinnering: "Valentijn tussen duizenden mensen, en toch voelde het alsof het alleen voor ons was. ❤️", foto: 'images/foto-21.jpg' },
+      { woord: "WINTER EFTELING", hint: "Mutsen op, en Jokie op de foto", herinnering: "Koud buiten, maar met jou tegen me aan merkte ik daar niks van. 🎪", foto: 'images/foto-13.jpg' },
+      { woord: "KLEIMASKER", hint: "Groen in het gezicht, op de boot", herinnering: "Groen in het gezicht, maar nog nooit zo verliefd geweest. 💚", foto: 'images/foto-37.jpg' },
     ],
   },
 
