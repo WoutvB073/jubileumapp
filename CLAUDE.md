@@ -80,7 +80,8 @@ Een webapp (PWA) als cadeau voor het eenjarig jubileum van Wout en zijn vriendin
 - iOS 26: Deel-knop zit soms achter de `•••`-knop; bij "Zet op beginscherm" moet "Open als webapp" aan staan.
 
 ## Voortgang
-- [x] **Stap 1 – Basis** (2 okt 2026): installatiescherm, PWA (manifest, iconen, opstartschermen, service worker), hoofdmenu met 10 speltegels + brievenbus ("binnenkort"), `content.js` met placeholder-inhoud en ideeën, placeholder-foto's, fotoverkleinscript. Git lokaal opgezet. *Wacht op akkoord + GitHub-URL.*
+- [x] **Stap 1 – Basis** (2 okt 2026, goedgekeurd): installatiescherm, PWA (manifest, iconen, opstartschermen, service worker), hoofdmenu met 10 speltegels + brievenbus ("binnenkort"), `content.js` met placeholder-inhoud en ideeën, placeholder-foto's, fotoverkleinscript. Repo `WoutvB073/jubileumapp` (openbaar), Pages vanaf `main` / root: https://woutvb073.github.io/jubileumapp/
+  - Wouts eigen foto's: 39 JPG's (uit een WhatsApp-zip, geen HEIC, geen GPS) verkleind naar `images/foto-01.jpg` t/m `foto-39.jpg`. Staan **voorlopig in `.gitignore`** (niet online) tot Wout akkoord geeft om ze in de openbare repo te zetten. Originelen in `foto-origineel/` (nooit in git).
 - [ ] Stap 2 – Quiz over ons
 - [ ] Stap 3 – Wie van ons twee?
 - [ ] Stap 4 – Fotospellen

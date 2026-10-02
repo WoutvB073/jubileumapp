@@ -5,3 +5,6 @@ foto-origineel/
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Eigen foto's (verkleind): voorlopig niet online, tot Wout akkoord geeft
+images/foto-*.jpg
