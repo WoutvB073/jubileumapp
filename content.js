@@ -58,10 +58,10 @@ self.CONTENT = {
       'Kerst 2025 samen gevierd.',
       '31 dec 2025: oud & nieuw met de vrienden van Wout.',
       '10 jan 2026: feest van Davinia.',
-      'Winter 2025-2026: samen naar de Winter Efteling (TODO: datum?).',
+      '26 jan 2026: samen naar de Winter Efteling (foto met Jokie bij Carnaval Festival).',
       '14 feb 2026 (Valentijnsdag): concert van CHO in de Ziggo Dome.',
       '15 feb 2026: carnaval samen.',
-      'Voorjaar 2026: tulpenvelden bij Tulip Experience Amsterdam (TODO: datum?).',
+      '16 apr 2026: dagje bollenvelden (Tulip Experience Amsterdam), samen in de gele klomp.',
       '24 t/m 26 apr 2026: Wout 3 dagen bij Davinia in Slagharen, waar ze optrad met de Angels.',
       '22 mei 2026: half jaar samen, dagje Utrecht.',
       '4 jul 2026: festival Vunzige Deuntjes, waar Davinia zelf moest dansen (Wout stond te kijken).',
@@ -92,11 +92,16 @@ self.CONTENT = {
     'foto-11': { plek: 'Feest van Davinia', wanneer: '10 januari 2026', verhaal: 'Jouw feest, jij in een gouden jurk.', bijschrift: 'Dat moment waarop we alleen elkaar nog zagen. 💛' },
     'foto-12': { plek: 'Feest van Davinia', wanneer: '10 januari 2026', verhaal: 'Jouw feest, jij in een gouden jurk.', bijschrift: 'Midden op het feest, en toch even alleen wij. 💋' },
     // Let op: onderaan staat een strip met andere mensen; bijsnijden voordat we hem gebruiken.
-    'foto-13': { plek: 'Winter Efteling, attractie Carnaval Festival', wanneer: 'winter 2025-2026 (TODO: datum?)', verhaal: 'Samen naar de Winter Efteling; attractiefoto bij Carnaval Festival.', bijschrift: 'Mutsen op, wangen rood, en Jokie lachte met ons mee. 🎪' },
-    'foto-14': { plek: 'Winter Efteling', wanneer: 'winter 2025-2026 (zelfde dag als foto-13)', verhaal: 'Samen naar de Winter Efteling.', bijschrift: 'Koud buiten, maar met jou tegen me aan merkte ik daar niks van. ✌️' },
+    'foto-13': { plek: 'Winter Efteling, attractie Carnaval Festival', wanneer: '26 januari 2026', verhaal: 'Samen naar de Winter Efteling; attractiefoto bij Carnaval Festival.', bijschrift: 'Mutsen op, wangen rood, en Jokie lachte met ons mee. 🎪' },
+    'foto-14': { plek: 'Winter Efteling', wanneer: '26 januari 2026', verhaal: 'Samen naar de Winter Efteling.', bijschrift: 'Koud buiten, maar met jou tegen me aan merkte ik daar niks van. ✌️' },
     'foto-15': { plek: 'Carnaval, verkleed', wanneer: '15 februari 2026', verhaal: 'Carnaval samen gevierd, een dag na CHO op Valentijnsdag.', bijschrift: 'Skibril op, sjaal om: het mooiste carnavalskoppel van het zuiden. 🎭' },
-    'foto-16': { plek: 'Tulpenveld (Tulip Experience Amsterdam), in de gele klomp', wanneer: 'voorjaar 2026 (TODO: datum?)', verhaal: 'Samen naar de tulpenvelden van Tulip Experience Amsterdam.', bijschrift: 'Duizenden tulpen, en toch keek ik alleen naar jou. 🌷' },
-    'foto-17': { plek: 'Tulpenveld (Tulip Experience Amsterdam)', wanneer: 'voorjaar 2026 (zelfde dag als foto-16)', verhaal: 'Samen naar de tulpenvelden van Tulip Experience Amsterdam.', bijschrift: 'Een lijstje om ons heen, en dat mag zo blijven. 🖼️' },
+    'foto-16': { plek: 'Bollenvelden (Tulip Experience Amsterdam), in de gele klomp', wanneer: '16 april 2026', verhaal: 'Dagje bollenvelden bij Tulip Experience Amsterdam.', bijschrift: 'Duizenden tulpen, en toch keek ik alleen naar jou. 🌷' },
+    'foto-17': { plek: 'Bollenvelden (Tulip Experience Amsterdam)', wanneer: '16 april 2026', verhaal: 'Dagje bollenvelden bij Tulip Experience Amsterdam.', bijschrift: 'Een lijstje om ons heen, en dat mag zo blijven. 🖼️' },
+    'foto-18': { plek: 'Bollenvelden, langs de weg', wanneer: '16 april 2026', verhaal: 'Dagje bollenvelden bij Tulip Experience Amsterdam.', bijschrift: 'Duim omhoog, tong uit: zo goed was die dag. 🌷' },
+    // Bijna dezelfde foto als foto-16 (met balken van een story): liever niet gebruiken.
+    'foto-19': { plek: 'Bollenvelden (Tulip Experience Amsterdam), in de gele klomp', wanneer: '16 april 2026', verhaal: 'Dagje bollenvelden bij Tulip Experience Amsterdam.', bijschrift: 'Samen in één klomp: past precies. 👞' },
+    'foto-20': { plek: 'Slagharen, op het podium na de show van de Angels', wanneer: '24 t/m 26 april 2026', verhaal: 'Drie dagen bij jou in Slagharen, waar je optrad met de Angels.', bijschrift: 'Vonken op het podium, maar jij straalde nog harder. 🎇' },
+    'foto-21': { plek: 'Concert van CHO in de Ziggo Dome', wanneer: '14 februari 2026 (Valentijnsdag)', verhaal: 'Op Valentijnsdag samen naar CHO in de Ziggo Dome.', bijschrift: 'Valentijn tussen duizenden mensen, en toch voelde het alsof het alleen voor ons was. ❤️' },
   },
 
   // ----------------------------------------------------------
@@ -259,6 +264,18 @@ self.CONTENT = {
       goed: 0,
       reactie: 'Het nieuwe jaar in met mijn vrienden, en met jou. Toen wist ik al: dit wordt een goed jaar. 🎆',
     },
+    {
+      vraag: 'Bij welke attractie in de Winter Efteling gingen we samen met Jokie op de foto?',
+      opties: ['Carnaval Festival', 'Droomvlucht', 'Python', 'Joris en de Draak'],
+      goed: 0,
+      reactie: 'Mutsen op en lachen naar de camera. Jokie was er duidelijk ook blij mee. 🎪',
+    },
+    {
+      vraag: 'Waar stonden we op 16 april samen in een gigantische gele klomp?',
+      opties: ['Bij de bollenvelden', 'In Volendam', 'In de Efteling', 'Op de kermis'],
+      goed: 0,
+      reactie: 'Tulpen zover je kon kijken, en wij samen in één klomp. Typisch Nederlands, typisch ons. 🌷',
+    },
   ],
 
   // ----------------------------------------------------------
@@ -327,8 +344,10 @@ self.CONTENT = {
     { datum: '22 november 2025', titel: 'Officieel samen',       tekst: 'In de auto bij de Maas, nadat we onze eerste date hadden nagedaan.' },
     { datum: '22 december 2025', titel: 'Kerstmarkt Düsseldorf', tekst: 'Jouw verjaardagscadeau, met een kerstpyjama erbij.' },
     { datum: '31 december 2025', titel: 'Oud & nieuw',           tekst: 'Het nieuwe jaar in met mijn vrienden, en met jou.' },
+    { datum: '26 januari 2026',  titel: 'Winter Efteling',       tekst: 'Mutsen op, en Jokie op de foto.' },
     { datum: '14 februari 2026', titel: 'CHO op Valentijnsdag',  tekst: 'Samen in de Ziggo Dome.' },
     { datum: '15 februari 2026', titel: 'Carnaval',              tekst: 'Een dag later meteen weer feest.' },
+    { datum: '16 april 2026',    titel: 'Bollenvelden',          tekst: 'Tulpen zover je kon kijken, en wij in een gele klomp.' },
     { datum: '24 april 2026',    titel: 'Slagharen',             tekst: 'Drie dagen bij jou, en jij op het podium met de Angels.' },
     { datum: '22 mei 2026',      titel: 'Half jaar in Utrecht',  tekst: 'Een half jaar samen, een dagje Utrecht.' },
     { datum: '4 juli 2026',      titel: 'Vunzige Deuntjes',      tekst: 'Jij moest dansen, ik stond trots te kijken.' },
@@ -356,6 +375,7 @@ self.CONTENT = {
       { woord: 'ZOMER', uitleg: 'Zomer 2026: festivals, kermis en Malta.' },
       { woord: 'FEEST', uitleg: 'Jouw feest op 10 januari.' },
       { woord: 'CHOCO', uitleg: 'Hoort bij de aardbeien, altijd.' },
+      { woord: 'KLOMP', uitleg: 'Die gele reuzenklomp in de bollenvelden.' },
     ],
     // Galgje: mag langer zijn, spaties mogen (bv. 'EERSTE DATE').
     galgje: [
@@ -419,7 +439,7 @@ self.CONTENT = {
     // Het spel kiest per keer een deel van deze lijst (wordt in stap 9 bepaald).
     woorden: [
       'MAAS', 'MALTA', 'QAWRA', 'MDINA', 'VALLETTA', 'COMINO', 'BROWNIES', 'AARDBEI', 'CHOCOLA', 'TERRAS', 'ARCADE', 'SUDOKU',
-      'DUSSELDORF', 'KERSTMARKT', 'PYJAMA', 'CARNAVAL', 'UTRECHT', 'SLAGHAREN', 'ANGELS', 'KERMIS',
+      'DUSSELDORF', 'KERSTMARKT', 'PYJAMA', 'CARNAVAL', 'UTRECHT', 'SLAGHAREN', 'ANGELS', 'KERMIS', 'TULPEN', 'EFTELING',
     ],
     // Kleine kruiswoordpuzzel: woord + hint.
     kruiswoord: [
