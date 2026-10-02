@@ -1780,7 +1780,7 @@ p { margin: 0; }
   background: var(--zand);
   font-size: clamp(17px, 5.4vw, 24px);
   font-weight: 600;
-  color: var(--roze-diep);
+  color: var(--lila-diep);   /* eigen cijfers: lila, zodat ze niet op het rood van een fout lijken */
   cursor: pointer;
   transition: background-color 0.12s ease;
 }
@@ -1791,6 +1791,7 @@ p { margin: 0; }
 .sd-vak.gekozen { background: #f9df9f; }
 .sd-vak.botsing { color: #d4373f; background: #fde3e3; }
 .sd-vak.gekozen.botsing { background: #fbc9c9; }
+.sd-vak.botst-met { box-shadow: inset 0 0 0 2px #eea0a6; }
 .sd-vak.schud { animation: schud 0.35s ease; }
 
 .sd-blok.af .sd-vak:not(.gekozen):not(.buur):not(.zelfde) { background: #f3f9f2; }

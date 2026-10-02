@@ -11,8 +11,10 @@
   Een blok helemaal goed = een Malta-herinnering (CONTENT.sudoku.maltaHerinneringen,
   blok 1 t/m 9). Hele sudoku af = de slotherinnering.
 
-  Fouten: alleen botsingen met de regels (zelfde cijfer in rij,
-  kolom of blok) worden rood en tellen als fout. Geen spoilers.
+  Fouten: alleen een cijfer dat zij zelf neerzet en dat botst met de
+  regels (zelfde cijfer in rij, kolom of blok) wordt rood en telt als
+  fout. Het vakje waarmee het botst krijgt alleen een lichte rand;
+  startcijfers en eerder gezette cijfers worden nooit rood. Geen spoilers.
   Hartjes: 3 min 1 per 3 fouten (minimaal 1; moeilijk minimaal 2). Fouten blijven tellen, ook na 'terug'.
 */
 (function () {
@@ -47,6 +49,7 @@
   let notities = [];      // 81 bitmaskers (bit 0 = cijfer 1)
   let fouten = 0;
   let blokkenAf = 0;      // bitmasker: welke blokken al een herinnering gaven
+  let rood = new Set();   // vakjes waar zij een botsend cijfer neerzette
   let gekozen = -1;
   let potlood = false;
   let geschiedenis = [];  // voor ongedaan maken
@@ -101,6 +104,7 @@
       n: notities.slice(),
       fouten,
       blokken: blokkenAf,
+      rood: [...rood],
     }, extra);
     api.opslag.bewaar({ puzzels: o.puzzels });
   }
@@ -226,6 +230,7 @@
     notities = Array.isArray(s.n) && s.n.length === 81 ? s.n.slice() : Array(81).fill(0);
     fouten = s.fouten || 0;
     blokkenAf = s.blokken || 0;
+    rood = new Set(Array.isArray(s.rood) ? s.rood : []);
     gekozen = -1;
     potlood = false;
     geschiedenis = [];
@@ -311,6 +316,10 @@
 
   function teken() {
     const keuzeCijfer = gekozen >= 0 ? waarden[gekozen] : 0;
+    // Een rood vakje dat niet meer botst (bv. omdat het andere cijfer weg is) is niet meer rood.
+    rood.forEach((i) => { if (!botst(i)) rood.delete(i); });
+    const partners = new Set();
+    rood.forEach((i) => { for (let j = 0; j < 81; j++) if (waarden[j] === waarden[i] && buren(i, j)) partners.add(j); });
     for (let i = 0; i < 81; i++) {
       const v = vakEls[i];
       const k = ['sd-vak'];
@@ -321,7 +330,8 @@
         else if (rij(i) === rij(gekozen) || kol(i) === kol(gekozen) || blok(i) === blok(gekozen)) k.push('buur');
         if (keuzeCijfer && waarden[i] === keuzeCijfer && i !== gekozen) k.push('zelfde');
       }
-      if (botst(i)) k.push('botsing');
+      if (rood.has(i)) k.push('botsing');
+      else if (partners.has(i)) k.push('botst-met');
       v.className = k.join(' ');
       v.textContent = '';
       if (waarden[i]) {
@@ -361,7 +371,7 @@
   }
 
   function onthoud(i) {
-    geschiedenis.push({ i, w: waarden[i], n: notities[i], ook: [] });
+    geschiedenis.push({ i, w: waarden[i], n: notities[i], rood: rood.has(i), ook: [] });
     if (geschiedenis.length > 200) geschiedenis.shift();
   }
 
@@ -386,7 +396,9 @@
           notities[j] &= ~(1 << (d - 1));
         }
       }
+      rood.delete(i);
       if (botst(i)) {
+        rood.add(i);
         fouten++;
         const v = vakEls[i];
         v.classList.remove('schud'); void v.offsetWidth; v.classList.add('schud');
@@ -403,6 +415,7 @@
     if (!waarden[gekozen] && !notities[gekozen]) return;
     onthoud(gekozen);
     waarden[gekozen] = 0;
+    rood.delete(gekozen);
     notities[gekozen] = 0;
     teken();
     bewaarPuzzel();
@@ -413,6 +426,7 @@
     if (!stap) return;
     waarden[stap.i] = stap.w;
     notities[stap.i] = stap.n;
+    if (stap.rood) rood.add(stap.i); else rood.delete(stap.i);
     stap.ook.forEach(({ j, n }) => { notities[j] = n; });
     // Fouten blijven meetellen, ook als je ze terugdraait.
     gekozen = stap.i;
