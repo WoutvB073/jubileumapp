@@ -21,12 +21,13 @@ Een webapp (PWA) als cadeau voor het eenjarig jubileum van Wout en zijn vriendin
 - Alle teksten in het Nederlands.
 - Alleen licht thema (`color-scheme: only light`), statusbalk `default`.
 
-## Toon (geldt voor de hele app)
-- Wout is niet zoetsappig, de app dus ook niet. Teksten zijn **luchtig, nuchter en met humor**, met knipogen naar hun echte momenten.
-- Liefdevol mag, maar **kort en gewoon**. Geen overdreven romantische zinnen.
-- **Verboden:** "forever", "zielsverwant", "voor altijd", "mijn alles", en dingen als "nog nooit zo verliefd", "mijn ogen niet van je afhouden", "het mooiste uitzicht stond naast me".
-- Goed voorbeeld: "Jij kookt, ik doe de afwas. Eerlijke verdeling, toch?" / "Skiën in juli. Jouw cadeau, en ik ben nog heel."
-- Geldt voor content.js én vaste teksten in de spellen (uitslagen, meldingen). Nieuwe teksten altijd zo schrijven.
+## Toon (geldt voor de hele app) — vervangen op 4 okt 2026
+- **Niet zoetsappig.** Schrijf zoals Wout praat: **plagerig naar haar en met zelfspot over zichzelf**. Voorbeelden van de goede toon: "Alsof jij om 7 uur op wil staan" en "Ja ik weet het, ik ben lui".
+- Netjes geschreven, maar niet formeel.
+- **Emoji's alleen deze soort:** 😂 😅 😏 voor lachen en plagen, en heel spaarzaam ❤️ of 😘. Geen andere emoji's in teksten.
+- Lengte mag verschillen: meestal één korte zin, soms twee.
+- **Verzin GEEN nieuwe feiten, gebeurtenissen of verhaaltjes.** Gebruik alleen wat in content.js staat (feiten, momenten, foto-uitleg, de antwoorden van Wout). Wil je een langere tekst met een verhaaltje: eerst Wout om input vragen.
+- Werkwijze bij tekstwijzigingen: eerst in `teksten-overzicht.md` (lokaal, niet in git) met nummers per spel, Wout stuurt correcties ("Q12: nieuwe tekst"), pas daarna in de app.
 
 ## Inhoud apart van de code
 - Alle persoonlijke inhoud (quizvragen, woorden, foto's met bijschriften, tijdlijnmomenten, berichtjes, liefdesbriefjes, Wouts antwoorden) staat in **één bestand: `content.js`**, met voorbeelden en TODO's zodat Wout het zelf invult. Tot die tijd nette placeholder-inhoud.
@@ -112,7 +113,8 @@ Een webapp (PWA) als cadeau voor het eenjarig jubileum van Wout en zijn vriendin
 - [x] **Stap 8 – Malta-sudoku** (2 okt 2026, goedgekeurd na correctie): `js/spellen/sudoku.js`. 9 puzzels (3 per niveau, namen van plekken op Malta + 'Nr. 22'), gemaakt met een generator (scratchpad `sudoku-gen.cjs`) en onafhankelijk gecontroleerd: precies één oplossing, op te lossen zonder gokken (makkelijk 38 startcijfers/alleen naked singles, gemiddeld 30/hidden singles, moeilijk precies 22/locked candidates + paren). 22-11: in elke puzzel r1k1 = 1 en r2k2 = 2. Tik vakje + cijferbalk, gum, terug, potlood (notities; geplaatst cijfer wist notities bij buren). Markering rij/kolom/blok + zelfde cijfer. **3 levens** (bovenin als hartjes, bewaard in `opslag.puzzels[id].levens`): een cijfer dat niet klopt met de oplossing kost meteen een leven, wordt even rood + wiebelt en verdwijnt (potlood telt niet). 0 levens = nuchter berichtje + 'Opnieuw' (puzzel leeg, 3 levens; album blijft). Eigen cijfers lila. Voortgang per puzzel bewaard (`opslag.puzzels[id]`). Blok goed = herinnering blok n (meteen, als kaart) + Malta-album (`opslag.album`); hele sudoku = slotherinnering (busongeluk). Hartjes = levens over bij oplossen.
 - [x] **Stap 9 – Woordpuzzels** (2 okt 2026, goedgekeurd): `js/spellen/woordzoeker.js`, tegel heet 'Woordpuzzels'. Keuzescherm met 3 woordzoekers (Malta 9x9, Thuis 9x9, Onderweg 10x10; `woordzoeker.puzzels` met titel/grootte/woorden/zin) en een kruiswoordpuzzel (`woordzoeker.kruiswoord`, 9 woorden incl. UNO, oplossingswoord `kruiswoordOplossing` = SAMEN). Woordzoeker: raster wordt in de browser gemaakt met een vaste toevalsreeks per titel (altijd hetzelfde), woorden →/↓/↘/↗, overgebleven letters vormen precies de zin (alle 3 sluitend; anders vult hij aan met willekeurige letters). Vegen met pointer-events (recht getrokken naar 8 richtingen, ook van achter naar voren), gekleurde streep + doorgestreept in de lijst, Tip-knop. Kruiswoord: compact opgebouwd in de browser (10x9), tik = vakje, nogmaals tikken = andere richting, hint erboven, schermtoetsenbord met ⌫, Controleer (in de balk) laat foute letters oplichten, vakjes krimpen automatisch zodat het toetsenbord past. Hartjes: woordzoeker 0 tips = 3, 1-2 = 2, meer = 1; kruiswoord 0-2 foute letters = 3, 3-6 = 2, meer = 1; tegel = gemiddelde zodra kruiswoord + minstens één woordzoeker af. Voortgang bewaard (`opslag.zoekers`, `opslag.kruis`).
   - Correctie (4 okt): boottocht 3 aug ging naar Comino/Blue Lagoon (zelfde dag); feiten, foto-uitleg 34-37, quiz-reactie, galgje en Malta-herinnering aangepast.
-- [x] **Stap 10 – Dit of dat** (4 okt 2026): `js/spellen/ditofdat.js`. 19 keuzes van Wout (`ditOfDat`: optionele vraag, a, b, mijnKeuze, reactie). Willekeurige volgorde, links/rechts soms omgedraaid. Twee grote kaarten met 'of' ertussen; na kiezen: gekozen kaart groen/roze, Wouts keuze altijd groene rand + label, 'Wout koos: …' en reactie. Hartjes: ≥80% = 3, ≥55% = 2, anders 1 (19 keuzes: 16+ / 11+). *Wacht op akkoord.*
-- [ ] Stap 11 – Brievenbus
-- [ ] Stap 12 – Kleuren op nummer
+- [x] **Stap 10 – Dit of dat** (4 okt 2026, goedgekeurd): `js/spellen/ditofdat.js`. 19 keuzes van Wout (`ditOfDat`: optionele vraag, a, b, mijnKeuze, reactie). Willekeurige volgorde, links/rechts soms omgedraaid. Twee grote kaarten met 'of' ertussen; na kiezen: gekozen kaart groen/roze, Wouts keuze altijd groene rand + label, 'Wout koos: …' en reactie. Hartjes: ≥80% = 3, ≥55% = 2, anders 1 (19 keuzes: 16+ / 11+).
+- [ ] **Teksten herschrijven (nieuwe toonregel, 4 okt)**: alle teksten staan herschreven in `teksten-overzicht.md` (lokaal, niet in git; codes A, Q/QU, W/WU, F, R/RU, T/TU, L/LU, G, H/HU, S/SU, Z/K/ZU, D/DU). Ook: "Cola of water" eruit (18 keuzes over). *Wacht op correcties van Wout* ("Q12: nieuwe tekst"), daarna pas in content.js + JS-bestanden.
+- [ ] Stap 11 – Brievenbus (**later**, als Wout zijn briefjes heeft geschreven)
+- [ ] Stap 12 – Kleuren op nummer (pas beginnen na akkoord op de teksten; eerst test met rastergroottes 25x35, 30x40, 40x50 en 8/10/12 kleuren op 3 voorgestelde foto's)
 - [ ] Stap 13 – Online UNO samen (nog niet bouwen; eerst opties bespreken)
