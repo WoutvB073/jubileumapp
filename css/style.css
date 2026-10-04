@@ -2178,3 +2178,108 @@ p { margin: 0; }
   .kw-oplossing { margin: 6px 0 6px; }
   .kw-opl-vak { height: 30px; }
 }
+
+/* ============================================================
+   Spel: Dit of dat
+   ============================================================ */
+.dd-vraag {
+  text-align: center;
+  font-family: var(--font-sier);
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--roze-diep);
+  margin: 4px 0 2px;
+}
+
+.dd-context {
+  text-align: center;
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--tekst);
+  margin: 0 0 4px;
+}
+
+.dd-paar {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.dd-kaart {
+  position: relative;
+  min-height: 170px;
+  padding: 18px 12px;
+  border-radius: var(--rond);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  box-shadow: var(--schaduw);
+  transition: transform 0.15s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+  animation: kaart-in 0.4s ease-out;
+}
+
+.dd-links { background: linear-gradient(150deg, var(--roze-licht), #ffd3e0); }
+.dd-rechts { background: linear-gradient(150deg, var(--lila-licht), #e2d4f8); animation-delay: 0.06s; }
+.dd-kaart:active:not(:disabled) { transform: scale(0.96); }
+.dd-kaart:disabled { color: var(--tekst); -webkit-text-fill-color: currentColor; opacity: 1; }
+
+.dd-tekst {
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+/* Het rondje "of" tussen de kaarten */
+.dd-of {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--wit);
+  box-shadow: var(--schaduw-klein);
+  font-family: var(--font-sier);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--roze-diep);
+  pointer-events: none;
+}
+
+.dd-kaart.gekozen.goed { box-shadow: inset 0 0 0 3px #74bd9c, var(--schaduw); }
+.dd-kaart.gekozen.fout { box-shadow: inset 0 0 0 3px var(--roze), var(--schaduw); animation: wiebel 0.45s ease; }
+.dd-kaart.niet { opacity: 0.55; }
+.dd-kaart.mijn { box-shadow: inset 0 0 0 3px #74bd9c, var(--schaduw); }
+
+.dd-badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--tekst);
+  color: var(--wit);
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+  animation: pop 0.3s ease;
+}
+
+.dd-na {
+  margin-top: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: var(--rond);
+  padding: 16px 16px 18px;
+  box-shadow: var(--schaduw);
+}
+
+@media (max-height: 700px) {
+  .dd-kaart { min-height: 140px; }
+  .dd-tekst { font-size: 18px; }
+}

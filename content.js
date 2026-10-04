@@ -585,11 +585,28 @@ self.CONTENT = {
   // 10. DIT OF DAT
   // ----------------------------------------------------------
   // Davinia raadt wat JIJ zou kiezen. 'mijnKeuze' is 'a' of 'b'.
-  // TODO (stap 10): vul hier je eigen keuzes in.
+  // 'vraag' is optioneel (anders: "Wat kiest Wout?"). Het spel husselt de
+  // volgorde en zet a en b soms andersom neer.
   ditOfDat: [
-    { a: 'Aardbeien met chocola',  b: "McDonald's",            mijnKeuze: 'a', reactie: 'Al is het een moeilijke keuze.' },
-    { a: 'Een avond bij de Maas',  b: 'Een avond op de bank',  mijnKeuze: 'a', reactie: 'De bank wint het nooit van de Maas.' },
-    { a: 'Strand op Malta',        b: 'Waterpark',             mijnKeuze: 'b', reactie: 'Ik wilde die glijbanen gewoon nog een keer.' },
+    { a: "Kerstmarkt", b: "Kermis", mijnKeuze: 'a', reactie: "Glühwein wint het van een suikerspin. Net." },
+    { a: "IJsje", b: "Brownie", mijnKeuze: 'a', reactie: "Een ijsje. Daar begon het bij de Maas tenslotte mee. 🍦" },
+    { a: "Zomer", b: "Winter", mijnKeuze: 'a', reactie: "Malta, festivals, kermis. Winter had geen schijn van kans. ☀️" },
+    { a: "Vroeg opstaan", b: "Uitslapen", mijnKeuze: 'b', reactie: "Als ik ergens goed in ben, is het dit wel. 😴" },
+    { a: "Festival", b: "Concert", mijnKeuze: 'a', reactie: "Een hele dag muziek in plaats van twee uur. Rekensom klopt." },
+    { a: "Film", b: "Serie", mijnKeuze: 'b', reactie: "Nog één aflevering. Zeg ik al een jaar. 📺" },
+    { a: "Zoet", b: "Zout", mijnKeuze: 'a', reactie: "Aardbeien met chocola. Meer hoef ik niet te zeggen. 🍓" },
+    { a: "Auto", b: "Fiets", mijnKeuze: 'a', reactie: "In de auto bij de Maas vroeg ik je verkering. Daar kan geen fiets tegenop. 🚗" },
+    { a: "Bellen", b: "Appen", mijnKeuze: 'b', reactie: "Het begon met een berichtje. Waarom zou ik dat veranderen? 📱" },
+    { a: "Cola", b: "Water", mijnKeuze: 'a', reactie: "Water is ook goed. Voor de planten." },
+    { vraag: "Eén uitje overdoen", a: "Malta", b: "De kerstmarkt in Düsseldorf", mijnKeuze: 'a', reactie: "Een week zon en sudoku’s tegen één dag glühwein. Sorry, Düsseldorf. ☀️" },
+    { vraag: "Nog een keer", a: "CHO in de Ziggo Dome", b: "Vunzige Deuntjes", mijnKeuze: 'a', reactie: "Valentijn in de Ziggo Dome. Op Vunzige Deuntjes moest jij nog werken. 🎤" },
+    { vraag: "Perfecte avond", a: "IJsje halen en naar de Maas", b: "Samen brownies bakken", mijnKeuze: 'a', reactie: "Ons plekje wint altijd. De brownies mogen mee." },
+    { vraag: "Bij de McDonald’s", a: "Big Mac", b: "McChicken", mijnKeuze: 'b', reactie: "McChicken. Ik ben een man van gewoontes. 🍔" },
+    { vraag: "Avondje bank", a: "Netflix", b: "YouTube", mijnKeuze: 'a', reactie: "Netflix, en jij die halverwege in slaap valt. Vaste prik." },
+    { a: "Waterpark", b: "Kermis", mijnKeuze: 'a', reactie: "Glijbanen op Malta. Daar kan geen botsauto tegenop. 💦" },
+    { vraag: "Op de kerstmarkt in Düsseldorf", a: "Reuzenrad", b: "Schaatsbaan", mijnKeuze: 'b', reactie: "Schaatsen, en allebei overeind gebleven. Dat verdient een prijs. ⛸️" },
+    { a: "Mdina", b: "Valletta", mijnKeuze: 'b', reactie: "Mdina is mooi, maar in Valletta wisten we tenminste waar we waren." },
+    { vraag: "Op een terrasje", a: "Cocktail", b: "Biertje", mijnKeuze: 'a', reactie: "Cocktail. Met een vragenspel erbij, zoals op Malta. 🍹" },
   ],
 
   // ----------------------------------------------------------
