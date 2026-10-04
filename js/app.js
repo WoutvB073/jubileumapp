@@ -165,8 +165,8 @@ function tekenMenu() {
 
   const dagen = dagenSamen();
   const dagenEl = $('menu-dagen');
-  if (dagen === 365) dagenEl.textContent = 'Vandaag precies 1 jaar samen! 🎉';
-  else if (dagen > 0) dagenEl.textContent = `Al ${dagen} dagen samen 💕`;
+  if (dagen === 365) dagenEl.textContent = 'Vandaag precies 1 jaar samen ❤️';
+  else if (dagen > 0) dagenEl.textContent = `Al ${dagen} dagen samen`;
   dagenEl.hidden = !(dagen > 0);
 
   // Tegels
@@ -210,7 +210,7 @@ function tekenMenu() {
         tegel.classList.remove('wiebel');
         void tegel.offsetWidth; // animatie opnieuw laten starten
         tegel.classList.add('wiebel');
-        toast('Dit spelletje komt binnenkort 💌');
+        toast('Dit spelletje komt binnenkort');
       }
     });
     tegels.append(tegel);
@@ -218,7 +218,7 @@ function tekenMenu() {
 
   // Voortgang
   $('voortgang-tekst').textContent = gespeeld === SPELLEN.length
-    ? 'Alles gespeeld! Je bent geweldig 💖'
+    ? 'Alles gespeeld. Netjes 😏'
     : `${gespeeld} van ${SPELLEN.length} spelletjes gespeeld`;
   $('voortgang-vulling').style.width = (100 * gespeeld / SPELLEN.length) + '%';
 
@@ -288,7 +288,7 @@ function toonFout(inhoud) {
   const kaart = maak('div', 'melding-kaart');
   kaart.append(
     maak('h3', 'sier', 'Oeps…'),
-    maak('p', '', 'Dit spelletje doet even raar. Probeer een ander spelletje, dan kijkt Wout er nog even naar. 💗'),
+    maak('p', '', 'Dit spelletje doet even raar. Probeer een ander, dan kijk ik er nog naar 😅'),
   );
   const knop = maak('button', 'knop', 'Terug naar het menu');
   knop.type = 'button';
@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     $('terug-knop').addEventListener('click', () => { location.hash = 'menu'; });
     $('brievenbus-knop').addEventListener('click', () => {
       if (Spellen.bestaat('brievenbus')) location.hash = 'spel/brievenbus';
-      else toast('De brievenbus gaat binnenkort open 💌');
+      else toast('De brievenbus gaat binnenkort open');
     });
     window.addEventListener('hashchange', route);
     route();

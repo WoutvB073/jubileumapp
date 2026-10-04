@@ -119,7 +119,7 @@
     vulling.style.width = (100 * (ronde + 1) / rondes.length) + '%';
     balk.append(vulling);
     kop.append(balk);
-    wortel.append(kop, el('p', 'tl-uitleg', 'Sleep de momenten in de goede volgorde: van ons begin tot vandaag.'));
+    wortel.append(kop, el('p', 'tl-uitleg', 'Sleep de momenten in de goede volgorde, van ons begin tot nu.'));
 
     const lijst = el('div', 'tl-lijst');
     if (beginPunt) lijst.append(vastPunt(beginPunt));
@@ -262,7 +262,7 @@
       lijst.classList.add('klaar');
       scores[ronde] = pogingen === 1 ? 3 : pogingen === 2 ? 2 : 1;
       melding.hidden = false;
-      melding.textContent = pogingen === 1 ? 'In één keer goed! 💗' : 'Alles staat goed! 💗';
+      melding.textContent = pogingen === 1 ? 'In één keer goed!' : 'Alles staat goed!';
       setTimeout(onthul, 900);
     } else {
       melding.hidden = false;
@@ -284,7 +284,7 @@
     kop.append(
       el('p', 'quiz-hartjes', '💗'.repeat(score) + '🤍'.repeat(3 - score)),
       el('h3', 'sier', `Ronde ${ronde + 1} klaar!`),
-      el('p', 'quiz-slot', pogingen === 1 ? 'In één keer goed. Jij weet precies hoe ons jaar ging.' : `Gelukt in ${pogingen} pogingen. Zo ging het:`),
+      el('p', 'quiz-slot', pogingen === 1 ? 'In één keer goed. Jij weet precies hoe ons jaar ging 😏' : `Gelukt in ${pogingen} pogingen. Zo ging het:`),
     );
     wortel.append(kop);
 
@@ -324,8 +324,8 @@
     const kaart = el('div', 'quiz-uitslag-kaart');
     kaart.append(
       el('p', 'quiz-hartjes', '💗'.repeat(gemiddeld) + '🤍'.repeat(3 - gemiddeld)),
-      el('h3', 'sier', gemiddeld === 3 ? 'Ons jaar, precies op volgorde!' : 'Ons jaar staat op volgorde 💗'),
-      el('p', 'quiz-slot', 'Van dat ene berichtje tot vandaag. Dit is ons jaar:'),
+      el('h3', 'sier', gemiddeld === 3 ? 'Ons jaar, precies op volgorde' : 'Ons jaar staat op volgorde'),
+      el('p', 'quiz-slot', 'Van dat ene berichtje tot nu:'),
     );
     wortel.append(kaart, tijdlijnLijst(alle, true));
 

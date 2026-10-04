@@ -116,7 +116,7 @@
     });
 
     const na = el('div', 'quiz-na dd-na');
-    na.append(el('p', 'quiz-uitslag ' + (goed ? 'is-goed' : 'is-fout'), goed ? 'Goed! 💗' : 'Mis…'));
+    na.append(el('p', 'quiz-uitslag ' + (goed ? 'is-goed' : 'is-fout'), goed ? 'Goed!' : 'Mis…'));
     if (!goed) na.append(el('p', 'quiz-juist', `${naamIk} koos: ${k.mijn}`));
     if (k.reactie) na.append(el('p', 'quiz-reactie', k.reactie));
     na.append(knop('knop', bij + 1 < keuzes.length ? 'Volgende' : 'Naar de uitslag', () => {
@@ -136,16 +136,16 @@
     api.klaar({ hartjes });
 
     let tekst;
-    if (hartjes === 3) tekst = 'Jij weet beter wat ik kies dan ik zelf. Een beetje eng, eerlijk gezegd.';
-    else if (hartjes === 2) tekst = 'Vaker goed dan fout. Bij de rest had ik zelf ook even moeten nadenken.';
-    else tekst = 'Blijkbaar ben ik onvoorspelbaarder dan ik dacht. Goed nieuws voor jou.';
+    if (hartjes === 3) tekst = 'Je weet beter wat ik kies dan ik zelf. Beetje eng 😅';
+    else if (hartjes === 2) tekst = 'Vaker goed dan fout, de rest leg ik nog wel uit 😏';
+    else tekst = 'Ik ben dus onvoorspelbaarder dan ik dacht 😏';
 
     wortel.textContent = '';
     window.scrollTo(0, 0);
     const kaart = el('div', 'quiz-uitslag-kaart');
     kaart.append(
       el('p', 'quiz-hartjes', '💗'.repeat(hartjes) + '🤍'.repeat(3 - hartjes)),
-      el('h3', 'sier', hartjes === 3 ? 'Gedachtenlezer!' : 'Netjes geprobeerd'),
+      el('h3', 'sier', hartjes === 3 ? 'Gedachtenlezer' : 'Netjes geprobeerd'),
       el('p', 'quiz-score', `${goedGeteld} van de ${keuzes.length} goed`),
       el('p', 'quiz-slot', tekst),
       knop('knop', 'Nog een keer', begin),

@@ -421,7 +421,7 @@
   function toonBijschrift() {
     const b = el$.bijschrift;
     b.textContent = '';
-    b.append(el('b', '', '📸 Helemaal scherp!'), el('span', '', foto.bijschrift || ''));
+    b.append(el('b', '', 'Helemaal scherp!'), el('span', '', foto.bijschrift || ''));
     b.hidden = false;
     b.classList.add('zichtbaar');
     later(() => { b.classList.remove('zichtbaar'); later(() => { b.hidden = true; }, 400); }, 4200);
@@ -445,7 +445,7 @@
     kaart.append(
       el('p', 'quiz-hartjes', '💗'.repeat(hartjes) + '🤍'.repeat(3 - hartjes)),
       el('h3', 'sier', 'Geen plek meer!'),
-      el('p', 'quiz-score', `Score ${score}${nieuwRecord ? ' — nieuw record! 🏆' : ''}`),
+      el('p', 'quiz-score', `Score ${score}${nieuwRecord ? ', nieuw record' : ''}`),
       el('p', 'quiz-slot', `${rijenWeg} rijen en kolommen weggespeeld.${foto && foto.bijschrift ? ' ' + foto.bijschrift : ''}`),
       knop('knop', 'Nog een keer', nieuwPotje),
       knop('knop zacht', 'Terug naar het menu', () => api.terug()),

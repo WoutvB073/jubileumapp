@@ -137,7 +137,7 @@
     wortel.textContent = '';
     window.scrollTo(0, 0);
     const s = api.opslag.lees();
-    wortel.append(el('p', 'fotos-intro', 'Woorden die bij ons horen. Speel ze allebei voor de hartjes op de tegel. 💬'));
+    wortel.append(el('p', 'fotos-intro', 'Woorden die bij ons horen. Speel ze allebei voor de hartjes op de tegel.'));
     const keuzes = el('div', 'fotos-keuzes');
     keuzes.append(
       keuzeKaart('🟩', 'Wordle', 'Raad ons woord in 6 pogingen', 'wordle', s.wordleScore, startWordle),
@@ -339,7 +339,7 @@
     const kaart = el('div', 'quiz-uitslag-kaart');
     kaart.append(
       el('p', 'quiz-hartjes', hartjesTekst(hartjes)),
-      el('h3', 'sier', hartjes === 3 ? 'Woordkampioen!' : 'Alle woorden gespeeld 💗'),
+      el('h3', 'sier', hartjes === 3 ? 'Woordkampioen!' : 'Alle woorden gespeeld'),
       el('p', 'quiz-score', `${geraden} van de ${v.volgorde.length} woorden geraden`),
       el('p', 'quiz-slot', 'Tien woorden, tien stukjes van ons jaar.'),
       knop('knop', 'Opnieuw spelen', () => { api.opslag.bewaar({ wordle: null }); startWordle(); }),
@@ -464,7 +464,7 @@
       });
       v.huidig.letters.forEach((l) => toetsen.kleur(l, woord.includes(l) ? 'goed' : 'fout'));
       const f = fouten();
-      teller.textContent = f ? `${f} van de ${MAX_FOUTEN} fouten` : 'Nog geen fouten 🍦';
+      teller.textContent = f ? `${f} van de ${MAX_FOUTEN} fouten` : 'Nog geen fouten';
       smelt(ijs, f);
     }
     teken(false);
@@ -492,7 +492,7 @@
       // Het hele woord laten zien (ook als het niet geraden is).
       [...woord].forEach((l, i) => { if (l !== ' ' && !letterVakken[i].textContent) { letterVakken[i].textContent = l; letterVakken[i].classList.add('gemist'); } });
       const kaart = el('div', 'ws-klaar');
-      kaart.append(el('h3', 'sier', geraden ? (f === 0 ? 'Zonder één fout!' : 'Ijsje gered! 🍦') : 'Oh nee, gesmolten…'));
+      kaart.append(el('h3', 'sier', geraden ? (f === 0 ? 'Zonder één fout!' : 'IJsje gered!') : 'Oh nee, gesmolten…'));
       if (!geraden) kaart.append(el('p', 'ws-woord', woord));
       if (info.herinnering) kaart.append(el('p', 'quiz-reactie', info.herinnering));
       if (info.foto) kaart.append(fotoBlok(info.foto));
@@ -512,9 +512,9 @@
     const kaart = el('div', 'quiz-uitslag-kaart');
     kaart.append(
       el('p', 'quiz-hartjes', hartjesTekst(hartjes)),
-      el('h3', 'sier', hartjes === 3 ? 'Ijsjesredder!' : 'Alle woorden gespeeld 💗'),
+      el('h3', 'sier', hartjes === 3 ? 'Ijsjesredder!' : 'Alle woorden gespeeld'),
       el('p', 'quiz-score', `${gered} van de ${v.volgorde.length} ijsjes gered`),
-      el('p', 'quiz-slot', 'En het beste ijsje blijft dat eerste, bij de Maas. 🍦'),
+      el('p', 'quiz-slot', 'En het beste ijsje blijft dat eerste bij de Maas.'),
       knop('knop', 'Opnieuw spelen', () => { api.opslag.bewaar({ galgje: null }); startGalgje(); }),
       knop('knop zacht', 'Terug naar woordspellen', toonKeuze),
     );

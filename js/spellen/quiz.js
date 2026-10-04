@@ -126,7 +126,7 @@
     na.hidden = false;
 
     const uitslag = el('p', 'quiz-uitslag ' + (isGoed ? 'is-goed' : 'is-fout'),
-      isGoed ? 'Goed! 💗' : 'Net niet…');
+      isGoed ? 'Goed!' : 'Net niet…');
     na.append(uitslag);
 
     if (!isGoed) {
@@ -174,13 +174,13 @@
     const kaart = el('div', 'quiz-uitslag-kaart');
 
     kaart.append(el('p', 'quiz-hartjes', '💗'.repeat(score) + '🤍'.repeat(3 - score)));
-    kaart.append(el('h3', 'sier', score === 3 ? 'Jij kent ons!' : 'Netjes geprobeerd'));
+    kaart.append(el('h3', 'sier', score === 3 ? 'Jij weet echt alles' : 'Netjes geprobeerd'));
     kaart.append(el('p', 'quiz-score', `${goedGeteld} van de ${totaal} goed`));
 
     let tekst;
-    if (score === 3) tekst = 'Bijna alles goed. Je hebt dus echt opgelet.';
-    else if (score === 2) tekst = 'Mooi gedaan. En de vragen die je miste, vertel ik je gewoon nog een keer.';
-    else tekst = 'Geeft niets. Dan hebben we een goede smoes om alles nog eens door te nemen.';
+    if (score === 3) tekst = 'Bijna alles goed. Je hebt beter opgelet dan ik 😅';
+    else if (score === 2) tekst = 'Best goed. De rest leg ik je nog wel een keer uit 😏';
+    else tekst = 'Oké, dan doen we die quiz gewoon nog een keer 😂';
     kaart.append(el('p', 'quiz-slot', tekst));
 
     const opnieuw = el('button', 'knop', 'Nog een keer');

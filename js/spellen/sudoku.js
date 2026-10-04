@@ -37,9 +37,9 @@
   ];
 
   const NIVEAUS = [
-    { id: 'makkelijk', naam: 'Makkelijk', sub: 'Voor bij het ontbijt' },
-    { id: 'gemiddeld', naam: 'Gemiddeld', sub: 'Voor aan het zwembad' },
-    { id: 'moeilijk', naam: 'Moeilijk', sub: 'Na de tweede cocktail' },
+    { id: 'makkelijk', naam: 'Makkelijk', sub: 'Om in te komen' },
+    { id: 'gemiddeld', naam: 'Gemiddeld', sub: 'Iets meer nadenken' },
+    { id: 'moeilijk', naam: 'Moeilijk', sub: 'Na de tweede cocktail 😏' },
   ];
 
   let api = null;
@@ -125,7 +125,7 @@
     const intro = el('div', 'sd-intro');
     intro.append(
       el('p', 'sd-intro-titel', '☀️ 🇲🇹 ☀️'),
-      el('p', '', 'Op Malta losten we sudoku’s op bij het ontbijt, aan het zwembad en tussen de cocktails door. Tijd voor een rematch.'),
+      el('p', '', "Op Malta deden we veel sudoku's. Tijd voor een rematch 😏"),
       el('p', 'sd-intro-klein', 'Elk blok dat helemaal klopt, levert een Malta-herinnering op.'),
     );
     wortel.append(intro);
@@ -200,7 +200,7 @@
     if (!h) return;
     const laag = el('div', 'sd-laag');
     const kaart = el('div', 'sd-herinnering');
-    kaart.append(el('p', 'sd-herinnering-kop', nieuw ? `Blok ${b + 1} klopt! 🏝️` : `Blok ${b + 1}`));
+    kaart.append(el('p', 'sd-herinnering-kop', nieuw ? `Blok ${b + 1} klopt!` : `Blok ${b + 1}`));
     if (h.foto) {
       const img = el('img');
       img.src = h.foto;
@@ -420,7 +420,7 @@
     kaart.append(
       el('p', 'quiz-hartjes', '🤍'.repeat(LEVENS)),
       el('h3', 'sier', 'Levens op'),
-      el('p', 'quiz-slot', 'Drie keer mis. Op Malta hadden we hier een cocktail bij gepakt en het nog eens geprobeerd.'),
+      el('p', 'quiz-slot', 'Drie keer mis. Gewoon opnieuw, niemand die het ziet 😏'),
       el('p', 'sd-op-klein', 'Herinneringen die je al hebt, blijven in het album.'),
       knop('knop', 'Opnieuw', opnieuw),
       knop('knop zacht', 'Andere sudoku', toonKeuze),
@@ -477,7 +477,7 @@
     // Herinnering na de laatste zet van de puzzel laten wachten op het eindscherm
     const allesAf = waarden.every((w, j) => w === Number(pz.oplossing[j]));
     if (!allesAf) toonHerinnering(b, true);   // meteen, zodat een volgende tik niet per ongeluk op de herinnering valt
-    else if (nieuw) later(() => api.toast('Nieuwe herinnering in het Malta-album 📸'), 300);
+    else if (nieuw) later(() => api.toast('Nieuwe herinnering in het Malta-album'), 300);
   }
 
   /* ----------------------------------------------------------

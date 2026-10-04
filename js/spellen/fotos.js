@@ -96,7 +96,7 @@
     window.scrollTo(0, 0);
     const s = scores();
 
-    wortel.append(el('p', 'fotos-intro', 'Twee spelletjes met onze foto’s. Speel ze allebei voor de hartjes op de tegel. 📸'));
+    wortel.append(el('p', 'fotos-intro', "Twee spelletjes met onze foto's. Speel ze allebei voor de hartjes op de tegel."));
 
     const keuzes = el('div', 'fotos-keuzes');
     keuzes.append(
@@ -206,9 +206,9 @@
     const kaart = el('div', 'quiz-uitslag-kaart');
     kaart.append(
       el('p', 'quiz-hartjes', hartjesTekst(hartjes)),
-      el('h3', 'sier', hartjes === 3 ? 'Wat een geheugen!' : 'Alle paren gevonden 💗'),
+      el('h3', 'sier', hartjes === 3 ? 'Wat een geheugen' : 'Alle paren gevonden'),
       el('p', 'quiz-score', `In ${zetten} zetten`),
-      el('p', 'quiz-slot', 'En dit zijn ze, onze momenten:'),
+      el('p', 'quiz-slot', 'En dit zijn ze:'),
     );
     wortel.append(kaart);
 
@@ -304,7 +304,7 @@
       });
 
       const na = el('div', 'quiz-na');
-      na.append(el('p', 'quiz-uitslag ' + (isGoed ? 'is-goed' : 'is-fout'), isGoed ? 'Goed! 💗' : 'Net niet…'));
+      na.append(el('p', 'quiz-uitslag ' + (isGoed ? 'is-goed' : 'is-fout'), isGoed ? 'Goed!' : 'Net niet…'));
       if (!isGoed) na.append(el('p', 'quiz-juist', 'Het juiste antwoord: ' + v.opties[v.goed]));
       if (v.reactie) na.append(el('p', 'quiz-reactie', v.reactie));
       na.append(knop('knop', bij + 1 < vragen.length ? 'Volgende foto' : 'Naar de uitslag', () => {
@@ -331,11 +331,11 @@
       const kaart = el('div', 'quiz-uitslag-kaart');
       kaart.append(
         el('p', 'quiz-hartjes', hartjesTekst(hartjes)),
-        el('h3', 'sier', hartjes === 3 ? 'Jij weet het allemaal nog!' : 'Netjes geprobeerd'),
+        el('h3', 'sier', hartjes === 3 ? 'Jij weet het allemaal nog' : 'Netjes geprobeerd'),
         el('p', 'quiz-score', `${goedGeteld} van de ${vragen.length} goed`),
         el('p', 'quiz-slot', hartjes === 3
-          ? 'Elke plek, elke datum. Jij onthoudt het beter dan ik, eerlijk gezegd.'
-          : 'Zoveel momenten in één jaar, logisch dat ze een beetje door elkaar lopen. Dat betekent gewoon dat we veel samen hebben gedaan.'),
+          ? 'Elke plek, elke datum. Jij weet het beter dan ik 😅'
+          : 'Te veel uitjes om te onthouden, dat is ook een compliment 😏'),
         knop('knop', 'Nog een keer', startRaad),
         knop('knop zacht', 'Terug naar fotospellen', toonKeuze),
       );

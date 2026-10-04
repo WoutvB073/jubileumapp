@@ -124,7 +124,7 @@
     na.textContent = '';
     na.hidden = false;
 
-    na.append(el('p', 'quiz-uitslag ' + (isGoed ? 'is-goed' : 'is-fout'), isGoed ? 'Goed! 💗' : 'Net niet…'));
+    na.append(el('p', 'quiz-uitslag ' + (isGoed ? 'is-goed' : 'is-fout'), isGoed ? 'Goed!' : 'Net niet…'));
     if (!isGoed) {
       na.append(el('p', 'quiz-juist', goedAntwoord === 'Allebei' ? 'Het antwoord: allebei!' : 'Het antwoord: ' + goedAntwoord));
     }
@@ -163,13 +163,13 @@
     wortel.textContent = '';
     const kaart = el('div', 'quiz-uitslag-kaart');
     kaart.append(el('p', 'quiz-hartjes', '💗'.repeat(score) + '🤍'.repeat(3 - score)));
-    kaart.append(el('h3', 'sier', score === 3 ? 'Jij kent ons door en door!' : 'Netjes geprobeerd'));
+    kaart.append(el('h3', 'sier', score === 3 ? 'Jij kent ons door en door' : 'Netjes geprobeerd'));
     kaart.append(el('p', 'quiz-score', `${goedGeteld} van de ${totaal} goed`));
 
     let tekst;
-    if (score === 3) tekst = 'Jij weet precies wie wie is. Eerlijk is eerlijk: ook de dingen waar ik liever niet aan herinnerd word.';
-    else if (score === 2) tekst = 'Een paar keer verkeerd gegokt, maar misschien zijn we gewoon meer op elkaar gaan lijken.';
-    else tekst = 'Misschien zijn we na een jaar zo op elkaar gaan lijken dat het niet meer uitmaakt. 😉';
+    if (score === 3) tekst = 'Ook de dingen waar ik liever niet aan herinnerd word 😅';
+    else if (score === 2) tekst = 'Een paar keer mis, maar het grote werk klopt.';
+    else tekst = 'Dan weet ik nu wat ik je nog moet uitleggen 😂';
     kaart.append(el('p', 'quiz-slot', tekst));
 
     const opnieuw = el('button', 'knop', 'Nog een keer');

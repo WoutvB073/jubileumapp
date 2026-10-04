@@ -108,7 +108,7 @@
     wortel.textContent = '';
     window.scrollTo(0, 0);
     const o = opslag();
-    wortel.append(el('p', 'fotos-intro', 'Zoeken en kruisen, met onze woorden. De letters die overblijven in een woordzoeker zeggen ook nog iets. 🔍'));
+    wortel.append(el('p', 'fotos-intro', 'Zoeken en kruisen met onze woorden. De letters die overblijven zeggen ook nog iets.'));
 
     wortel.append(el('h3', 'sd-niveau-titel wzk-kop', 'Woordzoekers'));
     const rij = el('div', 'sd-puzzels');
@@ -341,7 +341,7 @@
       bewaar();
       const v = vakken[nog.r1 * N + nog.c1];
       v.classList.remove('tip'); void v.offsetWidth; v.classList.add('tip');
-      api.toast(`${nog.woord} begint hier 💡`);
+      api.toast(`${nog.woord} begint hier`);
     }
 
     // Alles gevonden: overgebleven letters oplichten en de zin tonen
@@ -585,7 +585,7 @@
       });
       hintEl.textContent = '';
       if (w) hintEl.append(el('b', '', `${w.nr} ${w.h ? '→' : '↓'}`), el('span', '', w.hint));
-      else hintEl.append(el('span', 'kw-hint-leeg', st.klaar ? 'Opgelost! 🎉' : 'Tik op een vakje om te beginnen'));
+      else hintEl.append(el('span', 'kw-hint-leeg', st.klaar ? 'Opgelost!' : 'Tik op een vakje om te beginnen'));
       oplRij.querySelectorAll('.kw-opl-vak').forEach((b) => { b.textContent = st.letters[oplVakken[b.dataset.i]] || ''; });
       toonStand();
     }
@@ -617,7 +617,7 @@
     function controleer() {
       if (st.klaar) return;
       const fout = Object.keys(st.letters).filter((s) => cel[s] && st.letters[s] !== cel[s].letter);
-      if (!fout.length) { api.toast(Object.keys(st.letters).length ? 'Alles wat er staat, klopt 👍' : 'Er staat nog niks om te controleren'); return; }
+      if (!fout.length) { api.toast(Object.keys(st.letters).length ? 'Alles wat er staat, klopt' : 'Er staat nog niks om te controleren'); return; }
       st.fouten += fout.length;
       bewaar();
       fout.forEach((s) => { const v = vakEls[s]; v.classList.remove('fout'); void v.offsetWidth; v.classList.add('fout'); });
