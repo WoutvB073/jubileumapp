@@ -484,9 +484,9 @@ p { margin: 0; }
 .spel-titel {
   flex: 1;
   text-align: center;
-  font-size: 19px;
   font-weight: 800;
-  padding-right: 80px; /* zelfde breedte als de terug-knop, zodat de titel echt in het midden staat */
+  padding-right: 40px; /* ongeveer de helft van de terug-knop: titel bijna in het midden, lange titels passen op één regel */
+  font-size: clamp(16px, 4.6vw, 19px);
 }
 
 .spel-inhoud { position: relative; }
@@ -2282,4 +2282,139 @@ p { margin: 0; }
 @media (max-height: 700px) {
   .dd-kaart { min-height: 140px; }
   .dd-tekst { font-size: 18px; }
+}
+
+/* ============================================================
+   Spel: Kleuren op nummer
+   ============================================================ */
+.kl-fotos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.kl-foto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: var(--rond);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--schaduw);
+  transition: transform 0.15s ease;
+}
+
+.kl-foto:active, .kl-niveau:active { transform: scale(0.97); }
+
+.kl-mini {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  border-radius: 12px;
+  image-rendering: pixelated;
+  background: var(--roze-licht);
+}
+
+.kl-status { font-size: 14px; color: var(--roze-diep); letter-spacing: 1px; }
+
+.kl-niveaus { display: grid; gap: 12px; }
+
+.kl-niveau {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 12px;
+  border-radius: var(--rond);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--schaduw);
+  text-align: left;
+  transition: transform 0.15s ease;
+}
+
+.kl-voorbeeld {
+  flex: none;
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 12px;
+  image-rendering: pixelated;
+  background: var(--roze-licht);
+}
+
+.kl-niveau-tekst { display: flex; flex-direction: column; gap: 3px; }
+.kl-niveau-tekst b { font-size: 19px; }
+.kl-maat { font-size: 13.5px; font-weight: 800; color: var(--lila-diep); }
+.kl-uitleg { font-size: 14px; color: var(--tekst-zacht); line-height: 1.35; }
+
+/* Het kleurvlak */
+.kl-vak {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--schaduw);
+  background: #efe7ec;
+}
+
+.kl-canvas {
+  display: block;
+  touch-action: none;      /* één vinger kleurt, twee vingers zoomen; de pagina blijft staan */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.kl-hulp {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  display: flex;
+  gap: 6px;
+}
+
+.kl-hulpknop {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--schaduw-klein);
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--roze-diep);
+}
+
+
+/* Palet: twee rijen */
+.kl-palet {
+  display: grid;
+  grid-template-columns: repeat(var(--n), 1fr);
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.kl-kleur {
+  position: relative;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08), var(--schaduw-klein);
+  transition: transform 0.1s ease;
+}
+
+.kl-kleur:active { transform: scale(0.94); }
+.kl-kleur.kies { outline: 3px solid var(--roze-diep); outline-offset: 2px; }
+.kl-kleur.af { opacity: 0.45; }
+.kl-nr { font-weight: 800; font-size: 18px; line-height: 1; }
+.kl-over { font-size: 10.5px; font-weight: 700; opacity: 0.85; margin-top: 2px; }
+
+.kl-palet.weg { display: none; }
+.kl-klaar .quiz-slot { color: var(--tekst); }
+.kl-niveau-klaar { font-weight: 800; color: var(--roze-diep); margin-bottom: 12px; }
+
+@media (max-height: 700px) {
+  .kl-kleur { height: 44px; }
+  .kl-nr { font-size: 16px; }
 }

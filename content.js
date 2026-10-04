@@ -714,9 +714,17 @@ self.CONTENT = {
   // ----------------------------------------------------------
   // 12. KLEUREN OP NUMMER
   // ----------------------------------------------------------
-  // Rastergrootte en aantal kleuren kiezen we samen bij stap 12,
-  // nadat je een eigen foto hebt getest.
+  // Foto's om in te kleuren. Het spel maakt er zelf een raster van,
+  // in drie niveaus (makkelijk, gemiddeld, moeilijk). Close-ups met grote
+  // gezichten en duidelijke kleuren werken het best.
+  // Het bijschrift aan het eind komt uit fotoUitleg; met 'bijschrift' hier
+  // kun je dat per foto overschrijven.
   kleurplaten: [
-    { foto: 'images/voorbeeld-6.jpg', kolommen: 30, rijen: 40, kleuren: 10, bijschrift: 'TODO: een bijschrift' },
+    { foto: 'images/foto-18.jpg' },   // bollenvelden: tulpen + lucht
+    { foto: 'images/foto-21.jpg' },   // CHO: dichtbij, rood licht
+    { foto: 'images/foto-01.jpg' },   // restaurant: gezichten goed herkenbaar
+    { foto: 'images/foto-37.jpg' },   // kleimaskers op de boot
+    { foto: 'images/foto-13.jpg' },   // Winter Efteling met Jokie
+    { foto: 'images/foto-28.jpg' },   // skilift, roze jas
   ],
 };
