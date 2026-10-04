@@ -1789,10 +1789,10 @@ p { margin: 0; }
 .sd-vak.buur { background: #eef6f2; }
 .sd-vak.zelfde { background: var(--lila-licht); }
 .sd-vak.gekozen { background: #f9df9f; }
-.sd-vak.botsing { color: #d4373f; background: #fde3e3; }
-.sd-vak.gekozen.botsing { background: #fbc9c9; }
-.sd-vak.botst-met { box-shadow: inset 0 0 0 2px #eea0a6; }
 .sd-vak.schud { animation: schud 0.35s ease; }
+.sd-vak.fout-cijfer { color: #d4373f; background: #fde3e3; }
+.sd-levens { font-size: 18px; letter-spacing: 2px; }
+.sd-op-klein { font-size: 14px; color: var(--tekst-zacht); margin: -8px 0 14px; }
 
 .sd-blok.af .sd-vak:not(.gekozen):not(.buur):not(.zelfde) { background: #f3f9f2; }
 .sd-blok.juich { animation: juich 0.7s ease; }

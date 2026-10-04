@@ -11,14 +11,18 @@
   Een blok helemaal goed = een Malta-herinnering (CONTENT.sudoku.maltaHerinneringen,
   blok 1 t/m 9). Hele sudoku af = de slotherinnering.
 
-  Fouten: alleen een cijfer dat zij zelf neerzet en dat botst met de
-  regels (zelfde cijfer in rij, kolom of blok) wordt rood en telt als
-  fout. Het vakje waarmee het botst krijgt alleen een lichte rand;
-  startcijfers en eerder gezette cijfers worden nooit rood. Geen spoilers.
-  Hartjes: 3 min 1 per 3 fouten (minimaal 1; moeilijk minimaal 2). Fouten blijven tellen, ook na 'terug'.
+  Levens: elke puzzel begint met 3 levens. Een cijfer dat niet klopt
+  met de oplossing kost meteen een leven: het wordt even rood, wiebelt
+  en verdwijnt dan vanzelf. Potloodnotities tellen niet mee.
+  Bij 0 levens: opnieuw beginnen met 3 levens (vrijgespeelde
+  Malta-herinneringen blijven vrijgespeeld).
+  Hartjes = het aantal levens dat over is bij het oplossen.
 */
 (function () {
   'use strict';
+
+  const LEVENS = 3;
+  const FOUT_ZICHTBAAR = 900;   // zo lang blijft een fout cijfer staan (ms)
 
   const PUZZELS = [
     { id: 'makkelijk-1', niveau: 'makkelijk', naam: 'Qawra', start: '1..28...7.2.496.81......29631......4..7.4915.4591...7..71.328.5.4....3.9.3....76.', oplossing: '196285437723496581584371296318567924267849153459123678971632845642758319835914762' },
@@ -47,9 +51,9 @@
   let pz = null;          // de puzzel uit PUZZELS
   let waarden = [];       // 81 cijfers (0 = leeg)
   let notities = [];      // 81 bitmaskers (bit 0 = cijfer 1)
-  let fouten = 0;
+  let levens = LEVENS;
   let blokkenAf = 0;      // bitmasker: welke blokken al een herinnering gaven
-  let rood = new Set();   // vakjes waar zij een botsend cijfer neerzette
+  let bezig = false;      // even geen invoer terwijl een fout cijfer zichtbaar is
   let gekozen = -1;
   let potlood = false;
   let geschiedenis = [];  // voor ongedaan maken
@@ -102,17 +106,12 @@
     o.puzzels[pz.id] = Object.assign({}, o.puzzels[pz.id], {
       w: waarden.join(''),
       n: notities.slice(),
-      fouten,
+      levens,
       blokken: blokkenAf,
-      rood: [...rood],
     }, extra);
     api.opslag.bewaar({ puzzels: o.puzzels });
   }
 
-  function hartjesVoor(p, aantalFouten) {
-    const h = Math.max(1, 3 - Math.floor(aantalFouten / 3));
-    return p.niveau === 'moeilijk' ? Math.max(2, h) : h;
-  }
 
   /* ----------------------------------------------------------
      Keuzescherm
@@ -228,15 +227,16 @@
     // Startcijfers altijd uit de puzzel zelf
     [...p.start].forEach((c, i) => { if (c !== '.') waarden[i] = Number(c); });
     notities = Array.isArray(s.n) && s.n.length === 81 ? s.n.slice() : Array(81).fill(0);
-    fouten = s.fouten || 0;
+    levens = typeof s.levens === 'number' ? s.levens : LEVENS;
     blokkenAf = s.blokken || 0;
-    rood = new Set(Array.isArray(s.rood) ? s.rood : []);
+    bezig = false;
     gekozen = -1;
     potlood = false;
     geschiedenis = [];
     bouwScherm();
     teken();
     if (s.klaar) toonKlaar(true);
+    else if (levens <= 0) toonOp();
   }
 
   function bouwScherm() {
@@ -307,19 +307,8 @@
   /* ----------------------------------------------------------
      Tekenen
      ---------------------------------------------------------- */
-  function botst(i) {
-    const d = waarden[i];
-    if (!d) return false;
-    for (let j = 0; j < 81; j++) if (waarden[j] === d && buren(i, j)) return true;
-    return false;
-  }
-
   function teken() {
     const keuzeCijfer = gekozen >= 0 ? waarden[gekozen] : 0;
-    // Een rood vakje dat niet meer botst (bv. omdat het andere cijfer weg is) is niet meer rood.
-    rood.forEach((i) => { if (!botst(i)) rood.delete(i); });
-    const partners = new Set();
-    rood.forEach((i) => { for (let j = 0; j < 81; j++) if (waarden[j] === waarden[i] && buren(i, j)) partners.add(j); });
     for (let i = 0; i < 81; i++) {
       const v = vakEls[i];
       const k = ['sd-vak'];
@@ -330,8 +319,6 @@
         else if (rij(i) === rij(gekozen) || kol(i) === kol(gekozen) || blok(i) === blok(gekozen)) k.push('buur');
         if (keuzeCijfer && waarden[i] === keuzeCijfer && i !== gekozen) k.push('zelfde');
       }
-      if (rood.has(i)) k.push('botsing');
-      else if (partners.has(i)) k.push('botst-met');
       v.className = k.join(' ');
       v.textContent = '';
       if (waarden[i]) {
@@ -359,7 +346,9 @@
     }
     el$.potlood.classList.toggle('aan', potlood);
     el$.undo.disabled = !geschiedenis.length;
-    el$.info.textContent = `Fouten: ${fouten}`;
+    el$.info.textContent = '';
+    el$.info.append(el('span', 'sd-levens', '❤️'.repeat(Math.max(0, levens)) + '🤍'.repeat(LEVENS - Math.max(0, levens))));
+    el$.info.setAttribute('aria-label', `${levens} van de ${LEVENS} levens`);
   }
 
   /* ----------------------------------------------------------
@@ -371,14 +360,16 @@
   }
 
   function onthoud(i) {
-    geschiedenis.push({ i, w: waarden[i], n: notities[i], rood: rood.has(i), ook: [] });
+    geschiedenis.push({ i, w: waarden[i], n: notities[i], ook: [] });
     if (geschiedenis.length > 200) geschiedenis.shift();
   }
 
   function vul(d) {
+    if (bezig || levens <= 0) return;
     if (gekozen < 0) { api.toast('Tik eerst op een vakje'); return; }
     const i = gekozen;
     if (isStart(i)) return;
+    if (!potlood && d !== Number(pz.oplossing[i])) { fout(i, d); return; }
     if (potlood) {
       if (waarden[i]) return;
       onthoud(i);
@@ -396,13 +387,6 @@
           notities[j] &= ~(1 << (d - 1));
         }
       }
-      rood.delete(i);
-      if (botst(i)) {
-        rood.add(i);
-        fouten++;
-        const v = vakEls[i];
-        v.classList.remove('schud'); void v.offsetWidth; v.classList.add('schud');
-      }
       controleerBlok(blok(i));
     }
     teken();
@@ -410,25 +394,69 @@
     if (!potlood && waarden.every((w, j) => w === Number(pz.oplossing[j]))) later(() => toonKlaar(false), 600);
   }
 
+  // Fout cijfer: leven eraf, even rood laten zien, daarna weer weg.
+  function fout(i, d) {
+    levens--;
+    bezig = true;
+    const oud = waarden[i];
+    waarden[i] = d;
+    teken();
+    const v = vakEls[i];
+    v.classList.add('fout-cijfer', 'schud');
+    bewaarPuzzel();
+    later(() => {
+      waarden[i] = oud;
+      bezig = false;
+      teken();
+      if (levens <= 0) toonOp();
+    }, FOUT_ZICHTBAAR);
+  }
+
+  // Geen levens meer: nuchter berichtje en opnieuw beginnen.
+  function toonOp() {
+    gekozen = -1;
+    teken();
+    const kaart = el('div', 'sd-klaar sd-op');
+    kaart.append(
+      el('p', 'quiz-hartjes', '🤍'.repeat(LEVENS)),
+      el('h3', 'sier', 'Levens op'),
+      el('p', 'quiz-slot', 'Drie keer mis. Op Malta hadden we hier een cocktail bij gepakt en het nog eens geprobeerd.'),
+      el('p', 'sd-op-klein', 'Herinneringen die je al hebt, blijven in het album.'),
+      knop('knop', 'Opnieuw', opnieuw),
+      knop('knop zacht', 'Andere sudoku', toonKeuze),
+    );
+    el$.cijfers.replaceWith(kaart);
+    el$.cijfers = kaart;
+    const tools = wortel.querySelector('.sd-tools');
+    if (tools) tools.remove();
+    requestAnimationFrame(() => kaart.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
+  }
+
+  function opnieuw() {
+    const o = opslag();
+    o.puzzels[pz.id] = Object.assign({}, o.puzzels[pz.id], { w: pz.start.replace(/\./g, '0'), n: Array(81).fill(0), levens: LEVENS, blokken: 0 });
+    api.opslag.bewaar({ puzzels: o.puzzels });
+    startPuzzel(pz);
+  }
+
   function gum() {
+    if (bezig) return;
     if (gekozen < 0 || isStart(gekozen)) return;
     if (!waarden[gekozen] && !notities[gekozen]) return;
     onthoud(gekozen);
     waarden[gekozen] = 0;
-    rood.delete(gekozen);
     notities[gekozen] = 0;
     teken();
     bewaarPuzzel();
   }
 
   function ongedaan() {
+    if (bezig) return;
     const stap = geschiedenis.pop();
     if (!stap) return;
     waarden[stap.i] = stap.w;
     notities[stap.i] = stap.n;
-    if (stap.rood) rood.add(stap.i); else rood.delete(stap.i);
     stap.ook.forEach(({ j, n }) => { notities[j] = n; });
-    // Fouten blijven meetellen, ook als je ze terugdraait.
     gekozen = stap.i;
     teken();
     bewaarPuzzel();
@@ -457,7 +485,7 @@
      ---------------------------------------------------------- */
   function toonKlaar(alEerder) {
     const s = opslag().puzzels[pz.id] || {};
-    const hartjes = alEerder ? (s.hartjes || hartjesVoor(pz, fouten)) : hartjesVoor(pz, fouten);
+    const hartjes = alEerder ? (s.hartjes || Math.max(1, levens)) : Math.max(1, levens);
     if (!alEerder) {
       bewaarPuzzel({ klaar: true, hartjes: Math.max(hartjes, s.hartjes || 0) });
       api.klaar({ hartjes });
@@ -470,7 +498,7 @@
     kaart.append(
       el('p', 'quiz-hartjes', '💗'.repeat(hartjes) + '🤍'.repeat(3 - hartjes)),
       el('h3', 'sier', 'Opgelost!'),
-      el('p', 'quiz-score', fouten ? `${pz.naam} · ${fouten} ${fouten === 1 ? 'fout' : 'fouten'}` : `${pz.naam} · zonder fouten`),
+      el('p', 'quiz-score', levens >= LEVENS ? `${pz.naam} · zonder fouten` : `${pz.naam} · nog ${levens} ${levens === 1 ? 'leven' : 'levens'} over`),
     );
     if (sd().slotHerinnering) {
       const slot = el('div', 'sd-slotkaart');
