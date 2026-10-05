@@ -22,6 +22,7 @@ const SPELLEN = [
   { id: 'woordzoeker',    titel: 'Woordpuzzels',      sub: 'Zoeken en kruisen',           icoon: '🔍', kleur: 'var(--lila-licht)' },
   { id: 'ditofdat',       titel: 'Dit of dat',        sub: 'Wat zou Wout kiezen?',        icoon: '⚖️', kleur: 'var(--perzik-licht)' },
   { id: 'kleuren',        titel: 'Kleuren op nummer', sub: 'Kleur ons in',                icoon: '🎨', kleur: 'var(--mint-licht)' },
+  { id: 'klok',           titel: 'Hoe laat is het?',  sub: 'Klokkijken, heel serieus',    icoon: '🕰️', kleur: 'var(--lila-licht)' },
 ];
 
 const INHOUD = self.CONTENT || {};

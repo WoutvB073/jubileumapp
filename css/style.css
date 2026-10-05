@@ -2418,3 +2418,34 @@ p { margin: 0; }
   .kl-kleur { height: 44px; }
   .kl-nr { font-size: 16px; }
 }
+
+/* ============================================================
+   Spel: Hoe laat is het? (klok)
+   ============================================================ */
+.klok {
+  display: block;
+  width: min(230px, 32vh);
+  height: auto;
+  margin: 0 auto 12px;
+}
+
+.klok-rand { fill: var(--roze); }
+.klok-plaat { fill: var(--creme); }
+.klok-streep { stroke: var(--tekst-zacht); stroke-width: 1; stroke-linecap: round; opacity: 0.5; }
+.klok-streep.groot { stroke: var(--tekst); stroke-width: 2.5; opacity: 0.9; }
+.klok-cijfer { font-family: var(--font); font-weight: 800; font-size: 17px; fill: var(--tekst); text-anchor: middle; }
+.klok-uur { stroke: var(--roze-diep); stroke-width: 7; stroke-linecap: round; }
+.klok-min { stroke: var(--lila-diep); stroke-width: 4.5; stroke-linecap: round; }
+.klok-midden { fill: var(--tekst); }
+
+.klok-kaart { text-align: center; }
+.klok-kaart .quiz-opties { text-align: left; }
+.klok-vraag { font-family: var(--font-sier); font-size: 28px; color: var(--roze-diep); margin-bottom: 12px; }
+.klok-uitleg { font-size: 14px; color: var(--tekst-zacht); margin: -8px 0 16px; }
+.klok-intro .klok { width: min(170px, 26vh); }
+
+@media (max-height: 700px) {
+  .klok { width: min(190px, 28vh); margin-bottom: 6px; }
+  .klok-vraag { font-size: 24px; margin-bottom: 8px; }
+  .klok-kaart .quiz-optie { min-height: 48px; padding: 10px 16px; }
+}

@@ -690,12 +690,31 @@ self.CONTENT = {
   ],
 
   // ----------------------------------------------------------
+  // 13. KLOKKIJKEN
+  // ----------------------------------------------------------
+  // Na vraag 3, 6 en 9 verschijnt één van deze korte reacties
+  // (goed of fout). Het spel zelf is serieus; alleen de intro en de
+  // uitslag maken een grapje over te laat komen.
+  klok: {
+    goed: [
+      'Netjes 😏',
+      'Kijk, je kunt het gewoon',
+      'Die zat goed, ik zag je niet eens twijfelen 😏',
+    ],
+    fout: [
+      'Kleine wijzer is het uur, grote wijzer de minuten 😏',
+      'Bijna. Die wijzers doen ook niet mee 😅',
+      'Volgende is goed, ik voel het 😂',
+    ],
+  },
+
+  // ----------------------------------------------------------
   // 11. BRIEVENBUS
   // ----------------------------------------------------------
   // Liefdesbriefjes die vrijkomen als een spel klaar is.
   // 'vrijBij' is de naam van het spel:
   //   quiz, wie, fotos, tijdlijn, woordspel, hartjesblokken,
-  //   sudoku, woordzoeker, ditofdat, kleuren
+  //   sudoku, woordzoeker, ditofdat, kleuren, klok
   // TODO: deze schrijf je zelf. Kort en echt is mooier dan lang.
   // Titels mag je ook aanpassen. \n is een nieuwe regel, \n\n een witregel.
   brieven: [
@@ -709,6 +728,7 @@ self.CONTENT = {
     { vrijBij: 'woordzoeker',    titel: 'Gevonden!',                 tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
     { vrijBij: 'ditofdat',       titel: 'Mijn keuze',                tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
     { vrijBij: 'kleuren',        titel: 'Kleur bekennen',            tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
+    { vrijBij: 'klok',           titel: 'Over tijd',                 tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
   ],
 
   // ----------------------------------------------------------
