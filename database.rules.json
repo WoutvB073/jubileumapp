@@ -1,0 +1,46 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "kamers": {
+      "$code": {
+        ".read": "auth != null && (data.child('spelers/wout').val() === auth.uid || data.child('spelers/davinia').val() === auth.uid)",
+        ".write": "auth != null && (!data.exists() || data.child('spelers/wout').val() === auth.uid || data.child('spelers/davinia').val() === auth.uid || data.child('bijgewerkt').val() < now - 604800000)",
+        ".validate": "$code.matches(/^[A-Z]{4}-[0-9]{2}$/) && (!newData.exists() || newData.hasChildren(['spel', 'bijgewerkt', 'spelers']))",
+        "spel": {
+          ".validate": "newData.val() === 'uno' || newData.val() === 'rummikub'"
+        },
+        "bijgewerkt": {
+          ".validate": "newData.isNumber() && newData.val() <= now"
+        },
+        "spelers": {
+          ".read": "auth != null",
+          "$naam": {
+            ".write": "auth != null && newData.val() === auth.uid && (!data.exists() || data.val() === auth.uid || data.parent().parent().child('online').child($naam).val() !== true)",
+            ".validate": "($naam === 'wout' || $naam === 'davinia') && newData.isString()"
+          }
+        },
+        "online": {
+          "$naam": {
+            ".validate": "($naam === 'wout' || $naam === 'davinia') && newData.isBoolean()"
+          }
+        },
+        "stand": {
+          ".validate": "newData.hasChildren(['status'])"
+        },
+        "$anders": {
+          ".validate": false
+        }
+      }
+    },
+    "tellers": {
+      "$spel": {
+        ".read": "auth != null",
+        "$naam": {
+          ".write": "auth != null",
+          ".validate": "($spel === 'uno' || $spel === 'rummikub') && ($naam === 'wout' || $naam === 'davinia') && newData.isNumber() && ((!data.exists() && newData.val() === 1) || newData.val() === data.val() + 1)"
+        }
+      }
+    }
+  }
+}
