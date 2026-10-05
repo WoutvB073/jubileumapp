@@ -169,7 +169,7 @@
     let tekst;
     if (score === 3) tekst = 'Ook de dingen waar ik liever niet aan herinnerd word 💀';
     else if (score === 2) tekst = 'Een paar keer mis, maar het grote werk klopt.';
-    else tekst = 'Dan weet ik nu wat ik je nog moet uitleggen 😂';
+    else tekst = 'Eén hartje? Ken je ons wel 💀';
     kaart.append(el('p', 'quiz-slot', tekst));
 
     const opnieuw = el('button', 'knop', 'Nog een keer');
