@@ -172,7 +172,7 @@
     kaart.append(
       maakKlok({ u: 8, m: 0 }),
       el('h3', 'sier', 'Hoe laat is het?'),
-      el('p', 'quiz-slot', 'Tien vragen over klokkijken. Geen idee waarom ik dit spel speciaal voor jou heb gemaakt 😏'),
+      el('p', 'quiz-slot', 'Tien vragen over klokkijken. Geen idee waarom ik dit spel speciaal voor jou heb gemaakt 😂'),
       el('p', 'klok-uitleg', 'Eerst hele en halve uren, dan kwartieren, dan per vijf minuten.'),
       knop('knop', 'Begin', () => toonVraag()),
     );
@@ -234,8 +234,8 @@
     const hartjes = goedGeteld >= 9 ? 3 : goedGeteld >= 7 ? 2 : 1;
     api.klaar({ hartjes });
     let tekst;
-    if (hartjes === 3) tekst = 'Je kunt dus gewoon klokkijken. Dan heb je vanaf nu geen excuus meer om te laat te komen 😏';
-    else if (hartjes === 2) tekst = 'Bijna alles goed. Ik reken er voortaan nog steeds vijf minuten bij 😅';
+    if (hartjes === 3) tekst = 'Je kunt dus gewoon klokkijken. Dan heb je vanaf nu geen excuus meer om te laat te komen ⏰';
+    else if (hartjes === 2) tekst = 'Bijna alles goed. Ik reken er voortaan nog steeds vijf minuten bij 😂';
     else tekst = 'Oké, dit verklaart een hoop 😂';
 
     wortel.textContent = '';

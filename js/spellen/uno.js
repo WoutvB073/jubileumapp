@@ -575,7 +575,7 @@
     }
     if (l.soort === 'pak' && l.wie !== ik) return `${wie} pakt een kaart`;
     if (l.soort === 'uno') return l.wie === ik ? 'UNO geroepen' : `${wie} roept UNO!`;
-    if (l.soort === 'betrapt') return l.wie === ik ? `Betrapt! ${NAMEN[ander(ik)]} pakt er 2 😏` : `Betrapt! Jij vergat UNO te roepen, pak er 2 😅`;
+    if (l.soort === 'betrapt') return l.wie === ik ? `Betrapt! ${NAMEN[ander(ik)]} pakt er 2 😂` : `Betrapt! Jij vergat UNO te roepen, pak er 2 😭`;
     return null;
   }
 
@@ -597,15 +597,15 @@
     const d = tellers.davinia || 0;
     const kaartje = el('div', 'quiz-uitslag-kaart uno-uitslag');
     let tekst;
-    if (s.winnaar === 'wout') tekst = gewonnen ? 'Zoals altijd 😏' : 'Wout wint, zoals altijd 😏';
-    else tekst = gewonnen ? 'Ja ja, je hebt gewonnen. Deze keer 😅' : 'Davinia wint. Ik heb je laten winnen, echt 😅';
+    if (s.winnaar === 'wout') tekst = gewonnen ? 'Zoals altijd 😁' : 'Wout wint, zoals altijd 😁';
+    else tekst = gewonnen ? 'Ja ja, je hebt gewonnen. Deze keer 🥲' : 'Davinia wint. Ik heb je laten winnen, echt 🥲';
     const foto = fotoVanOns(code + ':' + s.zet);
     if (foto) kaartje.append(foto);
     kaartje.append(
       el('h3', 'sier', gewonnen ? 'Gewonnen!' : `${NAMEN[s.winnaar]} wint`),
       el('p', 'quiz-slot', tekst),
       el('p', 'uno-teller', `Wout ${w} · Davinia ${d}`),
-      el('p', 'uno-teller-sub', w > d ? 'Wout wint altijd, de cijfers liegen niet 😏' : w < d ? 'Davinia staat voor. Tijdelijk 😅' : 'Gelijkspel. Spannend 😏'),
+      el('p', 'uno-teller-sub', w > d ? 'Wout wint altijd, de cijfers liegen niet 😁' : w < d ? 'Davinia staat voor. Tijdelijk 😂' : 'Gelijkspel. Spannend 😁'),
       knop('knop', 'Nog een potje', nogEenPotje),
       knop('knop zacht', 'Stoppen', () => { Online.onthoud('uno', null); api.terug(); }),
     );

@@ -210,7 +210,7 @@
     const puzzel = maakZoeker(p);
     const standEl = nieuwScherm();
     if (!puzzel) {
-      wortel.append(el('p', 'fotos-intro', 'Deze woordzoeker lukt niet met deze woorden. Vraag Wout om content.js na te kijken. 💌'));
+      wortel.append(el('p', 'fotos-intro', 'Deze woordzoeker lukt niet met deze woorden. Vraag Wout om content.js na te kijken.'));
       return;
     }
     const { N, letters, plekken } = puzzel;
@@ -457,7 +457,7 @@
     const standEl = nieuwScherm();
     const kw = items.length ? (maakKruiswoord(items) || maakKruiswoord(items, 13)) : null;
     if (!kw) {
-      wortel.append(el('p', 'fotos-intro', 'Deze kruiswoordpuzzel lukt niet met deze woorden. Vraag Wout om content.js na te kijken. 💌'));
+      wortel.append(el('p', 'fotos-intro', 'Deze kruiswoordpuzzel lukt niet met deze woorden. Vraag Wout om content.js na te kijken.'));
       return;
     }
     const { rijen, kolommen, woorden } = kw;

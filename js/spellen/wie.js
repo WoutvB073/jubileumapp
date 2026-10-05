@@ -167,7 +167,7 @@
     kaart.append(el('p', 'quiz-score', `${goedGeteld} van de ${totaal} goed`));
 
     let tekst;
-    if (score === 3) tekst = 'Ook de dingen waar ik liever niet aan herinnerd word 😅';
+    if (score === 3) tekst = 'Ook de dingen waar ik liever niet aan herinnerd word 💀';
     else if (score === 2) tekst = 'Een paar keer mis, maar het grote werk klopt.';
     else tekst = 'Dan weet ik nu wat ik je nog moet uitleggen 😂';
     kaart.append(el('p', 'quiz-slot', tekst));
@@ -198,7 +198,7 @@
     if (!stellingen.length) {
       wortel.textContent = '';
       const kaart = el('div', 'melding-kaart');
-      kaart.append(el('h3', 'sier', 'Nog even geduld'), el('p', '', 'Er staan nog geen stellingen in content.js. 💌'));
+      kaart.append(el('h3', 'sier', 'Nog even geduld'), el('p', '', 'Er staan nog geen stellingen in content.js.'));
       wortel.append(kaart);
       return;
     }

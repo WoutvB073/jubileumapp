@@ -39,7 +39,7 @@
   const NIVEAUS = [
     { id: 'makkelijk', naam: 'Makkelijk', sub: 'Om in te komen' },
     { id: 'gemiddeld', naam: 'Gemiddeld', sub: 'Iets meer nadenken' },
-    { id: 'moeilijk', naam: 'Moeilijk', sub: 'Na de tweede cocktail 😏' },
+    { id: 'moeilijk', naam: 'Moeilijk', sub: 'Na de tweede cocktail 😂' },
   ];
 
   let api = null;
@@ -125,7 +125,7 @@
     const intro = el('div', 'sd-intro');
     intro.append(
       el('p', 'sd-intro-titel', '☀️ 🇲🇹 ☀️'),
-      el('p', '', "Op Malta deden we veel sudoku's. Tijd voor een rematch 😏"),
+      el('p', '', "Op Malta deden we veel sudoku's. Tijd voor een rematch 😁"),
       el('p', 'sd-intro-klein', 'Elk blok dat helemaal klopt, levert een Malta-herinnering op.'),
     );
     wortel.append(intro);
@@ -420,7 +420,7 @@
     kaart.append(
       el('p', 'quiz-hartjes', '🤍'.repeat(LEVENS)),
       el('h3', 'sier', 'Levens op'),
-      el('p', 'quiz-slot', 'Drie keer mis. Gewoon opnieuw, niemand die het ziet 😏'),
+      el('p', 'quiz-slot', 'Drie keer mis. Gewoon opnieuw, niemand die het ziet 🫡'),
       el('p', 'sd-op-klein', 'Herinneringen die je al hebt, blijven in het album.'),
       knop('knop', 'Opnieuw', opnieuw),
       knop('knop zacht', 'Andere sudoku', toonKeuze),

@@ -232,7 +232,7 @@
 
     if (!woorden.length) {
       nieuwScherm();
-      wortel.append(el('p', 'fotos-intro', 'Er staan nog geen Wordle-woorden in content.js. 💌'));
+      wortel.append(el('p', 'fotos-intro', 'Er staan nog geen Wordle-woorden in content.js.'));
       return;
     }
     if (!woord) { wordleUitslag(v); return; }
@@ -419,7 +419,7 @@
 
     if (!woorden.length) {
       nieuwScherm();
-      wortel.append(el('p', 'fotos-intro', 'Er staan nog geen galgjewoorden in content.js. 💌'));
+      wortel.append(el('p', 'fotos-intro', 'Er staan nog geen galgjewoorden in content.js.'));
       return;
     }
     if (!woord) { galgjeUitslag(v); return; }

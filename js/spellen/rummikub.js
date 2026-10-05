@@ -1240,7 +1240,7 @@
     const wie = NAMEN[l.wie];
     if (l.soort === 'leg') return `${wie} legde ${l.aantal} ${l.aantal === 1 ? 'steen' : 'stenen'}`;
     if (l.soort === 'pak') return `${wie} pakte een steen`;
-    if (l.soort === 'tijdop') return `${wie} was te laat en pakte een steen 😏`;
+    if (l.soort === 'tijdop') return `${wie} was te laat en pakte een steen 😴`;
     return null;
   }
 
@@ -1252,14 +1252,14 @@
     const foto = fotoVanOns(code + ':' + s.zet);
     if (foto) kaartje.append(foto);
     let titel, tekst;
-    if (s.winnaar === 'gelijk') { titel = 'Gelijkspel'; tekst = 'Pot leeg en precies even veel punten. Dat had ik niet zien aankomen 😅'; }
-    else if (s.winnaar === ik) { titel = 'Gewonnen!'; tekst = ik === 'wout' ? 'Zoals altijd 😏' : 'Ja ja, je hebt gewonnen. Deze keer 😅'; }
-    else { titel = `${NAMEN[s.winnaar]} wint`; tekst = s.winnaar === 'wout' ? 'Volgende keer beter 😏' : 'Davinia wint. Ik heb je laten winnen, echt 😅'; }
+    if (s.winnaar === 'gelijk') { titel = 'Gelijkspel'; tekst = 'Pot leeg en precies even veel punten. Dat had ik niet zien aankomen 😂'; }
+    else if (s.winnaar === ik) { titel = 'Gewonnen!'; tekst = ik === 'wout' ? 'Zoals altijd 😁' : 'Ja ja, je hebt gewonnen. Deze keer 🥲'; }
+    else { titel = `${NAMEN[s.winnaar]} wint`; tekst = s.winnaar === 'wout' ? 'Volgende keer beter 😘' : 'Davinia wint. Ik heb je laten winnen, echt 🥲'; }
     kaartje.append(el('h3', 'sier', titel), el('p', 'quiz-slot', tekst));
     if (s.potLeeg) kaartje.append(el('p', 'rk-potleeg', `Pot leeg · punten op het rekje: Wout ${s.potLeeg.wout}, Davinia ${s.potLeeg.davinia}`));
     kaartje.append(
       el('p', 'uno-teller', `Wout ${w} · Davinia ${d}`),
-      el('p', 'uno-teller-sub', w > d ? 'Wout staat voor, ook met stenen 😏' : w < d ? 'Davinia staat voor. Tijdelijk 😅' : 'Gelijkspel. Spannend 😏'),
+      el('p', 'uno-teller-sub', w > d ? 'Wout staat voor, ook met stenen 😁' : w < d ? 'Davinia staat voor. Tijdelijk 😂' : 'Gelijkspel. Spannend 😁'),
       knop('knop', 'Nog een potje', nogEenPotje),
       knop('knop zacht', 'Stoppen', () => { Online.onthoud(SPEL, null); api.terug(); }),
     );

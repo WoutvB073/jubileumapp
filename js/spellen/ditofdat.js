@@ -60,7 +60,7 @@
     if (!keuzes.length) {
       wortel.textContent = '';
       const kaart = el('div', 'melding-kaart');
-      kaart.append(el('h3', 'sier', 'Nog even geduld'), el('p', '', 'Er staan nog geen keuzes in content.js. 💌'));
+      kaart.append(el('h3', 'sier', 'Nog even geduld'), el('p', '', 'Er staan nog geen keuzes in content.js.'));
       wortel.append(kaart);
       return;
     }
@@ -136,9 +136,9 @@
     api.klaar({ hartjes });
 
     let tekst;
-    if (hartjes === 3) tekst = 'Je weet beter wat ik kies dan ik zelf. Beetje eng 😅';
-    else if (hartjes === 2) tekst = 'Vaker goed dan fout, de rest leg ik nog wel uit 😏';
-    else tekst = 'Ik ben dus onvoorspelbaarder dan ik dacht 😏';
+    if (hartjes === 3) tekst = 'Je weet beter wat ik kies dan ik zelf. Beetje eng 💀';
+    else if (hartjes === 2) tekst = 'Vaker goed dan fout, de rest leg ik nog wel uit 😁';
+    else tekst = 'Ik ben dus onvoorspelbaarder dan ik dacht 😂';
 
     wortel.textContent = '';
     window.scrollTo(0, 0);

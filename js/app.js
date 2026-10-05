@@ -238,7 +238,7 @@ function tekenMenu() {
 
   // Voortgang
   $('voortgang-tekst').textContent = gespeeld === solo.length
-    ? 'Alles gespeeld. Netjes 😏'
+    ? 'Alles gespeeld. Netjes 🎉'
     : `${gespeeld} van ${solo.length} spelletjes gespeeld`;
   $('voortgang-vulling').style.width = (100 * gespeeld / solo.length) + '%';
 
@@ -308,7 +308,7 @@ function toonFout(inhoud) {
   const kaart = maak('div', 'melding-kaart');
   kaart.append(
     maak('h3', 'sier', 'Oeps…'),
-    maak('p', '', 'Dit spelletje doet even raar. Probeer een ander, dan kijk ik er nog naar 😅'),
+    maak('p', '', 'Dit spelletje doet even raar. Probeer een ander, dan kijk ik er nog naar 🥲'),
   );
   const knop = maak('button', 'knop', 'Terug naar het menu');
   knop.type = 'button';

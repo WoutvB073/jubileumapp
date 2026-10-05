@@ -96,7 +96,7 @@
     if (midden.length < 2) {
       wortel.textContent = '';
       const kaart = el('div', 'melding-kaart');
-      kaart.append(el('h3', 'sier', 'Nog even geduld'), el('p', '', 'Er staan nog te weinig momenten in de tijdlijn in content.js. 💌'));
+      kaart.append(el('h3', 'sier', 'Nog even geduld'), el('p', '', 'Er staan nog te weinig momenten in de tijdlijn in content.js.'));
       wortel.append(kaart);
       return;
     }
@@ -284,7 +284,7 @@
     kop.append(
       el('p', 'quiz-hartjes', '💗'.repeat(score) + '🤍'.repeat(3 - score)),
       el('h3', 'sier', `Ronde ${ronde + 1} klaar!`),
-      el('p', 'quiz-slot', pogingen === 1 ? 'In één keer goed. Jij weet precies hoe ons jaar ging 😏' : `Gelukt in ${pogingen} pogingen. Zo ging het:`),
+      el('p', 'quiz-slot', pogingen === 1 ? 'In één keer goed. Jij weet precies hoe ons jaar ging ❤️' : `Gelukt in ${pogingen} pogingen. Zo ging het:`),
     );
     wortel.append(kop);
 

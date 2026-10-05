@@ -24,7 +24,7 @@ Een webapp (PWA) als cadeau voor het eenjarig jubileum van Wout en zijn vriendin
 ## Toon (geldt voor de hele app) — vervangen op 4 okt 2026
 - **Niet zoetsappig.** Schrijf zoals Wout praat: **plagerig naar haar en met zelfspot over zichzelf**. Voorbeelden van de goede toon: "Alsof jij om 7 uur op wil staan" en "Ja ik weet het, ik ben lui".
 - Netjes geschreven, maar niet formeel.
-- **Emoji's alleen deze soort:** 😂 😅 😏 voor lachen en plagen, en heel spaarzaam ❤️ of 😘. Geen andere emoji's in teksten.
+- **Emoji's alleen of vooral deze (Wouts meest gebruikte):** 😭 ❤️ 😂 👍 😘 😁 🫡 😍 ✅ 🥲 🎉 🤬 💀 😴. Een andere emoji alleen als die echt van toepassing is (zoals ⏰ bij het klokspel of 🃏 bij een kaartspel). Iconen op knoppen en tegels (menu, keuzekaarten, 💡 Tip, ✏️ Potlood, 🔒, hartjes als score) vallen hier niet onder. Niet meer gebruiken: 😏 en 😅.
 - Lengte mag verschillen: meestal één korte zin, soms twee.
 - **Verzin GEEN nieuwe feiten, gebeurtenissen of verhaaltjes.** Gebruik alleen wat in content.js staat (feiten, momenten, foto-uitleg, de antwoorden van Wout). Wil je een langere tekst met een verhaaltje: eerst Wout om input vragen.
 - Werkwijze bij tekstwijzigingen: eerst in `teksten-overzicht.md` (lokaal, niet in git) met nummers per spel, Wout stuurt correcties ("Q12: nieuwe tekst"), pas daarna in de app.

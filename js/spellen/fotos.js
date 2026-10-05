@@ -131,7 +131,7 @@
     wortel.append(terugNaarKeuze());
 
     if (fotos.length < 2) {
-      wortel.append(el('p', 'fotos-intro', 'Er staan nog geen foto’s voor de memory in content.js. 💌'));
+      wortel.append(el('p', 'fotos-intro', 'Er staan nog geen foto’s voor de memory in content.js.'));
       return;
     }
 
@@ -255,7 +255,7 @@
 
     if (!vragen.length) {
       wortel.textContent = '';
-      wortel.append(terugNaarKeuze(), el('p', 'fotos-intro', 'Er staan nog geen foto-vragen in content.js. 💌'));
+      wortel.append(terugNaarKeuze(), el('p', 'fotos-intro', 'Er staan nog geen foto-vragen in content.js.'));
       return;
     }
     toonVraag();
@@ -334,8 +334,8 @@
         el('h3', 'sier', hartjes === 3 ? 'Jij weet het allemaal nog' : 'Netjes geprobeerd'),
         el('p', 'quiz-score', `${goedGeteld} van de ${vragen.length} goed`),
         el('p', 'quiz-slot', hartjes === 3
-          ? 'Elke plek, elke datum. Jij weet het beter dan ik 😅'
-          : 'Te veel uitjes om te onthouden, dat is ook een compliment 😏'),
+          ? 'Elke plek, elke datum. Jij weet het beter dan ik 🥲'
+          : 'Te veel uitjes om te onthouden, dat is ook een compliment 😁'),
         knop('knop', 'Nog een keer', startRaad),
         knop('knop zacht', 'Terug naar fotospellen', toonKeuze),
       );
