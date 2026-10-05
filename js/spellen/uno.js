@@ -2,7 +2,10 @@
   SPEL: UNO (online, ieder op de eigen telefoon)
   ------------------------------------------------------------
   Normale regels voor 2 spelers: 4 kleuren met 0-9, Sla over, Keer om
-  (werkt als Sla over), +2, Kleurkeuze (bij ons de "Maas"-joker) en +4.
+  (werkt als Sla over), +2, Joker (kleur kiezen) en +4 Joker.
+  Kaarten zoals echte UNO (rood, geel, groen, blauw). Persoonlijk alleen
+  waar het niet in de weg zit: de achterkant (W ♥ D), het wachtscherm en
+  een foto van ons op het winnaarsscherm.
   - +2 en +4: de ander pakt de kaarten en jij bent weer aan de beurt.
   - Kun je niet (of wil je niet) spelen: pak een kaart. Past die, dan mag
     je hem meteen spelen; anders (of met "Pas") is de ander aan de beurt.
@@ -16,8 +19,8 @@
 (function () {
   'use strict';
 
-  const KLEUREN = ['roze', 'lila', 'mint', 'geel'];
-  const KLEURNAAM = { roze: 'roze', lila: 'lila', mint: 'mint', geel: 'geel' };
+  const KLEUREN = ['rood', 'geel', 'groen', 'blauw'];
+  const KLEURNAAM = { rood: 'rood', geel: 'geel', groen: 'groen', blauw: 'blauw' };
   const NAMEN = { wout: 'Wout', davinia: 'Davinia' };
   const START_KAARTEN = 7;
   const IK_SLEUTEL = 'jubileum.ik';
@@ -66,7 +69,7 @@
   const lijst = (x) => (Array.isArray(x) ? x.filter(Boolean) : x ? Object.values(x).filter(Boolean) : []);
 
   /* ----------------------------------------------------------
-     Kaarten: "kleur:waarde:nr", bv. "roze:7:1", "zwart:joker:3"
+     Kaarten: "kleur:waarde:nr", bv. "rood:7:1", "zwart:joker:3"
      waarde: 0-9, sla, keer, plus2, joker, plus4
      ---------------------------------------------------------- */
   function kaart(s) {
@@ -263,16 +266,34 @@
     if (k.waarde === 'keer') { midden = '⇄'; hoek = '⇄'; }
     if (k.waarde === 'plus2') { midden = '+2'; hoek = '+2'; }
     if (k.waarde === 'plus4') { midden = '+4'; hoek = '+4'; }
-    if (k.waarde === 'joker') { midden = 'Maas'; hoek = '≈'; e.classList.add('maas'); }
-    e.append(el('span', 'uno-hoek', hoek), el('span', 'uno-midden', midden), el('span', 'uno-hoek onder', hoek));
-    if (k.kleur === 'zwart') e.append(el('span', 'uno-regenboog'));
+    if (k.waarde === 'joker') { midden = ''; hoek = 'J'; }
+    e.append(el('span', 'uno-hoek', hoek));
+    const ovaal = el('span', 'uno-midden', midden);
+    if (k.kleur === 'zwart') ovaal.classList.add('vierkleur');
+    e.append(ovaal, el('span', 'uno-hoek onder', hoek));
     return e;
   }
 
+  // Achterkant: zwart met een rood ovaal, en daarin W ♥ D
   function rugEl() {
     const e = el('div', 'uno-kaart rug');
-    e.append(el('span', 'uno-rug-hart', '♥'));
+    const ovaal = el('span', 'uno-rug-ovaal');
+    ovaal.append(el('span', 'uno-rug-tekst', 'W♥D'));
+    e.append(ovaal);
     return e;
+  }
+
+  // Een foto van ons (vast per potje, zodat hij niet verspringt bij elke zet)
+  function fotoVanOns(sleutel) {
+    const lijst = (api.content.fotos && api.content.fotos.memory) || [];
+    if (!lijst.length) return null;
+    let h = 0;
+    for (const c of String(sleutel)) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+    const img = el('img', 'uno-foto');
+    img.src = lijst[h % lijst.length];
+    img.alt = '';
+    img.addEventListener('error', () => img.remove());
+    return img;
   }
 
   /* ----------------------------------------------------------
@@ -438,6 +459,7 @@
       el('h3', 'sier', 'Wachten op ' + NAMEN[ander(ik)]),
       el('p', 'quiz-slot', `Stuur deze code naar ${NAMEN[ander(ik)]}. Die kiest UNO, dan "Meedoen", en vult hem in.`),
       el('p', 'uno-code', code),
+      fotoVanOns(code) || el('span'),
       el('p', 'uno-laden', '♥'),
       knop('knop zacht', 'Stoppen', () => { Online.onthoud('uno', null); toonStart(); }),
     );
@@ -547,7 +569,7 @@
     if (l.soort === 'speel' && k) {
       if (k.waarde === 'plus2') return l.wie === ik ? `${NAMEN[ander(ik)]} pakt er 2` : `${wie} speelt +2: jij pakt er 2`;
       if (k.waarde === 'plus4') return l.wie === ik ? `${NAMEN[ander(ik)]} pakt er 4, kleur ${s.kleur}` : `${wie} speelt +4: jij pakt er 4, kleur ${s.kleur}`;
-      if (k.waarde === 'joker') return `${wie} ${l.wie === ik ? 'kiest' : 'kiest'} ${s.kleur}`;
+      if (k.waarde === 'joker') return `${wie} ${l.wie === ik ? 'kiest' : 'kiest'} ${s.kleur}`;   // Joker: kleur kiezen
       if (k.waarde === 'sla' || k.waarde === 'keer') return l.wie === ik ? 'Jij bent nog een keer' : `${wie} is nog een keer`;
       return null;
     }
@@ -577,6 +599,8 @@
     let tekst;
     if (s.winnaar === 'wout') tekst = gewonnen ? 'Zoals altijd 😏' : 'Wout wint, zoals altijd 😏';
     else tekst = gewonnen ? 'Ja ja, je hebt gewonnen. Deze keer 😅' : 'Davinia wint. Ik heb je laten winnen, echt 😅';
+    const foto = fotoVanOns(code + ':' + s.zet);
+    if (foto) kaartje.append(foto);
     kaartje.append(
       el('h3', 'sier', gewonnen ? 'Gewonnen!' : `${NAMEN[s.winnaar]} wint`),
       el('p', 'quiz-slot', tekst),
