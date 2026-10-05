@@ -552,6 +552,8 @@
     luister(document, 'gesturestart', stop);
     luister(document, 'gesturechange', stop);
     luister(canvas, 'touchmove', stop, { passive: false });
+    // iOS: geen dubbeltik-zoom op het kleurvlak (snel twee keer tikken = twee keer kleuren)
+    luister(canvas, 'touchend', stop, { passive: false });
     luister(window, 'resize', () => { maatBepalen(); if (klaar) pasIn(); else begrens(); teken(); });
 
     // Zoek: inzoomen op het eerste vakje dat nog moet in de gekozen kleur

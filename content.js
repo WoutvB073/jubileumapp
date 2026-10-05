@@ -757,5 +757,13 @@ self.CONTENT = {
     { foto: 'images/foto-37.jpg' },   // kleimaskers op de boot
     { foto: 'images/foto-13.jpg' },   // Winter Efteling met Jokie
     { foto: 'images/foto-28.jpg' },   // skilift, roze jas
+    { foto: 'images/foto-14.jpg' },   // Winter Efteling: selfie dichtbij, mutsen
+    { foto: 'images/foto-15.jpg' },   // carnaval: rood pak, goud, spiegel
+    { foto: 'images/foto-06.jpg' },   // Düsseldorf: spiegelselfie, witte sjaal
+    { foto: 'images/foto-39.jpg' },   // feest oom en tante: roze en paars licht
+    { foto: 'images/foto-20.jpg' },   // Slagharen: oranje licht en vuurwerk
+    { foto: 'images/foto-34.jpg' },   // Malta: op de SUP, turquoise water
+    { foto: 'images/foto-35.jpg' },   // Malta: Comino, kliffen en turquoise water
+    { foto: 'images/foto-16.jpg' },   // bollenvelden: gele klomp
   ],
 };

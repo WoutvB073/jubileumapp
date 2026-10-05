@@ -51,6 +51,10 @@ html, body {
 html { background: var(--creme); }
 body { background: transparent; }
 
+/* Geen dubbeltik-zoom van Safari, nergens in de app (snel tikken blijft gewoon tikken).
+   Spellen die zelf zoomen met twee vingers zetten touch-action: none op hun speelveld. */
+html, body, * { touch-action: manipulation; }
+
 /* Zachte kleurvlekken op de achtergrond (vast, scrolt niet mee) */
 body::before {
   content: "";
@@ -2788,6 +2792,8 @@ p { margin: 0; }
 
 /* ============================================================
    Online: Rummikub
+   Tijdens het spel een vaste laag over het hele scherm:
+   compacte kop, zo groot mogelijke tafel, rekje onderaan.
    ============================================================ */
 :root {
   --rk-rood: #d42a2a;
@@ -2796,140 +2802,293 @@ p { margin: 0; }
   --rk-oranje: #e57a00;
   --rk-steen: #fbf6e8;
   --rk-tafel: #2f7d5b;
+  --rk-licht: #ffd84d;
 }
 
-.rk-scherm { display: flex; flex-direction: column; gap: 8px; }
-.rk-info { display: flex; justify-content: space-between; margin-top: 4px; font-size: 13px; font-weight: 700; color: var(--tekst-zacht); }
-.rk-klok { font-variant-numeric: tabular-nums; }
+body.rk-vol { overflow: hidden; }
+
+.rk-scherm {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: calc(env(safe-area-inset-top) + 6px) 8px calc(env(safe-area-inset-bottom) + 8px);
+  background:
+    radial-gradient(70% 35% at 100% 0%, rgba(246, 184, 202, 0.45) 0%, rgba(246, 184, 202, 0) 70%),
+    var(--creme);
+  overscroll-behavior: none;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Kop */
+.rk-kop { display: flex; align-items: center; gap: 8px; min-height: 38px; font-size: 14px; }
+.rk-terug {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--wit);
+  box-shadow: var(--schaduw-klein);
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--roze-diep);
+  padding-bottom: 3px;
+}
+.rk-tegen { flex: 1; min-width: 0; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.rk-tegen b { font-size: 15px; }
+.rk-tegen-aantal { color: var(--tekst-zacht); font-weight: 700; }
+.rk-weg { margin: 0; font-weight: 700; }
+.rk-pot { color: var(--tekst-zacht); font-weight: 700; white-space: nowrap; }
+.rk-klok { font-weight: 800; font-variant-numeric: tabular-nums; color: var(--tekst); white-space: nowrap; }
+.rk-klok:empty { display: none; }
 .rk-klok.bijna { color: #d42a2a; animation: klop 1s ease-in-out infinite; }
 .rk-timerinfo { font-weight: 700; color: var(--tekst-zacht); }
 
-/* De tafel: groen vilt met heel zachte hartjes (persoonlijk, stoort niet) */
-.rk-tafel {
-  min-height: 150px;
-  max-height: 46vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+.rk-beurt { padding: 6px 12px; font-size: 15px; }
+.mijn-beurt .rk-beurt { animation: none; }
+.mijn-beurt .rk-beurt.pop { animation: pop 0.3s ease; }
+
+.rk-status {
   display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  gap: 8px 10px;
-  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 22px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--tekst-zacht);
+  line-height: 1.2;
+}
+.rk-status.fout { color: #c0392b; }
+.rk-status.kiezen { color: var(--tekst); }
+.rk-wis {
+  height: 24px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--tekst);
+  color: var(--wit);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* De tafel: groen vilt, zoom en schuiven met de vingers */
+.rk-tafel {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 120px;
+  overflow: hidden;
   border-radius: 16px;
   background:
     radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0 10px, transparent 11px),
     radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05) 0 14px, transparent 15px),
     var(--rk-tafel);
   box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.25);
+  touch-action: none;
 }
 
-.rk-leeg { color: rgba(255, 255, 255, 0.6); font-weight: 700; margin: auto; }
+.rk-vilt {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px 8px;
+  padding: 10px;
+  will-change: transform;
+}
+
+.rk-leeg { color: rgba(255, 255, 255, 0.6); font-weight: 700; margin: 30px auto; }
 
 .rk-set {
   display: flex;
   gap: 2px;
   padding: 4px;
-  min-height: 50px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.12);
   border: 2px solid transparent;
+  cursor: pointer;
 }
-
-.rk-set.ongeldig { border-color: #ff6b6b; background: rgba(255, 80, 80, 0.25); }
+.rk-set.ongeldig { border-color: #ff6b6b; background: rgba(255, 80, 80, 0.3); }
 .rk-set.vast { opacity: 0.75; }
-.rk-set.rk-doel, .rk-rek.rk-doel { border-color: #ffe27a; background: rgba(255, 226, 122, 0.25); }
+.rk-set.rk-doel, .rk-rek.rk-doel, .rk-nieuw.rk-doel { border-color: var(--rk-licht); background: rgba(255, 226, 122, 0.3); }
 
 .rk-nieuw {
-  align-items: center;
-  padding: 0 12px;
-  border: 2px dashed rgba(255, 255, 255, 0.55);
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 13px;
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  border: 2px dashed rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.18);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
   font-weight: 800;
 }
 
 /* Een steen */
 .rk-steen {
   position: relative;
-  width: 30px;
-  height: 40px;
+  flex: none;
+  width: 34px;
+  height: 46px;
   border-radius: 6px;
   background: linear-gradient(180deg, #fffdf6, var(--rk-steen));
   box-shadow: 0 2px 0 #d8cfb8, 0 3px 5px rgba(0, 0, 0, 0.25);
   display: grid;
   place-items: center;
   touch-action: none;
-  -webkit-user-select: none;
-  user-select: none;
   cursor: grab;
 }
 
-.rk-getal { font-weight: 900; font-size: 19px; line-height: 1; margin-top: -6px; font-variant-numeric: tabular-nums; }
+.rk-getal { font-weight: 900; font-size: 21px; line-height: 1; margin-top: -6px; font-variant-numeric: tabular-nums; }
 .rk-stip { position: absolute; bottom: 5px; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.8; }
 .rk-steen.k-r { color: var(--rk-rood); }
 .rk-steen.k-b { color: var(--rk-blauw); }
 .rk-steen.k-z { color: var(--rk-zwart); }
 .rk-steen.k-o { color: var(--rk-oranje); }
-.rk-steen.joker .rk-getal { color: var(--rk-zwart); font-size: 15px; }
+.rk-steen.joker .rk-getal { color: var(--rk-zwart); font-size: 17px; }
 .rk-steen.joker .rk-hart { position: absolute; bottom: 2px; font-size: 13px; color: var(--rk-rood); }
 
-.rk-steen.gekozen { outline: 3px solid #ffd34d; outline-offset: 1px; transform: translateY(-3px); }
-.rk-steen.opgepakt { opacity: 0.3; }
-.rk-steen.zweef {
+.rk-steen.gekozen { box-shadow: 0 0 0 3px #ff9fbf, 0 2px 0 #d8cfb8, 0 6px 10px rgba(0, 0, 0, 0.3); transform: translateY(-4px); }
+.rk-steen.opgepakt { opacity: 0.25; }
+.rk-steen.rk-invoeg { box-shadow: -5px 0 0 -1px var(--rk-licht), 0 2px 0 #d8cfb8; }
+
+/* Oplichten: net gelegd/verschoven door de ander, of net gepakt */
+.rk-steen.licht, .rk-steen.nieuw { animation: rk-licht 1.1s ease-in-out 4; }
+@keyframes rk-licht {
+  0%, 100% { box-shadow: 0 0 0 3px var(--rk-licht), 0 2px 0 #d8cfb8, 0 0 10px 3px rgba(255, 216, 77, 0.8); }
+  50% { box-shadow: 0 0 0 3px rgba(255, 216, 77, 0.35), 0 2px 0 #d8cfb8, 0 0 4px 1px rgba(255, 216, 77, 0.3); }
+}
+
+/* Zwevende stenen tijdens het slepen */
+.rk-zweef {
   position: fixed;
   left: 0;
   top: 0;
   z-index: 100;
-  width: 40px;
-  height: 54px;
+  display: flex;
+  gap: 3px;
   pointer-events: none;
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.35);
+  filter: drop-shadow(0 12px 14px rgba(0, 0, 0, 0.35));
 }
-.rk-steen.zweef .rk-getal { font-size: 25px; }
+.rk-zweef .rk-steen { width: 40px; height: 54px; }
+.rk-zweef .rk-getal { font-size: 25px; }
 
-/* Status en knoppen */
-.rk-status { text-align: center; font-size: 14px; font-weight: 700; color: var(--tekst-zacht); min-height: 20px; }
-.rk-status.fout { color: #c0392b; }
-
-.rk-knoppen { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+/* Knoppen */
+.rk-knoppen { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
 .rk-knop {
-  height: 44px;
+  height: 42px;
   border-radius: 999px;
   background: var(--wit);
   box-shadow: var(--schaduw-klein);
   font-weight: 800;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--tekst);
+  white-space: nowrap;
 }
 .rk-knop:disabled { opacity: 0.4; }
 .rk-knop.klaar { background: linear-gradient(120deg, var(--roze-diep), #b96bc4); color: var(--wit); }
 .rk-knop.klaar:disabled { background: #d9cfd5; color: var(--wit); }
 
 /* Rekje */
-.rk-rekkop { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 14px; }
-.rk-rekkop span { flex: 1; }
-.rk-sorteer { height: 32px; padding: 0 14px; border-radius: 999px; background: var(--wit); box-shadow: var(--schaduw-klein); font-weight: 700; font-size: 13px; color: var(--tekst-zacht); }
+.rk-rekkop { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; }
+.rk-rektitel { flex: 1; white-space: nowrap; }
+.rk-uitleg {
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(217, 102, 138, 0.14);
+  color: var(--roze-diep);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.rk-uitleg.genoeg { background: rgba(92, 192, 143, 0.2); color: #2f8a5e; }
+.rk-sorteer {
+  height: 32px;
+  min-width: 50px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--wit);
+  box-shadow: var(--schaduw-klein);
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: var(--tekst-zacht);
+}
 .rk-sorteer.aan { background: var(--tekst); color: var(--wit); }
 
 .rk-rek {
+  flex: none;
   display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  min-height: 62px;
-  padding: 8px;
+  flex-direction: column;
+  gap: 6px;
+  padding: 7px 6px;
   border-radius: 12px;
   border: 2px solid transparent;
   background: linear-gradient(180deg, #c99a6b, #a8794d);
   box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.15);
+  overflow-x: auto;
+  overflow-y: hidden;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.rk-rek::-webkit-scrollbar { display: none; }
+
+.rk-rij { display: flex; gap: 4px; min-height: 54px; width: max-content; min-width: 100%; }
+.rk-rek .rk-steen { width: 40px; height: 54px; }
+.rk-rek .rk-getal { font-size: 25px; }
+.rk-rek .rk-stip { width: 7px; height: 7px; bottom: 6px; }
+.rk-rek .rk-steen.joker .rk-getal { font-size: 21px; }
+.rk-rek .rk-steen.joker .rk-hart { font-size: 15px; }
+
+/* Een combinatie van slim sorteren: stenen bij elkaar met een lichte band eronder */
+.rk-combo {
+  display: flex;
+  gap: 2px;
+  margin: -3px 0;
+  padding: 3px 3px 5px;
+  border-radius: 9px;
+  background: rgba(255, 244, 214, 0.32);
+  box-shadow: inset 0 -3px 0 rgba(255, 236, 170, 0.95);
 }
 
-.rk-rek .rk-steen { width: 34px; height: 46px; }
-.rk-rek .rk-getal { font-size: 21px; }
-
+/* Uitslag over het spel heen */
+.rk-uitslag {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  overflow-y: auto;
+  padding: calc(env(safe-area-inset-top) + 20px) 16px calc(env(safe-area-inset-bottom) + 20px);
+  background: rgba(255, 247, 242, 0.7);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  touch-action: pan-y;
+}
+.rk-uitslag .quiz-uitslag-kaart { margin: 0 auto; max-width: 420px; }
 .rk-potleeg { font-size: 14px; color: var(--tekst-zacht); margin-bottom: 6px; }
 
+/* Kleinere telefoons (iPhone SE) */
 @media (max-height: 700px) {
-  .rk-tafel { max-height: 38vh; min-height: 120px; }
-  .rk-rek .rk-steen { width: 31px; height: 42px; }
-  .rk-rek .rk-getal { font-size: 19px; }
+  .rk-scherm { gap: 5px; }
+  .rk-kop { min-height: 34px; }
+  .rk-beurt { padding: 4px 12px; font-size: 14px; }
+  .rk-knop { height: 38px; }
+  .rk-sorteer { height: 30px; }
+  .rk-rij { min-height: 51px; }
+  .rk-rek .rk-steen { width: 38px; height: 51px; }
+  .rk-rek .rk-getal { font-size: 23px; }
 }
