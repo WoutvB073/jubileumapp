@@ -596,6 +596,17 @@ self.CONTENT = {
       'images/foto-02.jpg',   // reuzenrad Düsseldorf
       'images/foto-26.jpg',   // kermis Tilburg
     ],
+    // Tekst bij een combo (zoveel zetten op rij iets weggespeeld). Bij een hogere
+    // combo dan hieronder komt er gewoon een van de berichtjes.
+    comboTeksten: {
+      2: 'Combo! Lekker bezig 😏',
+      3: 'Drie op rij, wie ben jij 😅',
+      4: 'Oké, nu mag je opscheppen 😏',
+      5: 'Dit had ik niet verwacht 😂',
+      6: 'Ik doe hier niet meer mee 😅',
+    },
+    // Als het hele raster leeg is.
+    leegTekst: 'Alles leeg! Netjes 😏',
     // Na zoveel weggespeelde rijen/kolommen is de foto helemaal scherp.
     rijenTotScherp: 10,
     // Bij een weggespeelde rij verschijnt kort één van deze berichtjes. Kort houden.

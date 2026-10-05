@@ -2449,3 +2449,86 @@ p { margin: 0; }
   .klok-vraag { font-size: 24px; margin-bottom: 8px; }
   .klok-kaart .quiz-optie { min-height: 48px; padding: 10px 16px; }
 }
+
+/* Hartjesblokken: combo, zwevende punten, record */
+.hb-combo {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, var(--roze-diep), #b96bc4);
+  color: var(--wit);
+  font-size: 15px;
+  box-shadow: var(--schaduw);
+  pointer-events: none;
+  animation: pop 0.3s ease;
+}
+
+.hb-adem { display: flex; gap: 3px; }
+.hb-adem i { width: 7px; height: 7px; border-radius: 50%; background: rgba(255, 255, 255, 0.35); }
+.hb-adem i.vol { background: var(--wit); }
+
+.hb-punten-laag { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+
+.hb-zweef-punten {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--wit);
+  text-shadow: 0 1px 4px rgba(90, 56, 72, 0.7);
+  animation: zweefOp 1.2s ease-out forwards;
+}
+
+.hb-zweef-punten.groot { font-size: 26px; color: #fff3a8; }
+
+@keyframes zweefOp {
+  0% { opacity: 0; transform: translate(-50%, -30%) scale(0.7); }
+  15% { opacity: 1; transform: translate(-50%, -60%) scale(1.1); }
+  100% { opacity: 0; transform: translate(-50%, -230%) scale(1); }
+}
+
+.hb-record {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: #fff3a8;
+  color: var(--tekst);
+  font-family: var(--font-sier);
+  font-weight: 700;
+  font-size: 30px;
+  white-space: nowrap;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.8), var(--schaduw);
+  pointer-events: none;
+  animation: record 2.2s ease forwards;
+}
+
+.hb-record.leeg { background: var(--mint-licht); top: 50%; }
+
+@keyframes record {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.4) rotate(-6deg); }
+  15% { opacity: 1; transform: translate(-50%, -50%) scale(1.15) rotate(3deg); }
+  25% { transform: translate(-50%, -50%) scale(1) rotate(0); }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -80%) scale(1); }
+}
+
+/* Menu: kopjes boven Solo en Samen online */
+.tegels-kop {
+  grid-column: 1 / -1;
+  margin: 10px 2px 0;
+}
+
+.tegels-kop:first-child { margin-top: 0; }
+.tegels-kop h2 { font-family: var(--font-sier); font-weight: 700; font-size: 30px; color: var(--roze-diep); }
+.tegels-kop p { font-size: 14px; color: var(--tekst-zacht); }

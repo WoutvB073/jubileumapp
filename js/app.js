@@ -11,18 +11,27 @@
    Een spel is speelbaar zodra js/spellen/<id>.js zich registreert;
    tot die tijd staat er "binnenkort" op de tegel.
 ------------------------------------------------------------ */
+// Groepen in het menu, in deze volgorde.
+const GROEPEN = [
+  { id: 'solo', titel: 'Solo', sub: 'In je eentje, in je eigen tempo' },
+  { id: 'samen', titel: 'Samen online', sub: 'Tegen elkaar, ieder op je eigen telefoon' },
+];
+
 const SPELLEN = [
-  { id: 'quiz',           titel: 'Quiz over ons',     sub: 'Hoe goed ken je ons?',        icoon: '💬', kleur: 'var(--roze-licht)' },
-  { id: 'wie',            titel: 'Wie van ons twee?', sub: 'Wout of Davinia?',            icoon: '👫', kleur: 'var(--lila-licht)' },
-  { id: 'fotos',          titel: 'Fotospellen',       sub: 'Memory en raad de plek',      icoon: '📸', kleur: 'var(--perzik-licht)' },
-  { id: 'tijdlijn',       titel: 'Tijdlijn',          sub: 'Zet ons jaar op volgorde',    icoon: '🗓️', kleur: 'var(--roze-licht)' },
-  { id: 'woordspel',      titel: 'Woordspellen',      sub: 'Wordle en galgje',            icoon: '🔤', kleur: 'var(--lila-licht)' },
-  { id: 'hartjesblokken', titel: 'Hartjesblokken',    sub: 'Puzzel de foto scherp',       icoon: '💗', kleur: 'var(--perzik-licht)' },
-  { id: 'sudoku',         titel: 'Malta-sudoku',      sub: 'Net als op vakantie',         icoon: '☀️', kleur: 'var(--roze-licht)' },
-  { id: 'woordzoeker',    titel: 'Woordpuzzels',      sub: 'Zoeken en kruisen',           icoon: '🔍', kleur: 'var(--lila-licht)' },
-  { id: 'ditofdat',       titel: 'Dit of dat',        sub: 'Wat zou Wout kiezen?',        icoon: '⚖️', kleur: 'var(--perzik-licht)' },
-  { id: 'kleuren',        titel: 'Kleuren op nummer', sub: 'Kleur ons in',                icoon: '🎨', kleur: 'var(--mint-licht)' },
-  { id: 'klok',           titel: 'Hoe laat is het?',  sub: 'Klokkijken, heel serieus',    icoon: '🕰️', kleur: 'var(--lila-licht)' },
+  { id: 'quiz',           titel: 'Quiz over ons',     sub: 'Hoe goed ken je ons?',        icoon: '💬', kleur: 'var(--roze-licht)', groep: 'solo' },
+  { id: 'wie',            titel: 'Wie van ons twee?', sub: 'Wout of Davinia?',            icoon: '👫', kleur: 'var(--lila-licht)', groep: 'solo' },
+  { id: 'fotos',          titel: 'Fotospellen',       sub: 'Memory en raad de plek',      icoon: '📸', kleur: 'var(--perzik-licht)', groep: 'solo' },
+  { id: 'tijdlijn',       titel: 'Tijdlijn',          sub: 'Zet ons jaar op volgorde',    icoon: '🗓️', kleur: 'var(--roze-licht)', groep: 'solo' },
+  { id: 'woordspel',      titel: 'Woordspellen',      sub: 'Wordle en galgje',            icoon: '🔤', kleur: 'var(--lila-licht)', groep: 'solo' },
+  { id: 'hartjesblokken', titel: 'Hartjesblokken',    sub: 'Puzzel de foto scherp',       icoon: '💗', kleur: 'var(--perzik-licht)', groep: 'solo' },
+  { id: 'sudoku',         titel: 'Malta-sudoku',      sub: 'Net als op vakantie',         icoon: '☀️', kleur: 'var(--roze-licht)', groep: 'solo' },
+  { id: 'woordzoeker',    titel: 'Woordpuzzels',      sub: 'Zoeken en kruisen',           icoon: '🔍', kleur: 'var(--lila-licht)', groep: 'solo' },
+  { id: 'ditofdat',       titel: 'Dit of dat',        sub: 'Wat zou Wout kiezen?',        icoon: '⚖️', kleur: 'var(--perzik-licht)', groep: 'solo' },
+  { id: 'kleuren',        titel: 'Kleuren op nummer', sub: 'Kleur ons in',                icoon: '🎨', kleur: 'var(--mint-licht)', groep: 'solo' },
+  { id: 'klok',           titel: 'Hoe laat is het?',  sub: 'Klokkijken, heel serieus',    icoon: '🕰️', kleur: 'var(--lila-licht)', groep: 'solo' },
+  // Samen online (deel 2 en 3): ieder op de eigen telefoon
+  { id: 'uno',            titel: 'UNO',               sub: 'Samen, ieder op je eigen telefoon', icoon: '🃏', kleur: 'var(--roze-licht)', groep: 'samen' },
+  { id: 'rummikub',       titel: 'Rummikub',          sub: 'Samen, ieder op je eigen telefoon', icoon: '🔢', kleur: 'var(--lila-licht)', groep: 'samen' },
 ];
 
 const INHOUD = self.CONTENT || {};
@@ -175,11 +184,21 @@ function tekenMenu() {
   const tegels = $('tegels');
   tegels.textContent = '';
   let gespeeld = 0;
+  const solo = SPELLEN.filter((s) => s.groep !== 'samen');
 
-  SPELLEN.forEach((spel, i) => {
+  GROEPEN.forEach((groep) => {
+    const spellen = SPELLEN.filter((s) => (s.groep || 'solo') === groep.id);
+    if (!spellen.length) return;
+    const kop = maak('div', 'tegels-kop');
+    kop.append(maak('h2', '', groep.titel), maak('p', '', groep.sub));
+    tegels.append(kop);
+    spellen.forEach((spel, i) => tegels.append(maakTegel(spel, i)));
+  });
+
+  function maakTegel(spel, i) {
     const speelbaar = Spellen.bestaat(spel.id);
     const data = opslag[spel.id] || {};
-    if (data.klaar) gespeeld++;
+    if (data.klaar && spel.groep !== 'samen') gespeeld++;
 
     const tegel = maak('button', 'tegel' + (speelbaar ? '' : ' binnenkort'));
     tegel.type = 'button';
@@ -214,14 +233,14 @@ function tekenMenu() {
         toast('Dit spelletje komt binnenkort');
       }
     });
-    tegels.append(tegel);
-  });
+    return tegel;
+  }
 
   // Voortgang
-  $('voortgang-tekst').textContent = gespeeld === SPELLEN.length
+  $('voortgang-tekst').textContent = gespeeld === solo.length
     ? 'Alles gespeeld. Netjes 😏'
-    : `${gespeeld} van ${SPELLEN.length} spelletjes gespeeld`;
-  $('voortgang-vulling').style.width = (100 * gespeeld / SPELLEN.length) + '%';
+    : `${gespeeld} van ${solo.length} spelletjes gespeeld`;
+  $('voortgang-vulling').style.width = (100 * gespeeld / solo.length) + '%';
 
   // Brievenbus (wordt in stap 11 een eigen "spel" met id 'brievenbus')
   const brieven = INHOUD.brieven || [];

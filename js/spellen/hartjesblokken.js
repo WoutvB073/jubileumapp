@@ -10,8 +10,17 @@
   elk potje de volgende) die bij elke weggespeelde rij of kolom scherper
   wordt. Na rijenTotScherp rijen is hij scherp en verschijnt het bijschrift.
 
-  Hartjes voor de tegel: foto helemaal scherp gespeeld = 3, halverwege = 2,
-  anders 1. De beste score wordt bewaard.
+  Punten (zoals bij echte blokpuzzels):
+  - 1 punt per geplaatst hartje
+  - rijen/kolommen tegelijk weg: 10 x n x (n+1) (1 = 20, 2 = 60, 3 = 120, 4 = 200 ...)
+    keer de combo
+  - combo: elke zet die iets wegspeelt verhoogt de combo (x2, x3, ...);
+    na COMBO_ADEM zetten zonder wegspelen is hij weg
+  - leeg raster: +LEEG_BONUS
+  De vormengenerator zorgt dat er (bijna) altijd iets past.
+
+  Hartjes voor de tegel (beste potje telt): vanaf HARTJES_GRENZEN[1] punten 3,
+  vanaf HARTJES_GRENZEN[0] punten 2, anders 1.
 */
 (function () {
   'use strict';
@@ -19,6 +28,10 @@
   const N = 8;                       // raster van N x N
   const MAX_VAAG = 14;               // px vervaging aan het begin
   const KLEUREN = ['#f6b8ca', '#cdb8f0', '#f9c9b0', '#a8dcc4', '#f7e09a', '#b9cff0'];
+  const COMBO_ADEM = 3;               // zoveel zetten zonder wegspelen, dan is de combo weg
+  const LEEG_BONUS = 300;             // bonus als het hele raster leeg is
+  const KANS_HELE_SET = 0.75;         // kans dat een nieuwe set van 3 helemaal te plaatsen is
+  const HARTJES_GRENZEN = [1000, 3000];   // afgesteld met proefpotjes: willekeurig spelen 40-800, goed spelen 6000+ in 120 zetten
 
   // Vormen als lijstjes [rij, kolom]; het getal is hoe vaak ze voorkomen (gewicht).
   const VORMEN = [
@@ -48,6 +61,9 @@
   let score = 0;
   let rijenWeg = 0;
   let beste = 0;
+  let combo = 0;           // aantal zetten op rij met wegspelen
+  let zonderRij = 0;       // zetten sinds de laatste weggespeelde rij
+  let recordGemeld = false;
   let foto = null;         // { pad, bijschrift }
   let bijschriftGetoond = false;
   let berichtNr = 0;
@@ -159,6 +175,9 @@
     raster = Array.from({ length: N }, () => Array(N).fill(null));
     score = 0;
     rijenWeg = 0;
+    combo = 0;
+    zonderRij = 0;
+    recordGemeld = false;
     bijschriftGetoond = false;
     berichtNr = Math.floor(Math.random() * 10);
     bezig = false;
@@ -195,6 +214,10 @@
       }
     }
     bord.append(rasterEl);
+    el$.combo = el('div', 'hb-combo');
+    el$.combo.hidden = true;
+    el$.punten = el('div', 'hb-punten-laag');
+    bord.append(el$.combo, el$.punten);
     el$.melding = el('div', 'hb-melding');
     el$.bijschrift = el('div', 'hb-bijschrift');
     el$.bijschrift.hidden = true;
@@ -206,8 +229,49 @@
     wortel.append(balk, bord, el$.lade);
   }
 
+  // Past deze set van vormen helemaal, in een of andere volgorde? (snelle, gulzige controle)
+  function heleSetPast(set) {
+    const volgordes = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+    const kopie = raster.map((r) => r.slice());
+    for (const volgorde of volgordes) {
+      let lukt = true;
+      const proef = kopie.map((r) => r.slice());
+      for (const i of volgorde) {
+        let geplaatst = false;
+        for (let r = 0; r < N && !geplaatst; r++) {
+          for (let c = 0; c < N && !geplaatst; c++) {
+            if (set[i].cellen.every(([a, b]) => r + a < N && c + b < N && !proef[r + a][c + b])) {
+              set[i].cellen.forEach(([a, b]) => { proef[r + a][c + b] = 'x'; });
+              // volle lijnen weghalen, net als in het spel
+              for (let k = 0; k < N; k++) {
+                if (proef[k].every(Boolean)) proef[k].fill(null);
+              }
+              for (let k = 0; k < N; k++) {
+                if (proef.every((rij) => rij[k])) proef.forEach((rij) => { rij[k] = null; });
+              }
+              geplaatst = true;
+            }
+          }
+        }
+        if (!geplaatst) { lukt = false; break; }
+      }
+      if (lukt) return true;
+    }
+    return false;
+  }
+
+  // Nieuwe set van 3: meestal helemaal te plaatsen, en bijna altijd past er minstens één.
   function vulLade() {
-    lade = [willekeurigeVorm(), willekeurigeVorm(), willekeurigeVorm()];
+    const moetHeel = Math.random() < KANS_HELE_SET;
+    let reserve = null;
+    for (let poging = 0; poging < 60; poging++) {
+      const set = [willekeurigeVorm(), willekeurigeVorm(), willekeurigeVorm()];
+      const eenPast = set.some((vorm) => pastErgens(vorm.cellen));
+      if (!eenPast) continue;
+      if (!moetHeel || heleSetPast(set)) { lade = set; return; }
+      if (!reserve) reserve = set;
+    }
+    lade = reserve || [willekeurigeVorm(), willekeurigeVorm(), willekeurigeVorm()];
   }
 
   /* ----------------------------------------------------------
@@ -360,10 +424,45 @@
   /* ----------------------------------------------------------
      Plaatsen en wegspelen
      ---------------------------------------------------------- */
+  // Midden van een groepje vakjes (voor de zwevende punten), in % van het bord
+  function middenVan(cellen) {
+    const r = cellen.reduce((s, x) => s + x[0], 0) / cellen.length;
+    const c = cellen.reduce((s, x) => s + x[1], 0) / cellen.length;
+    return { x: ((c + 0.5) / N) * 100, y: ((r + 0.5) / N) * 100 };
+  }
+
+  function zweefPunten(tekst, plek, groot) {
+    const p = el('span', 'hb-zweef-punten' + (groot ? ' groot' : ''), tekst);
+    p.style.left = plek.x + '%';
+    p.style.top = plek.y + '%';
+    el$.punten.append(p);
+    later(() => p.remove(), 1300);
+  }
+
+  function tekenCombo() {
+    const b = el$.combo;
+    b.hidden = combo < 2;
+    if (combo < 2) return;
+    b.textContent = '';
+    b.append(el('b', '', `Combo x${combo}`));
+    const bolletjes = el('span', 'hb-adem');
+    for (let k = 0; k < COMBO_ADEM; k++) bolletjes.append(el('i', k < COMBO_ADEM - zonderRij ? 'vol' : ''));
+    b.append(bolletjes);
+  }
+
+  function controleerRecord() {
+    if (recordGemeld || beste <= 0 || score <= beste) return;
+    recordGemeld = true;
+    const r = el('div', 'hb-record', 'Nieuw record!');
+    el$.bord.append(r);
+    later(() => r.remove(), 2200);
+  }
+
   function plaats(i, rij, kol) {
     const vorm = lade[i];
     vorm.cellen.forEach(([r, c]) => { raster[rij + r][kol + c] = vorm.kleur; });
     score += vorm.cellen.length;
+    zweefPunten('+' + vorm.cellen.length, middenVan(vorm.cellen.map(([r, c]) => [rij + r, kol + c])), false);
     lade[i] = null;
     tekenRaster();
     vorm.cellen.forEach(([r, c]) => vakken[rij + r][kol + c].classList.add('neer'));
@@ -377,23 +476,37 @@
       vol.rijen.forEach((r) => { for (let c = 0; c < N; c++) weg.add(r + ',' + c); });
       vol.kolommen.forEach((c) => { for (let r = 0; r < N; r++) weg.add(r + ',' + c); });
       weg.forEach((k) => { const [r, c] = k.split(',').map(Number); vakken[r][c].classList.add('weg'); });
-      const punten = 10 * aantal * aantal;
+      combo++;
+      zonderRij = 0;
+      const punten = 10 * aantal * (aantal + 1) * combo;
       score += punten;
       rijenWeg += aantal;
       toonBericht(aantal, punten);
+      zweefPunten('+' + punten, middenVan([...weg].map((k) => k.split(',').map(Number))), true);
       later(() => {
         weg.forEach((k) => { const [r, c] = k.split(',').map(Number); raster[r][c] = null; });
+        // Alles leeg? Flinke bonus.
+        if (raster.every((rij) => rij.every((x) => !x))) {
+          score += LEEG_BONUS;
+          zweefPunten('+' + LEEG_BONUS, { x: 50, y: 50 }, true);
+          toonLeeg();
+        }
         bezig = false;
         naZet();
       }, 380);
     } else {
+      zonderRij++;
+      if (zonderRij >= COMBO_ADEM) combo = 0;
       naZet();
       vorm.cellen.forEach(([r, c]) => vakken[rij + r][kol + c].classList.add('neer'));
     }
+    tekenCombo();
     tekenStand();
   }
 
   function naZet() {
+    controleerRecord();
+    tekenCombo();
     if (lade.every((v) => !v)) vulLade();
     tekenRaster();
     tekenLade();
@@ -409,13 +522,23 @@
   function toonBericht(aantal, punten) {
     const lijst = hb().berichtjes || [];
     const extra = aantal === 2 ? 'Dubbel! ' : aantal === 3 ? 'Driedubbel! ' : aantal > 3 ? 'Wauw! ' : '';
-    const tekst = lijst.length ? lijst[berichtNr++ % lijst.length] : '';
+    const comboTekst = (hb().comboTeksten || {})[combo];
+    const tekst = comboTekst || (lijst.length ? lijst[berichtNr++ % lijst.length] : '');
     const m = el$.melding;
     m.textContent = '';
-    m.append(el('b', '', `${extra}+${punten}`), el('span', '', tekst));
+    // De punten zelf zweven al omhoog; hier alleen 'Dubbel!' e.d. en het berichtje.
+    if (extra) m.append(el('b', '', extra.trim()));
+    if (tekst) m.append(el('span', '', tekst));
+    void punten;
     m.classList.remove('zichtbaar');
     void m.offsetWidth;
     m.classList.add('zichtbaar');
+  }
+
+  function toonLeeg() {
+    const r = el('div', 'hb-record leeg', hb().leegTekst || 'Alles leeg!');
+    el$.bord.append(r);
+    later(() => r.remove(), 2000);
   }
 
   function toonBijschrift() {
@@ -431,8 +554,7 @@
      Einde potje
      ---------------------------------------------------------- */
   function einde() {
-    const nodig = hb().rijenTotScherp || 10;
-    const hartjes = rijenWeg >= nodig ? 3 : rijenWeg >= nodig / 2 ? 2 : 1;
+    const hartjes = score >= HARTJES_GRENZEN[1] ? 3 : score >= HARTJES_GRENZEN[0] ? 2 : 1;
     const nieuwRecord = beste > 0 && score > beste;   // bij het eerste potje is elk getal een "record"; dat zeggen we niet
     if (score > beste) { beste = score; api.opslag.bewaar({ beste }); }
     api.klaar({ hartjes });
