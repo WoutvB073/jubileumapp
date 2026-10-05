@@ -13,7 +13,7 @@
 ------------------------------------------------------------ */
 // Groepen in het menu, in deze volgorde.
 const GROEPEN = [
-  { id: 'solo', titel: 'Solo', sub: 'In je eentje, in je eigen tempo' },
+  { id: 'solo', titel: 'Alleen spelen', sub: 'In je eentje, in je eigen tempo' },
   { id: 'samen', titel: 'Samen online', sub: 'Tegen elkaar, ieder op je eigen telefoon' },
 ];
 

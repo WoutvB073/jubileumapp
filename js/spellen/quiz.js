@@ -179,8 +179,8 @@
 
     let tekst;
     if (score === 3) tekst = 'Bijna alles goed. Je hebt beter opgelet dan ik 🥲';
-    else if (score === 2) tekst = 'Best goed. De rest leg ik je nog wel een keer uit 😁';
-    else tekst = 'Oké, dan doen we die quiz gewoon nog een keer 😂';
+    else if (score === 2) tekst = 'Twee hartjes. Ik had er drie verwacht 🥲';
+    else tekst = 'Hmm. Was je wel bij al die dates? 😂';
     kaart.append(el('p', 'quiz-slot', tekst));
 
     const opnieuw = el('button', 'knop', 'Nog een keer');
