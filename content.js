@@ -688,7 +688,7 @@ self.CONTENT = {
     { vraag: "Nog een keer", a: "CHO in de Ziggo Dome", b: "Vunzige Deuntjes", mijnKeuze: 'a', reactie: "CHO. Valentijnsdag in de Ziggo Dome wint het 👍" },
     { vraag: "Perfecte avond", a: "IJsje halen en naar de Maas", b: "Samen brownies bakken", mijnKeuze: 'a', reactie: "IJsje en de Maas, dat blijft ons plekje ❤️" },
     { vraag: "Bij de McDonald’s", a: "Big Mac", b: "McChicken", mijnKeuze: 'b', reactie: "Ik hou van KIP 😂" },
-    { vraag: "Avondje bank", a: "Netflix", b: "YouTube", mijnKeuze: 'a', reactie: "Netflix, met jou in bed 😍" },
+    { vraag: "Avondje thuis", a: "Netflix", b: "YouTube", mijnKeuze: 'a', reactie: "Netflix, met jou in bed 😍" },
     { a: "Waterpark", b: "Kermis", mijnKeuze: 'a', reactie: "Waterpark, ondanks het drama op Malta 💀" },
     { vraag: "Op de kerstmarkt in Düsseldorf", a: "Reuzenrad", b: "Schaatsbaan", mijnKeuze: 'b', reactie: "Schaatsbaan, en we stonden allebei nog 😂" },
     { a: "Mdina", b: "Valletta", mijnKeuze: 'b', reactie: "Valletta. Daar had ik mijn schoenen nog aan 😂" },
@@ -705,12 +705,12 @@ self.CONTENT = {
     goed: [
       'Netjes 👍',
       'Kijk, je kunt het gewoon',
-      'Die zat goed, ik zag je niet eens twijfelen 😁',
+      'Kijk eens aan. Je kunt het wel ✅',
     ],
     fout: [
       'Kleine wijzer is het uur, grote wijzer de minuten ⏰',
-      'Bijna. Die wijzers doen ook niet mee 🥲',
-      'Volgende is goed, ik voel het 😂',
+      'Net niet. Daarom ben je dus altijd te laat 😂',
+      'Fout, maar ik ben het gewend 🥲',
     ],
   },
 

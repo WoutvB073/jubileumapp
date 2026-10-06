@@ -172,7 +172,7 @@
     kaart.append(
       maakKlok({ u: 8, m: 0 }),
       el('h3', 'sier', 'Hoe laat is het?'),
-      el('p', 'quiz-slot', 'Tien vragen over klokkijken. Geen idee waarom ik dit spel speciaal voor jou heb gemaakt 😂'),
+      el('p', 'quiz-slot', 'Klokkijken. Je weet zelf wel waarom dit spel er is ⏰'),
       el('p', 'klok-uitleg', 'Eerst hele en halve uren, dan kwartieren, dan per vijf minuten.'),
       knop('knop', 'Begin', () => toonVraag()),
     );
