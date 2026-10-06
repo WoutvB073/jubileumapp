@@ -137,8 +137,8 @@
 
     let tekst;
     if (hartjes === 3) tekst = 'Je weet beter wat ik kies dan ik zelf. Beetje eng 💀';
-    else if (hartjes === 2) tekst = 'Vaker goed dan fout, de rest leg ik nog wel uit 😁';
-    else tekst = 'Ik ben dus onvoorspelbaarder dan ik dacht 😂';
+    else if (hartjes === 2) tekst = 'Niet slecht. Je kent me best goed 😁';
+    else tekst = 'Dat ging niet best. We moeten praten 💀';
 
     wortel.textContent = '';
     window.scrollTo(0, 0);

@@ -334,8 +334,8 @@
         el('h3', 'sier', hartjes === 3 ? 'Jij weet het allemaal nog' : 'Netjes geprobeerd'),
         el('p', 'quiz-score', `${goedGeteld} van de ${vragen.length} goed`),
         el('p', 'quiz-slot', hartjes === 3
-          ? 'Elke plek, elke datum. Jij weet het beter dan ik 🥲'
-          : 'Te veel uitjes om te onthouden, dat is ook een compliment 😁'),
+          ? 'Jij weet het allemaal nog. Ik ben onder de indruk 🫡'
+          : 'Matig zeg. Ik had meer verwacht 🥲'),
         knop('knop', 'Nog een keer', startRaad),
         knop('knop zacht', 'Terug naar fotospellen', toonKeuze),
       );

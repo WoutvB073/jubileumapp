@@ -125,7 +125,7 @@
     const intro = el('div', 'sd-intro');
     intro.append(
       el('p', 'sd-intro-titel', '☀️ 🇲🇹 ☀️'),
-      el('p', '', "Op Malta deden we veel sudoku's. Tijd voor een rematch 😁"),
+      el('p', '', 'In het vliegtuig deden we ze samen. Nu sta je er alleen voor 😂'),
       el('p', 'sd-intro-klein', 'Elk blok dat helemaal klopt, levert een Malta-herinnering op.'),
     );
     wortel.append(intro);
