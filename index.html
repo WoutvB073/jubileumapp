@@ -6,7 +6,7 @@
   <title>Voor Davinia</title>
   <meta name="description" content="Een cadeautje voor ons eerste jaar samen.">
   <meta name="format-detection" content="telephone=no">
-  <meta name="color-scheme" content="only light">
+  <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#fff7f2">
 
   <!-- iPhone: als echte app openen vanaf het beginscherm -->
@@ -14,6 +14,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Voor Davinia">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <!-- Thema (Licht/Donker) meteen zetten, vóór het tekenen: geen geknipper -->
+  <script>
+    (function () {
+      var t = 'licht';
+      try { t = localStorage.getItem('jubileum.thema') === 'donker' ? 'donker' : 'licht'; } catch (e) {}
+      document.documentElement.setAttribute('data-thema', t);
+      if (t === 'donker') {
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#151116');
+        document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]').setAttribute('content', 'black-translucent');
+      }
+    })();
+  </script>
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="icons/icon-192.png">
   <link rel="manifest" href="manifest.webmanifest">
@@ -48,6 +60,7 @@
   <script defer src="js/spellen/ditofdat.js"></script>
   <script defer src="js/spellen/kleuren.js"></script>
   <script defer src="js/spellen/klok.js"></script>
+  <script defer src="js/spellen/brievenbus.js"></script>
   <!-- Online (Firebase wordt pas geladen als je een online spel opent) -->
   <script defer src="js/online.js"></script>
   <script defer src="js/spellen/uno.js"></script>
@@ -96,6 +109,7 @@
   <!-- 2. Hoofdmenu -->
   <section id="menu" class="scherm" hidden>
     <header class="menu-kop">
+      <button class="thema-knop" id="thema-knop" type="button">🌙 Donker</button>
       <p class="menu-boven">Voor</p>
       <h1 class="sier menu-titel" id="menu-naam">Davinia</h1>
       <p class="menu-dagen" id="menu-dagen"></p>

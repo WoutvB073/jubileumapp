@@ -715,27 +715,39 @@ self.CONTENT = {
   },
 
   // ----------------------------------------------------------
-  // 11. BRIEVENBUS
+  // 11. BRIEVENBUS: één brief in 22 delen
   // ----------------------------------------------------------
-  // Liefdesbriefjes die vrijkomen als een spel klaar is.
-  // 'vrijBij' is de naam van het spel:
-  //   quiz, wie, fotos, tijdlijn, woordspel, hartjesblokken,
-  //   sudoku, woordzoeker, ditofdat, kleuren, klok
-  // TODO: deze schrijf je zelf. Kort en echt is mooier dan lang.
-  // Titels mag je ook aanpassen. \n is een nieuwe regel, \n\n een witregel.
-  brieven: [
-    { vrijBij: 'quiz',           titel: 'Over dat eerste berichtje', tekst: 'Lieve Davinia,\n\nTODO: schrijf hier je briefje.\n\nXxx Wout' },
-    { vrijBij: 'wie',            titel: 'Wat ik aan je zie',         tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
-    { vrijBij: 'fotos',          titel: 'Mijn favoriete foto',       tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
-    { vrijBij: 'tijdlijn',       titel: 'Ons jaar',                  tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
-    { vrijBij: 'woordspel',      titel: 'Even in woorden',           tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
-    { vrijBij: 'hartjesblokken', titel: 'Stukje voor stukje',        tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
-    { vrijBij: 'sudoku',         titel: 'Terug naar Malta',          tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
-    { vrijBij: 'woordzoeker',    titel: 'Gevonden!',                 tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
-    { vrijBij: 'ditofdat',       titel: 'Mijn keuze',                tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
-    { vrijBij: 'kleuren',        titel: 'Kleur bekennen',            tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
-    { vrijBij: 'klok',           titel: 'Over tijd',                 tekst: 'Lieve Davinia,\n\nTODO\n\nXxx Wout' },
-  ],
+  // Per solospel gaan er twee delen open: als ze het spel voor het eerst
+  // uitspeelt, en als ze er voor het eerst 2 of meer hartjes haalt.
+  // De delen gaan altijd op volgorde open (eerst deel 1, dan deel 2, ...).
+  // UNO en Rummikub leveren geen delen op.
+  brief: {
+    delen: [
+      "Lieve Davinia, dit is de laatste verrassing in de app. Elke keer dat je een spel speelt, komt er een stukje van deze brief bij. 22 delen, natuurlijk. Je moet ze dus wel allemaal verdienen.",
+      "Ik heb deze app gemaakt om ons jaar nog een keer samen te beleven. Jij legt altijd en overal alles vast met foto's, nu wilde ik iets vastleggen op mijn manier. Ik wilde je iets geven wat niemand anders je kan geven, iets waar heel veel tijd in zit, en waarmee je altijd en overal terug kunt naar onze herinneringen.",
+      "Het begon in de zomer van 2025. Jij trok rond door Thailand, ik zat in Phuket, en ineens kwam jouw story voorbij. Dat was mijn kans, dus ik vroeg waar je ergens zat.",
+      "Het gesprek liep meteen makkelijk. Stiekem was ik toen al aan het plannen hoe ik het gesprek na Thailand gaande zou houden. Online had ik al meteen door dat we in heel veel matchten.",
+      "Een maand later zaten we op het terras bij Barkade. In de arcadehal kwam ik er meteen achter hoe competitief jij bent, maar natuurlijk won ik alsnog. En toen een serveerster Fritz-kola over je heen liet vallen, zag ik aan je reactie meteen hoe lief je bent. Daarna haalden we een ijsje bij de McDonald's en gingen we naar de Maas. Daar was ons eerste fysieke contact: ik tilde je op, omdat je zelfs toen al stoer aan het doen was. Het was meteen gezellig, alsof we elkaar al heel lang kenden en al vaak hadden gezien. Toen kreeg ik echt hoop.",
+      "Op de tweede date gingen we eerst lunchen, en daarna darten en brownies bakken bij mij thuis. Op de derde date kwam de eerste kus, 's avonds bij de Maas. Jij zei \"wow flashbacks\", en het verbaast me nog steeds dat ik je daarna nog heb gezoend. Ik dacht al dat ik verliefd aan het worden was, maar na die kus wist ik het zeker.",
+      "Op onze vierde date gingen we suppen op de Noorderplas, en daarna zaten we bij jou in de jacuzzi. Daarna volgden nog veel meer momenten: terrasjes, later ook bij ons thuis, en vooral heel veel avonden bij de Maas. Zo werd de Maas ons plekje.",
+      "Jouw gezin ontmoette ik al toen ik je ophaalde voor onze eerste date. Natuurlijk was dat spannend, maar het eerste gesprek was meteen fijn en ik voelde me welkom. Inmiddels voel ik me super thuis bij jouw gezin, en daar ben ik heel dankbaar voor. En andersom ging het net zo makkelijk: mijn familie mocht je meteen, mijn vrienden vinden je leuk, en jij paste er meteen tussen.",
+      "Op 22 november had ik gepland dat we onze eerste date over zouden doen. Aan het eind, bij de Maas, wilde ik het je vragen. Buiten was het te koud, dus het werd de auto.",
+      "Ik ging er eigenlijk vanuit dat je ja zou zeggen, maar zenuwachtig was ik toch. Jij had het natuurlijk allang zien aankomen. Sinds die avond zijn we officieel samen, op de 22e natuurlijk.",
+      "Daarna ging het snel. De kerstmarkt in Düsseldorf voor je verjaardag, met het reuzenrad, de schaatsbaan en heel veel lekker eten. Onze eerste kerst samen, en ons eerste oud en nieuw. Een beter begin van 2026 had ik me niet kunnen wensen.",
+      "In het voorjaar zag ik je voor het eerst optreden, met de Angels in Slagharen. Drie dagen heb ik daar elke show gezien. Later was ik er voor het eerst bij toen je op een festival stond, bij Vunzige Deuntjes. Elke keer dat ik je zie dansen, ben ik zo trots dat ik jou van mij mag noemen.",
+      "Wat ik zo aan je waardeer: je positiviteit, hoe hard je voor alles werkt en hoe lief je bent voor anderen. Je hebt overal zin in, je zorgt voor me, en ik kan alles met je bespreken.",
+      "Het zijn ook de kleine dingen. Je berichtjes, je lach, en hoe gek je kan doen. En je bent natuurlijk niet normaal mooi, dat werkt ook niet tegen.",
+      "Je bent vaak te laat, je maakt van alles een foto, je doet me na als ik godverdomme zeg, soms ben je een beetje een hater, en je vindt jezelf veel grappiger dan je bent. We lachen heel veel samen, al komt dat echt niet door jouw grappen. En toch ben je voor mij perfect.",
+      "Ik ben trots op je. Je werkt super hard voor je dromen, je bent stoer in nieuwe situaties en je zet door als iets tegenzit. Ik zie hoe je aan jezelf werkt en hoe je er bent voor iedereen om je heen.",
+      "En toen was het zomer. Het skicadeau had ik al in februari van je gekregen, maar in de zomer konden we het eindelijk plannen. Het was echt een hele leuke dag. Daarna gingen we op onze eerste vakantie samen: een week Malta, alleen wij twee. Zonsondergangen, samen eten, cocktails en vragenspellen, door mooie plekken lopen, en een boottocht met verschrikkelijke aandachtszoekers om ons heen.",
+      "Er ging genoeg mis. Onze bus reed tegen een auto, en gelukkig zei jij vijf minuten ervoor dat ik moest komen zitten. Ik liep op blote voeten door Mdina door mijn blaren, en daar werden we ook nog bijna aangereden door een paard. Toch was er geen moment saai en hadden we geen seconde gezeik. We waren het altijd eens over de planning, en dat zegt veel over hoe wij bij elkaar passen. De tijd ging veel te snel en we leerden elkaar nog beter kennen. Malta ga ik nooit vergeten. Misschien was het wel de leukste week van mijn leven.",
+      "Als het thuis moeilijk is, kan ik altijd bij jou terecht en ben je er voor me. Je gaf me zelfs een heel pakketje. Ik ben echt super dankbaar dat ik weet dat ik iemand heb die er altijd voor me is, ook als het minder gaat.",
+      "Wat dit jaar mij heeft gegeven? Bij jou kan ik helemaal mezelf zijn. Je staat altijd achter me, je geeft me rust en ik kan alles met je delen. Door jou laat ik meer van mijn gevoel zien en geniet ik meer van het moment. Ik ben trots als ik je ergens mee naartoe neem. Je motiveert me, omdat je zelf zo hard werkt. Je maakt me een beter mens, en bij jou voel ik me thuis. Ook heb ik meer geduld gekregen, door al dat wachten op jou...",
+      "Ik heb heel veel zin om in ons tweede jaar samen weer veel nieuwe dingen te ontdekken, en om vaker van jou te genieten als je op een podium staat. Hopelijk blijf je zelf ook grote stappen maken. Britain's Got Talent staat zelfs al voor de deur, dus vergeet me niet als je straks beroemd wordt. Maar vooral wil ik heel veel tijd met je doorbrengen.",
+      "Davinia, een jaar geleden vroeg ik je in de auto bij de Maas of je mijn vriendin wilde zijn. Toen wist ik nog niet hoeveel dit jaar me zou geven. Ik hoop echt dat je weet hoe blij ik altijd ben als ik je zie, en ik denk vaker aan je dan je denkt, ook al lijkt het soms misschien niet zo. Bedankt dat je er altijd voor me bent, in goede en in mindere tijden, dat ik bij jou gewoon mezelf kan zijn, en voor alle momenten die in deze app te vinden zijn, maar ook alle momenten die er niet in staan. Ik ben echt niet normaal blij met jou, en ik heb zin in alles wat we nog mogen meemaken. Ik hou het allermeeste van jou ❤️",
+    ],
+    ondertekening: 'Wout',
+  },
 
   // ----------------------------------------------------------
   // 12. KLEUREN OP NUMMER

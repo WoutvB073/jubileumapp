@@ -74,6 +74,94 @@ const Opslag = {
 };
 
 /* ------------------------------------------------------------
+   Brievenbus: één brief in delen (CONTENT.brief.delen).
+   Per solospel gaan er twee delen open: één als het spel voor het eerst
+   is uitgespeeld, en één als er voor het eerst 2 of meer hartjes zijn
+   gehaald. Het aantal verdiende delen bepaalt hoeveel delen er open zijn;
+   ze gaan dus altijd op volgorde open, welk spel het ook was.
+------------------------------------------------------------ */
+const Brief = {
+  totaal() {
+    return (INHOUD.brief && INHOUD.brief.delen ? INHOUD.brief.delen.length : 0);
+  },
+  open(spellen = Opslag.lees().spellen) {
+    let n = 0;
+    SPELLEN.filter((s) => s.groep === 'solo').forEach((s) => {
+      const d = spellen[s.id] || {};
+      if (d.klaar) n++;
+      if ((d.hartjes || 0) >= 2) n++;
+    });
+    return Math.min(n, this.totaal());
+  },
+  // Hoeveel delen er al gelezen zijn (in de brievenbus gezien)
+  gelezen() {
+    return (Opslag.lees().brief || {}).gelezen || 0;
+  },
+  zetGelezen(n) {
+    const data = Opslag.lees();
+    data.brief = Object.assign({}, data.brief, { gelezen: n });
+    Opslag.schrijf(data);
+  },
+};
+self.Brief = Brief;
+
+// Melding onderin als er net een nieuw deel van de brief open is gegaan
+let briefMeldingTimer = null;
+function toonBriefMelding(van, tot) {
+  clearTimeout(briefMeldingTimer);
+  briefMeldingTimer = setTimeout(() => {
+    sluitBriefMelding();
+    const aantal = tot - van;
+    const kaart = maak('div', 'brief-melding');
+    kaart.setAttribute('role', 'status');
+    kaart.append(
+      maak('span', 'brief-melding-icoon', '💌'),
+      maak('b', '', aantal === 1 ? 'Nieuw stukje van je brief' : `${aantal} nieuwe stukjes van je brief`),
+      maak('span', 'brief-melding-sub', aantal === 1 ? `Deel ${tot} is open` : aantal === 2 ? `Deel ${van + 1} en ${tot} zijn open` : `Deel ${van + 1} t/m ${tot} zijn open`),
+    );
+    const lees = maak('button', 'knop', 'Lees het meteen');
+    lees.type = 'button';
+    lees.addEventListener('click', () => { sluitBriefMelding(); location.hash = 'spel/brievenbus'; });
+    const later = maak('button', 'brief-melding-later', 'Later');
+    later.type = 'button';
+    later.addEventListener('click', sluitBriefMelding);
+    kaart.append(lees, later);
+    document.body.append(kaart);
+  }, 900);
+}
+function sluitBriefMelding() {
+  clearTimeout(briefMeldingTimer);
+  document.querySelectorAll('.brief-melding').forEach((m) => m.remove());
+}
+
+/* ------------------------------------------------------------
+   Thema: Licht (pastel) of Donker (zwart met roze).
+   De keuze staat in localStorage; een stukje in <head> zet hem al
+   vóór het tekenen, zodat er niets knippert.
+------------------------------------------------------------ */
+const THEMA_SLEUTEL = 'jubileum.thema';
+const THEMA_KLEUR = { licht: '#fff7f2', donker: '#151116' };
+const Thema = {
+  huidig() {
+    return document.documentElement.dataset.thema === 'donker' ? 'donker' : 'licht';
+  },
+  zet(thema) {
+    document.documentElement.dataset.thema = thema;
+    try { localStorage.setItem(THEMA_SLEUTEL, thema); } catch (e) { /* niets */ }
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = THEMA_KLEUR[thema];
+    const balk = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+    if (balk) balk.content = thema === 'donker' ? 'black-translucent' : 'default';
+    const knop = $('thema-knop');
+    if (knop) {
+      knop.textContent = thema === 'donker' ? '☀️ Licht' : '🌙 Donker';
+      knop.setAttribute('aria-label', thema === 'donker' ? 'Wissel naar het lichte thema' : 'Wissel naar het donkere thema');
+    }
+  },
+};
+self.Thema = Thema;
+
+/* ------------------------------------------------------------
    Register: elk spelbestand roept Spellen.registreer({...}) aan.
 ------------------------------------------------------------ */
 const Spellen = {
@@ -242,12 +330,13 @@ function tekenMenu() {
     : `${gespeeld} van ${solo.length} spelletjes gespeeld`;
   $('voortgang-vulling').style.width = (100 * gespeeld / solo.length) + '%';
 
-  // Brievenbus (wordt in stap 11 een eigen "spel" met id 'brievenbus')
-  const brieven = INHOUD.brieven || [];
-  const open = brieven.filter((b) => opslag[b.vrijBij]?.klaar).length;
-  $('brievenbus-sub').textContent = brieven.length
-    ? `${open} van ${brieven.length} briefjes vrijgespeeld`
-    : 'Briefjes voor jou';
+  // Brievenbus: teller en badge met het aantal ongelezen delen
+  const open = Brief.open(opslag);
+  const nieuw = Math.max(0, open - Brief.gelezen());
+  $('brievenbus-sub').textContent = `${open} van ${Brief.totaal()} delen open`;
+  const badge = $('brievenbus-badge');
+  badge.textContent = nieuw ? String(nieuw) : '';
+  badge.hidden = !nieuw;
 }
 
 /* ------------------------------------------------------------
@@ -275,14 +364,7 @@ function startSpel(id) {
       bewaar: (extra) => Opslag.zetSpel(id, extra),
     },
     // Aanroepen als het spel uitgespeeld is. Bewaart de beste score.
-    klaar({ hartjes: score } = {}) {
-      const oud = Opslag.spel(id);
-      const extra = { klaar: true, datum: new Date().toISOString() };
-      if (typeof score === 'number') {
-        extra.hartjes = Math.max(0, Math.min(3, Math.round(score)), oud.hartjes || 0);
-      }
-      Opslag.zetSpel(id, extra);
-    },
+    klaar({ hartjes: score } = {}) { spelKlaar(id, score); },
     terug: () => { location.hash = 'menu'; },
     toast,
     maak,
@@ -295,6 +377,21 @@ function startSpel(id) {
     toonFout(inhoud);
   }
 }
+
+// Een spel is uitgespeeld: bewaar dat en de beste score.
+// Gaat er daardoor een nieuw deel van de brief open, dan komt er een melding.
+function spelKlaar(id, score) {
+  const briefVoor = Brief.open();
+  const oud = Opslag.spel(id);
+  const extra = { klaar: true, datum: new Date().toISOString() };
+  if (typeof score === 'number') {
+    extra.hartjes = Math.max(0, Math.min(3, Math.round(score)), oud.hartjes || 0);
+  }
+  Opslag.zetSpel(id, extra);
+  const briefNa = Brief.open();
+  if (briefNa > briefVoor) toonBriefMelding(briefVoor, briefNa);
+}
+self.__spelKlaar = spelKlaar;   // voor tests
 
 function stopSpel() {
   if (huidigSpel && typeof huidigSpel.stop === 'function') {
@@ -322,6 +419,7 @@ function toonFout(inhoud) {
 ------------------------------------------------------------ */
 function route() {
   stopSpel();
+  if (location.hash.includes('brievenbus')) sluitBriefMelding();
   const hash = location.hash.replace(/^#\/?/, '');
   if (hash.startsWith('spel/')) {
     startSpel(hash.slice(5));
@@ -352,6 +450,8 @@ function maakZweefHartjes() {
 ------------------------------------------------------------ */
 document.addEventListener('DOMContentLoaded', () => {
   maakZweefHartjes();
+  Thema.zet(Thema.huidig());
+  $('thema-knop').addEventListener('click', () => Thema.zet(Thema.huidig() === 'donker' ? 'licht' : 'donker'));
 
   if (!isApp()) {
     toonInstallatie();
