@@ -6,8 +6,8 @@
   in het bovenste deel; elke extra Yahtzee +100 (als het Yahtzee-vak 50 heeft)
   met de jokerregel: eerst het bijbehorende bovenste vak, anders mag een
   onderste vak met de volle waarde (full house 25, straten 30/40).
-  Gooien met de knop of door de telefoon te schudden (iPhone vraagt één keer
-  toestemming voor de bewegingssensor). Gooi je 5 stenen die samen 22 ogen
+  Gooien met de knop (schudden kan niet: iOS toont dan "Herstel typen" als er
+  eerder in de app getypt is). Gooi je 5 stenen die samen 22 ogen
   hebben: een kleine verrassing (geen punten). Stand in tellers/yahtzee.
 */
 (function () {
@@ -27,9 +27,6 @@
 
   let laatsteWorp = -1;      // welke worp ik al heb laten rollen
   let laatsteGeluk = -1;
-  let schudAan = false;
-  let schudLuisteraar = null;
-  let laatsteSchud = 0;
   let huidigeCtx = null;
 
   /* ---------- puntentelling ---------- */
@@ -169,42 +166,28 @@
     });
   }
 
-  /* ---------- schudden ---------- */
-  function schudden() {
-    if (schudLuisteraar) return;
-    let vorige = null;
-    schudLuisteraar = (e) => {
-      const a = e.accelerationIncludingGravity || e.acceleration;
-      if (!a) return;
-      const nu = { x: a.x || 0, y: a.y || 0, z: a.z || 0 };
-      if (vorige) {
-        const kracht = Math.abs(nu.x - vorige.x) + Math.abs(nu.y - vorige.y) + Math.abs(nu.z - vorige.z);
-        if (kracht > 28 && Date.now() - laatsteSchud > 1200) {
-          laatsteSchud = Date.now();
-          const ctx = huidigeCtx;
-          if (ctx && ctx.stand.status === 'spel' && ctx.stand.beurt === ctx.ik && (ctx.stand.worpen || 0) < 3) gooi(ctx);
-        }
-      }
-      vorige = nu;
-    };
-    window.addEventListener('devicemotion', schudLuisteraar);
-    schudAan = true;
-  }
-  async function zetSchuddenAan() {
-    try {
-      if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
-        const antwoord = await DeviceMotionEvent.requestPermission();
-        if (antwoord !== 'granted') { huidigeCtx.api.toast('Geen toestemming. Gooien met de knop kan altijd'); return; }
-      }
-      schudden();
-      huidigeCtx.api.toast('Schudden staat aan');
-      huidigeCtx.opnieuw();
-    } catch (e) {
-      huidigeCtx.api.toast('Schudden lukt hier niet. Gooien met de knop kan altijd');
-    }
-  }
-
   /* ---------- tekenen ---------- */
+  // Een slinger lichtjes over het terras: het snoer hangt door, de lampjes hangen eraan
+  const LICHTJES = (() => {
+    let lampjes = '';
+    for (let i = 0; i < 11; i++) {
+      const p = 0.04 + i * 0.092;
+      lampjes += `<i style="left:${(p * 100).toFixed(1)}%;top:${(6 + 72 * p * (1 - p)).toFixed(1)}px;--v:${(i % 4) * 0.7}s"></i>`;
+    }
+    return '<svg viewBox="0 0 100 30" preserveAspectRatio="none"><path d="M0 6 Q50 42 100 6"/></svg>' + lampjes;
+  })();
+  const COCKTAIL = '<svg viewBox="0 0 34 56">'
+    + '<defs><linearGradient id="yz-drank" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc35a"/><stop offset="1" stop-color="#e8456b"/></linearGradient></defs>'
+    + '<ellipse cx="16" cy="53" rx="12" ry="2.5" fill="rgba(0,0,0,0.22)"/>'
+    + '<path d="M22 2 L15 42" stroke="#e14d6f" stroke-width="2.4" stroke-linecap="round"/>'
+    + '<path d="M6.9 22 H25.1 L23.6 48 A3 3 0 0 1 20.6 51 H11.4 A3 3 0 0 1 8.4 48 Z" fill="url(#yz-drank)"/>'
+    + '<rect x="10" y="24" width="7" height="7" rx="1.5" fill="rgba(255,255,255,0.45)" transform="rotate(-12 13 27)"/>'
+    + '<rect x="17" y="28" width="6" height="6" rx="1.5" fill="rgba(255,255,255,0.4)" transform="rotate(10 20 31)"/>'
+    + '<path d="M6 13 H26 L24 48 A3 3 0 0 1 21 51 H11 A3 3 0 0 1 8 48 Z" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.9)" stroke-width="1.3"/>'
+    + '<circle cx="26" cy="14" r="6" fill="#f7d34a" stroke="#fff4b8" stroke-width="1.4"/>'
+    + '<path d="M26 8.5 V19.5 M20.5 14 H31.5 M22.2 10.2 L29.8 17.8 M29.8 10.2 L22.2 17.8" stroke="#fff4b8" stroke-width="0.8"/>'
+    + '</svg>';
+
   function steenEl(waarde, vast, rolt, klikbaar, opTik) {
     const s = document.createElement(klikbaar ? 'button' : 'div');
     if (klikbaar) { s.type = 'button'; s.addEventListener('click', opTik); }
@@ -256,13 +239,17 @@
     const m = melding(s, ik, NAMEN);
     if (m) scherm.append(el('p', 'uno-gebeurtenis yz-melding', m));
 
-    // Het dekentje aan de Maas, met de stenen en de beker
-    const deken = el('div', 'yz-maas');
+    // Een terrasje op Malta, 's avonds: lichtjes, het tafeltje met de stenen, de beker en een cocktail
+    const terras = el('div', 'yz-terras');
+    const lichtjes = el('div', 'yz-lichtjes');
+    lichtjes.setAttribute('aria-hidden', 'true');
+    lichtjes.innerHTML = LICHTJES;
+    terras.append(lichtjes);
     const rolt = s.worpNr !== laatsteWorp && s.worpen > 0;
     laatsteWorp = s.worpNr;
     const stenen = el('div', 'yz-stenen');
     s.worp.forEach((w, i) => stenen.append(steenEl(w, s.vast[i], rolt && !s.vast[i], mijnBeurt && s.worpen > 0 && s.worpen < 3, () => houdVast(ctx, i))));
-    const onderkant = el('div', 'yz-dekenrij');
+    const onderkant = el('div', 'yz-tafelrij');
     const beker = el('div', 'yz-beker' + (rolt ? ' schudt' : ''));
     beker.append(el('span', 'yz-beker-tekst', 'W♥D'));
     onderkant.append(beker);
@@ -273,12 +260,13 @@
     } else {
       onderkant.append(el('p', 'yz-kijk', `${NAMEN[s.beurt]} gooit…`));
     }
-    deken.append(stenen, onderkant);
-    if (mijnBeurt && s.worpen > 0 && s.worpen < 3) deken.append(el('p', 'yz-tip', 'Tik op een steen om hem vast te houden'));
-    scherm.append(deken);
-    if (mijnBeurt && !schudAan) {
-      scherm.append(knop('uno-wissel yz-schud', 'Je kunt ook je telefoon schudden. Zet het aan', zetSchuddenAan));
-    }
+    const glas = el('div', 'yz-cocktail');
+    glas.setAttribute('aria-hidden', 'true');
+    glas.innerHTML = COCKTAIL;
+    onderkant.append(glas);
+    terras.append(stenen, onderkant);
+    if (mijnBeurt && s.worpen > 0 && s.worpen < 3) terras.append(el('p', 'yz-tip', 'Tik op een steen om hem vast te houden'));
+    scherm.append(terras);
 
     // 22 ogen: een kleine verrassing
     if (s.geluk && s.geluk === s.worpNr && laatsteGeluk !== s.geluk) {

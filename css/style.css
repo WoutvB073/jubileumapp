@@ -3711,40 +3711,55 @@ html[data-thema="donker"] .wl-links { color: #7fc6d6; }
 }
 
 /* ============================================================
-   Yahtzee: een dekentje aan de Maas, 's avonds
+   Yahtzee: een terrasje op Malta, 's avonds
    ============================================================ */
 .yz-scherm { gap: 10px; }
 .yz-beurt { padding: 7px 12px; font-size: 15px; }
 .yz-beurt.mijn { background: linear-gradient(120deg, var(--roze-diep), #b96bc4); color: #fff; }
 .yz-melding { font-size: 14.5px; }
-.yz-maas {
+.yz-terras {
+  /* lucht, zee en de kalkstenen balustrade bovenin; daaronder het houten tafeltje */
+  --yz-lucht: linear-gradient(180deg, #7766b8 0, #e98da0 30px, #ffc98f 50px);
+  --yz-zon: radial-gradient(circle 12px at 78% 50px, #fff0b8 96%, transparent);
+  --yz-zee: linear-gradient(180deg, transparent 50px, #5b8fbd 50px, #3f709f 62px, #ecd9b6 62px, #f3e4c6 68px, #c9a878 68px, #c9a878 72px, transparent 72px);
+  --yz-glinster: radial-gradient(ellipse 34px 3px at 78% 54px, rgba(255, 226, 160, 0.85), transparent), radial-gradient(ellipse 18px 2px at 74% 58px, rgba(255, 226, 160, 0.6), transparent);
+  --yz-hout: repeating-linear-gradient(90deg, rgba(0, 0, 0, 0) 0 46px, rgba(90, 50, 20, 0.22) 46px 48px), linear-gradient(180deg, #dca46c, #c78a54);
+  --yz-gloed: radial-gradient(ellipse 120% 70% at 50% 72px, rgba(255, 214, 140, 0.55), transparent 70%);
   position: relative;
   display: grid;
   gap: 10px;
-  padding: 58px 12px 14px;
+  padding: 84px 12px 14px;
   border-radius: 22px;
   overflow: hidden;
-  background: repeating-conic-gradient(#f6b8ca 0 25%, #fff3f6 0 50%) 0 0 / 28px 28px;
+  background: var(--yz-gloed), var(--yz-hout);
   box-shadow: var(--schaduw);
 }
-/* de avondlucht en de Maas boven het dekentje */
-.yz-maas::before {
+.yz-terras::before {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  height: 54px;
-  background:
-    radial-gradient(1.5px 1.5px at 12% 22%, #fff 99%, transparent),
-    radial-gradient(1px 1px at 30% 12%, #fff 99%, transparent),
-    radial-gradient(1.5px 1.5px at 68% 18%, #fff 99%, transparent),
-    radial-gradient(1px 1px at 84% 30%, #fff 99%, transparent),
-    radial-gradient(9px 9px at 88% 14px, #fff6d8 98%, transparent),
-    linear-gradient(180deg, #2a2559 0%, #5a4a8a 55%, transparent 55%),
-    repeating-linear-gradient(180deg, #2e4f7c 0 5px, #3d6596 5px 7px);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+  height: 72px;
+  background: var(--yz-glinster), var(--yz-zee), var(--yz-zon), var(--yz-lucht);
+  box-shadow: 0 3px 6px rgba(70, 35, 15, 0.3);
 }
+/* een slinger warme lampjes over het terras */
+.yz-lichtjes { position: absolute; left: 0; right: 0; top: 0; height: 40px; pointer-events: none; }
+.yz-lichtjes svg { position: absolute; inset: 0 0 auto; width: 100%; height: 30px; overflow: visible; }
+.yz-lichtjes path { fill: none; stroke: #3a2a26; stroke-width: 1.3; vector-effect: non-scaling-stroke; }
+.yz-lichtjes i {
+  position: absolute;
+  width: 8px;
+  height: 11px;
+  margin-top: 1px;
+  border-radius: 50% 50% 46% 46%;
+  background: radial-gradient(circle at 50% 38%, #fffbe6, #ffd36e 55%, #f2a33c);
+  box-shadow: 0 0 7px 3px rgba(255, 196, 92, 0.6), 0 0 18px 6px rgba(255, 196, 92, 0.25);
+  transform: translateX(-50%);
+  animation: yz-glim 3.2s ease-in-out var(--v) infinite alternate;
+}
+@keyframes yz-glim { from { opacity: 1; } to { opacity: 0.72; } }
 .yz-stenen { position: relative; display: flex; justify-content: center; gap: 10px; }
 .yz-steen {
   width: 54px;
@@ -3776,7 +3791,9 @@ html[data-thema="donker"] .wl-links { color: #7fc6d6; }
 .yz-steen[data-waarde="5"] i:nth-child(1), .yz-steen[data-waarde="5"] i:nth-child(3), .yz-steen[data-waarde="5"] i:nth-child(5), .yz-steen[data-waarde="5"] i:nth-child(7), .yz-steen[data-waarde="5"] i:nth-child(9),
 .yz-steen[data-waarde="6"] i:nth-child(1), .yz-steen[data-waarde="6"] i:nth-child(3), .yz-steen[data-waarde="6"] i:nth-child(4), .yz-steen[data-waarde="6"] i:nth-child(6), .yz-steen[data-waarde="6"] i:nth-child(7), .yz-steen[data-waarde="6"] i:nth-child(9) { visibility: visible; }
 
-.yz-dekenrij { position: relative; display: flex; align-items: center; gap: 12px; }
+.yz-tafelrij { position: relative; display: flex; align-items: center; gap: 12px; }
+.yz-cocktail { flex: none; width: 34px; height: 56px; filter: drop-shadow(0 0 6px rgba(255, 200, 120, 0.45)); }
+.yz-cocktail svg { display: block; width: 100%; height: 100%; }
 .yz-beker {
   flex: none;
   width: 58px;
@@ -3805,7 +3822,6 @@ html[data-thema="donker"] .wl-links { color: #7fc6d6; }
 .yz-gooi { flex: 1; margin: 0; }
 .yz-kijk { flex: 1; text-align: center; font-weight: 800; color: #5a3848; background: rgba(255, 255, 255, 0.85); border-radius: 999px; padding: 10px; }
 .yz-tip { position: relative; text-align: center; font-size: 13px; font-weight: 800; color: #5a3848; background: rgba(255, 255, 255, 0.85); border-radius: 999px; padding: 4px 10px; justify-self: center; }
-.yz-schud { font-size: 13.5px; }
 
 .yz-kaart {
   width: 100%;
@@ -3859,11 +3875,22 @@ html[data-thema="donker"] .wl-links { color: #7fc6d6; }
 @keyframes yz-hart { 0% { opacity: 1; transform: translate(-50%, 0) scale(0.6); } 100% { opacity: 0; transform: translate(calc(-50% + var(--x)), -150px) scale(1.2); } }
 @keyframes yz-weg { to { opacity: 0; transform: translate(-50%, -60%); } }
 
-/* Donker: stenen donker met roze stippen, het dekentje wat donkerder */
+/* Donker: later op de avond. Sterren en maan, donker hout, de lampjes geven meer licht */
 html[data-thema="donker"] .yz-steen { background: #2b2230; box-shadow: inset 0 -3px 0 #4a2a3b, 0 4px 10px rgba(0, 0, 0, 0.5); }
 html[data-thema="donker"] .yz-steen i { background: #f27ba6; }
 html[data-thema="donker"] .yz-steen.vast { box-shadow: inset 0 -3px 0 #4a2a3b, 0 0 0 3px var(--roze-diep), 0 8px 14px rgba(0, 0, 0, 0.6); }
-html[data-thema="donker"] .yz-maas { background: repeating-conic-gradient(#8a3f5e 0 25%, #4a2a3b 0 50%) 0 0 / 28px 28px; }
+html[data-thema="donker"] .yz-steen { box-shadow: inset 0 -3px 0 #4a2a3b, 0 0 0 1px rgba(255, 214, 160, 0.22), 0 4px 10px rgba(0, 0, 0, 0.5); }
+html[data-thema="donker"] .yz-terras {
+  --yz-lucht: radial-gradient(1.5px 1.5px at 10% 14px, #fff 99%, transparent), radial-gradient(1px 1px at 27% 8px, #fff 99%, transparent), radial-gradient(1.5px 1.5px at 45% 30px, #fff 99%, transparent), radial-gradient(1px 1px at 63% 12px, #fff 99%, transparent), radial-gradient(1px 1px at 92% 34px, #fff 99%, transparent), linear-gradient(180deg, #161338 0, #2e2660 30px, #4d3d7e 50px);
+  --yz-zon: radial-gradient(circle 9px at 80% 36px, #fff3cf 96%, transparent);
+  --yz-zee: linear-gradient(180deg, transparent 50px, #2a4572 50px, #1b2f52 62px, #8e7a5c 62px, #a38d6b 68px, #5e4b36 68px, #5e4b36 72px, transparent 72px);
+  --yz-glinster: radial-gradient(ellipse 22px 2px at 80% 55px, rgba(255, 240, 200, 0.55), transparent);
+  --yz-hout: repeating-linear-gradient(90deg, rgba(0, 0, 0, 0) 0 46px, rgba(0, 0, 0, 0.3) 46px 48px), linear-gradient(180deg, #6e4630, #4e3021);
+  --yz-gloed: radial-gradient(ellipse 120% 75% at 50% 72px, rgba(255, 190, 100, 0.38), transparent 72%);
+}
+html[data-thema="donker"] .yz-lichtjes path { stroke: #120c10; }
+html[data-thema="donker"] .yz-lichtjes i { box-shadow: 0 0 8px 3px rgba(255, 196, 92, 0.75), 0 0 22px 8px rgba(255, 196, 92, 0.32); }
+html[data-thema="donker"] .yz-beker { box-shadow: inset 0 0 0 1px rgba(255, 214, 160, 0.2); }
 html[data-thema="donker"] .yz-kijk, html[data-thema="donker"] .yz-tip { background: rgba(38, 30, 39, 0.92); color: var(--tekst); }
 
 @media (max-height: 700px) {
