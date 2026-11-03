@@ -94,10 +94,11 @@
       });
     }
 
-    // Wout of Davinia wint: teller +1 (alleen door de telefoon die de laatste zet deed)
+    // Wout of Davinia wint: teller van de winnaar +1. Alleen aanroepen door de
+    // telefoon die de laatste zet deed (dat kan ook de verliezer zijn).
     function telWinst(winnaar) {
-      if (winnaar !== ik) return;
-      Online.telOp(SPEL, ik).catch(() => {});
+      if (winnaar !== 'wout' && winnaar !== 'davinia') return;
+      Online.telOp(SPEL, winnaar).catch(() => {});
     }
 
     // Samen-record: alleen omhoog (de databaseregels dwingen dat ook af)
