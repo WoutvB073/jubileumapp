@@ -1001,4 +1001,36 @@ self.CONTENT = {
     'Saai feestje | Legendarisch feestje',
     'Kleine moeite | Heel veel moeite',
   ],
+
+  // ----------------------------------------------------------
+  // SAMEN ONLINE: TEKENEN EN RADEN
+  // ----------------------------------------------------------
+  // Woorden om te tekenen. Eerst onze woorden (uit content.js), daarna
+  // algemene woorden. Een woord komt pas terug als alle woorden geweest zijn.
+  tekenen: [
+    // Onze woorden
+    'Maas', 'Malta', 'Mdina', 'Comino', 'Blue Lagoon', 'Klomp', 'Tulp', 'Brownie', 'Aardbei', 'Chocola',
+    'IJsje', 'Kerstmarkt', 'Reuzenrad', 'Schaatsbaan', 'Kerstpyjama', 'Carnaval', 'Skibril', 'Efteling', 'Achtbaan', 'Muts',
+    'UNO', 'Sudoku', 'Cocktail', 'Bus', 'Paard', 'Blaar', 'Loafers', 'Kleimasker', 'Supboard', 'Boot',
+    'Dakterras', 'Zwembad', 'Zonsondergang', 'Arcadehal', 'Terras', 'Auto', 'Kermis', 'Festival', 'Dansen', 'Skiën',
+    'Jacuzzi', 'Darten', 'Lava cake', 'Thailand', 'Kus', 'Kerstboom', 'Vuurwerk', 'Vliegtuig', 'Koffer', 'McDonald\'s',
+    // Dieren
+    'Hond', 'Kat', 'Konijn', 'Olifant', 'Giraf', 'Pinguïn', 'Vis', 'Haai', 'Slang', 'Spin',
+    'Vlinder', 'Bij', 'Koe', 'Varken', 'Kip', 'Eend', 'Uil', 'Leeuw', 'Aap', 'Schildpad',
+    'Krokodil', 'Dolfijn', 'Egel', 'Muis', 'Kikker',
+    // Eten en drinken
+    'Pizza', 'Patat', 'Hamburger', 'Banaan', 'Appel', 'Watermeloen', 'Taart', 'Donut', 'Popcorn', 'Pannenkoek',
+    'Croissant', 'Spaghetti', 'Sushi', 'Ei', 'Kaas', 'Wortel', 'Ananas', 'Koffie', 'Lolly', 'Hotdog',
+    // Dingen
+    'Fiets', 'Telefoon', 'Bril', 'Paraplu', 'Sleutel', 'Lamp', 'Bed', 'Stoel', 'Klok', 'Schaar',
+    'Ballon', 'Cadeau', 'Kaars', 'Gitaar', 'Camera', 'Tandenborstel', 'Handdoek', 'Spiegel', 'Rugzak', 'Hoed',
+    'Zonnebril', 'Laars', 'Sok', 'Ring', 'Kroon', 'Rits', 'Tent', 'Raket', 'Robot', 'Trein',
+    'Brug', 'Vuurtoren', 'Kasteel', 'Molen', 'Iglo', 'Schommel', 'Glijbaan', 'Voetbal', 'Trofee', 'Televisie',
+    // Natuur en weer
+    'Zon', 'Maan', 'Ster', 'Regenboog', 'Wolk', 'Bliksem', 'Sneeuwpop', 'Boom', 'Bloem', 'Berg',
+    'Vulkaan', 'Eiland', 'Palmboom', 'Golf', 'Strand',
+    // Mensen en dingen doen
+    'Slapen', 'Zwemmen', 'Huilen', 'Lachen', 'Koken', 'Zingen', 'Fietsen', 'Selfie', 'Bruiloft', 'Verjaardag',
+    'Spook', 'Zeemeermin', 'Piraat', 'Engel', 'Superheld', 'Clown', 'Dokter', 'Brandweer', 'Astronaut', 'Tovenaar',
+  ],
 };

@@ -4,7 +4,7 @@
   BELANGRIJK: verhoog VERSIE bij elke wijziging die online gaat.
   Nieuw spelbestand? Zet het pad ook in KERN hieronder.
 */
-const VERSIE = 'v45';
+const VERSIE = 'v46';
 const CACHE = 'jubileum-' + VERSIE;
 
 // De bestanden die de app nodig heeft om te starten.
@@ -38,6 +38,7 @@ const KERN = [
   'js/spellen/rummikub.js',
   'js/spellen/ranking.js',
   'js/spellen/wavelength.js',
+  'js/spellen/tekenen.js',
 ];
 
 // content.js inlezen (moet bovenaan, niet later). Een wijziging in content.js
