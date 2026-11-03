@@ -3583,3 +3583,53 @@ html[data-thema="donker"] {
   .rkg-lijst { gap: 6px; }
   .rkg-scherm { gap: 9px; }
 }
+
+/* ============================================================
+   Wavelength
+   ============================================================ */
+.wl-kaart {
+  display: grid;
+  gap: 10px;
+  padding: 14px 14px 16px;
+  border-radius: var(--rond-klein);
+  background: var(--vlak);
+  box-shadow: var(--schaduw-klein);
+  text-align: center;
+}
+.wl-schijf { display: block; width: 100%; max-width: 380px; margin: 0 auto; overflow: visible; touch-action: none; }
+.wl-schijf.bedienbaar { cursor: grab; }
+.wl-vlak { fill: var(--lila-licht); stroke: var(--lila); stroke-width: 1.5; }
+.wl-z2 { fill: #f7c9d8; }
+.wl-z3 { fill: #ef9ab7; }
+.wl-z4 { fill: var(--roze-diep); }
+.wl-naald line { stroke: var(--tekst); stroke-width: 5; stroke-linecap: round; }
+.wl-naald circle { fill: var(--tekst); stroke: var(--vlak); stroke-width: 3; }
+.wl-schijf.bedienbaar .wl-naald circle { fill: var(--roze-diep); r: 11; }
+.wl-as { fill: var(--tekst); }
+.wl-uitersten { display: flex; justify-content: space-between; gap: 10px; margin-top: -4px; font-weight: 800; font-size: 15px; }
+.wl-links { text-align: left; color: #4f97a8; }
+.wl-rechts { text-align: right; color: var(--roze-diep); }
+.wl-uitleg { color: var(--tekst-zacht); font-size: 14.5px; }
+.wl-hint {
+  font-family: var(--font-sier);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--roze-diep);
+}
+.wl-hint-invoer {
+  width: 100%;
+  height: 50px;
+  padding: 0 16px;
+  border: 2px solid var(--roze);
+  border-radius: 999px;
+  background: var(--vlak);
+  color: var(--tekst);
+  font: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+}
+html[data-thema="donker"] .wl-z2 { fill: #5a2a40; }
+html[data-thema="donker"] .wl-z3 { fill: #a2456d; }
+html[data-thema="donker"] .wl-links { color: #7fc6d6; }
