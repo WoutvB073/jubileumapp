@@ -81,6 +81,15 @@ Alles blijft draaien op GitHub Pages, met de app als link op het beginscherm.
 - **Deel 2** — online verbinding via **Firebase Realtime Database**, daarna **UNO online**, ieder op de eigen telefoon. Verbinden met een kamercode die de ander invult. Wout zet zelf het Firebase-project op (stappen staan in het gesprek van 5 okt); de database wordt beveiligd met regels + anonieme inlog, omdat de code openbaar op GitHub staat.
 - **Deel 3** — **Rummikub online**, ook ieder op de eigen telefoon.
 - Menu: `SPELLEN` in `js/app.js` heeft per spel een `groep` ('solo' of 'samen'); `GROEPEN` bepaalt de kopjes. Online spellen tellen niet mee in de voortgang en hebben geen briefje.
+- **Deel 4 (3 nov 2026) — vier nieuwe online spellen**, één voor één gebouwd (na elk spel testen, commit en push, voortgang bijwerken): Rankingspel, Wavelength, Tekenen en raden, Yahtzee.
+  - Samen online heeft zes tegels: UNO, Rummikub, Rankingspel, Wavelength, Tekenen en raden, Yahtzee (niet af = "binnenkort", dat gaat vanzelf zolang het spelbestand er niet is).
+  - Zelfde verbinding als UNO en Rummikub: kamercode, Wout/Davinia, verdergaan na wegvallen, oude kamers opruimen. Gedeelde basis: `js/online-spel.js` (`OnlineSpel.maak({...})`: startscherm, meedoen, wachten, bovenbalk met plaagknop, uitslag met foto, stand of record, stapel zonder herhaling).
+  - De plaagknop zit in alle online spellen.
+  - Tegen elkaar (Yahtzee, net als UNO en Rummikub): eigen stand `tellers/{spel}`.
+  - Samen (Rankingspel, Wavelength, Tekenen en raden): geen winnaar; samen punten, beste score als record in `records/{spel}` (kan alleen omhoog). Aan het eind: score van dit potje en of het record verbroken is.
+  - Vragen, schalen en woorden komen pas terug als alles geweest is (`OnlineSpel.trek/markeer`, per telefoon in `jubileum.stapel.<spel>`).
+  - Geen verzonnen feiten: alleen wat in content.js staat.
+  - Databaseregels: `database.rules.json`, publiceren met de Firebase CLI: `firebase deploy --only database` in de projectmap (firebase.json + .firebaserc staan in de repo; Wout is ingelogd als woutvanbalen@ziggo.nl).
 
 ## Werkwijze
 - Na elke stap: **stop**, vertel welke bestanden gemaakt of gewijzigd zijn, werk "Voortgang" hieronder bij, en leg uit hoe Wout commit, naar GitHub pusht en het op zijn iPhone test.
@@ -148,3 +157,5 @@ Alles blijft draaien op GitHub Pages, met de app als link op het beginscherm.
   - **Dubbeltik-zoom uit in de hele app**: `touch-action: manipulation` op alles, viewport `user-scalable=no`, touchend tegengehouden op het kleurvlak en de Rummikub-tafel/stenen, paginazoom geblokkeerd tijdens Rummikub.
   - **Getest**: 30 regel-/sorteerchecks; tweespelertest 45 checks (14 + SE, echte database); dubbeltik en knijpen op het kleurvlak; alle spellen zonder `touch-action: auto`.
   - **Teksten**: RK23-RK27, aangepast RK5/12/13. *Wacht op akkoord.*
+- [x] **Fase 2, deel 4a – Rankingspel** (3 nov 2026): `js/spellen/ranking.js` op de nieuwe basis `js/online-spel.js`. 95 vragen in `content.ranking` (11 over ons, alleen uit content.js; rest algemeen; vorm "titel | bovenaan | onderaan | 5 antwoorden"). Om de beurt rankt de een, de ander raadt, allebei tegelijk slepen (pointer-events, de rest schuift mee); daarna naast elkaar, goede plekken groen. 1 punt per goede plek, 10 rondes, max 50, samen-record. Databaseregels uitgebreid (spelnamen, tellers/yahtzee, records/*, kamer-child tekening) en met de Firebase CLI gepubliceerd. Getest met twee spelers tegen de echte database (14 Licht + SE Donker): echt slepen, punten, wachten op de ander, plaagknop, wegvallen + Verder, heel potje (47), record, uitslag één keer, nog een potje (nieuwe vragen, de ander begint). Teksten ST1-ST4 en RG1-RG9 in teksten-kort.md. *Wacht op akkoord.*
+

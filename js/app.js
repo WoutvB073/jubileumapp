@@ -32,6 +32,10 @@ const SPELLEN = [
   // Samen online (deel 2 en 3): ieder op de eigen telefoon
   { id: 'uno',            titel: 'UNO',               sub: 'Samen, ieder op je eigen telefoon', icoon: '🃏', kleur: 'var(--roze-licht)', groep: 'samen' },
   { id: 'rummikub',       titel: 'Rummikub',          sub: 'Samen, ieder op je eigen telefoon', icoon: '🔢', kleur: 'var(--lila-licht)', groep: 'samen' },
+  { id: 'ranking',        titel: 'Rankingspel',       sub: 'Samen punten halen',          icoon: '🏆', kleur: 'var(--perzik-licht)', groep: 'samen' },
+  { id: 'wavelength',     titel: 'Wavelength',        sub: 'Samen punten halen',          icoon: '🎚️', kleur: 'var(--mint-licht)', groep: 'samen' },
+  { id: 'tekenen',        titel: 'Tekenen en raden',  sub: 'Samen punten halen',          icoon: '🖍️', kleur: 'var(--roze-licht)', groep: 'samen' },
+  { id: 'yahtzee',        titel: 'Yahtzee',           sub: 'Tegen elkaar, ieder op je eigen telefoon', icoon: '🎲', kleur: 'var(--lila-licht)', groep: 'samen' },
 ];
 
 const INHOUD = self.CONTENT || {};

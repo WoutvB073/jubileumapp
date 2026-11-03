@@ -3513,3 +3513,73 @@ html[data-thema="donker"] {
 @media (max-width: 380px) {
   .ios-plaatje { margin-left: 0; }
 }
+
+/* ============================================================
+   Nieuwere online spellen: gedeelde opmaak
+   ============================================================ */
+.os-scherm { display: flex; flex-direction: column; gap: 12px; }
+.os-boven .uno-naam { flex-wrap: wrap; }
+.os-record { text-align: center; font-weight: 800; color: var(--tekst-zacht); margin-bottom: 6px; }
+.os-record.nieuw { color: var(--roze-diep); font-size: 18px; animation: pop 0.5s ease; }
+
+/* ============================================================
+   Rankingspel
+   ============================================================ */
+.rkg-kaart {
+  padding: 14px 16px;
+  border-radius: var(--rond-klein);
+  background: var(--vlak);
+  box-shadow: var(--schaduw-klein);
+  text-align: center;
+}
+.rkg-wie { font-size: 13px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--roze-diep); }
+.rkg-titel { margin: 4px 0 6px; font-size: 22px; }
+.rkg-uitleg { color: var(--tekst-zacht); font-size: 14.5px; }
+
+.rkg-lijst { display: grid; gap: 8px; }
+.rkg-pool { text-align: center; font-size: 13px; font-weight: 800; color: var(--tekst-zacht); text-transform: uppercase; letter-spacing: 0.06em; }
+.rkg-item, .rkg-rij {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 8px 14px 8px 10px;
+  border-radius: 16px;
+  background: var(--vlak);
+  box-shadow: var(--schaduw-klein);
+  font-weight: 700;
+  font-size: 16px;
+}
+.rkg-item { touch-action: none; cursor: grab; transition: transform 0.15s ease; -webkit-user-select: none; user-select: none; }
+.rkg-item.sleept { z-index: 2; transition: none; box-shadow: 0 0 0 2px var(--roze), 0 14px 26px -10px rgba(90, 40, 70, 0.6); }
+.rkg-lijst.vast .rkg-item { cursor: default; opacity: 0.85; }
+.rkg-nr {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--roze-licht);
+  color: var(--roze-diep);
+  font-weight: 900;
+}
+.rkg-tekst { flex: 1; line-height: 1.25; }
+.rkg-greep { color: var(--tekst-zacht); font-size: 20px; }
+
+.rkg-naast { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.rkg-kolom { display: grid; gap: 6px; align-content: start; }
+.rkg-kolomkop { text-align: center; font-weight: 800; font-size: 14px; color: var(--roze-diep); }
+.rkg-naast .rkg-rij { min-height: 50px; padding: 6px 8px; gap: 6px; font-size: 13.5px; }
+.rkg-naast .rkg-nr { width: 24px; height: 24px; font-size: 13px; }
+.rkg-rij.goed { box-shadow: 0 0 0 2px #5cc08f, var(--schaduw-klein); }
+.rkg-rij.goed .rkg-nr { background: #5cc08f; color: #fff; }
+.rkg-rij.fout { opacity: 0.75; }
+.rkg-punten { text-align: center; font-weight: 800; font-size: 20px; color: var(--roze-diep); }
+@media (max-height: 700px) {
+  .rkg-kaart { padding: 10px 14px; }
+  .rkg-titel { font-size: 20px; margin: 2px 0 4px; }
+  .rkg-item, .rkg-rij { min-height: 46px; }
+  .rkg-lijst { gap: 6px; }
+  .rkg-scherm { gap: 9px; }
+}
