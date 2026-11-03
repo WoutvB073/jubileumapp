@@ -991,6 +991,7 @@
     zoom = 1; zoomHandmatig = false; tafelY = 0;
     document.querySelectorAll('.rk-zweef').forEach((z) => z.remove());
     document.body.classList.remove('rk-vol');
+    if (self.Plaag) Plaag.stop();
   }
 
   function teken() {
@@ -1083,6 +1084,7 @@
     else wie.append(el('span', 'rk-tegen-aantal', `${tegenAantal} ${tegenAantal === 1 ? 'steen' : 'stenen'}`));
     const klok = el('span', 'rk-klok');
     kop.append(terug, wie, el('span', 'rk-pot', `Pot ${s.pot.length}`), klok);
+    if (self.Plaag) kop.append(Plaag.knop(() => kamerRef, ik));
     scherm.append(kop);
 
     // Wie is er aan de beurt
@@ -1381,6 +1383,7 @@
     opruimen();
     code = c;
     laadRek();
+    let eerste = true;
     const { db } = await Online.start();
     db.ref('.info/serverTimeOffset').once('value').then((s) => { tijdOffset = s.val() || 0; });
     kamerRef = db.ref(`kamers/${code}`);
@@ -1392,6 +1395,8 @@
       if (!kamer) { toonFout('Deze kamer bestaat niet meer.'); Online.onthoud(SPEL, null); return; }
       if (kamer.spel && kamer.spel !== SPEL) { toonFout('Deze code is van een ander spel.'); return; }
       kamer.stand = normaal(kamer.stand || { status: 'wacht' });
+      // Plaagjes van de ander tonen (wat er al stond bij het openen niet)
+      if (eerste) { Plaag.begin(kamer.stand); eerste = false; } else Plaag.bekijk(kamer.stand, ik, NAMEN);
       if (kamer.stand.status === 'wacht' && kamer.spelers && kamer.spelers.wout && kamer.spelers.davinia) {
         const timer = kamer.stand.timer || 0;
         zet((s) => (s.status === 'wacht' ? deel(Math.random() < 0.5 ? 'wout' : 'davinia', timer) : undefined));

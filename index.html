@@ -63,6 +63,7 @@
   <script defer src="js/spellen/brievenbus.js"></script>
   <!-- Online (Firebase wordt pas geladen als je een online spel opent) -->
   <script defer src="js/online.js"></script>
+  <script defer src="js/plaag.js"></script>
   <script defer src="js/spellen/uno.js"></script>
   <script defer src="js/spellen/rummikub.js"></script>
 </head>
@@ -74,35 +75,50 @@
   <section id="installeer" class="scherm" hidden>
     <div class="installeer-kaart">
       <img class="installeer-icoon" src="icons/icon-192.png" alt="" width="88" height="88">
-      <h1 class="sier">Hoi Davinia</h1>
-      <p class="installeer-intro">Er staat een cadeautje voor je klaar. Zet me eerst op je beginscherm, dan word ik een echte app.</p>
+      <h1 class="sier installeer-titel">Verrassing, speciaal voor jou 🎉</h1>
+      <p class="installeer-intro">Een jaar samen, dus ik heb iets gemaakt. Zet me eerst op je beginscherm, dan word ik een echte app.</p>
 
       <p class="installeer-melding" id="installeer-melding" hidden></p>
 
       <ol class="stappen">
         <li>
-          <span class="stap-nr">1</span>
-          <span>Tik op de <b>Deel-knop</b>
-            <svg class="ios-icoon" viewBox="0 0 24 24" aria-label="Deel-knop"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5" /><path d="M8 10H6.5A1.5 1.5 0 0 0 5 11.5v8A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-8a1.5 1.5 0 0 0-1.5-1.5H16" /></svg>
-            <small>Zie je hem niet? Tik dan eerst op <b>•••</b></small>
-          </span>
+          <div class="stap-tekst">
+            <span class="stap-nr">1</span>
+            <span>Tik onderin op de <b>Deel-knop</b> <svg class="ios-icoon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5" /><path d="M8 10H6.5A1.5 1.5 0 0 0 5 11.5v8A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-8a1.5 1.5 0 0 0-1.5-1.5H16" /></svg><small>Zie je hem niet? Tik dan eerst op <b>•••</b></small></span>
+          </div>
+          <!-- Zo ziet de balk onderin Safari eruit -->
+          <div class="ios-plaatje ios-balk" aria-hidden="true">
+            <span class="ios-pijl">‹</span>
+            <span class="ios-adres">woutvb073.github.io</span>
+            <span class="ios-doel"><svg class="ios-icoon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5" /><path d="M8 10H6.5A1.5 1.5 0 0 0 5 11.5v8A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-8a1.5 1.5 0 0 0-1.5-1.5H16" /></svg></span>
+          </div>
         </li>
         <li>
-          <span class="stap-nr">2</span>
-          <span>Kies <b>Zet op beginscherm</b>
-            <svg class="ios-icoon" viewBox="0 0 24 24" aria-label="Plus-icoon"><rect x="4" y="4" width="16" height="16" rx="4" /><path d="M12 8.5v7M8.5 12h7" /></svg>
-            <small>Even naar beneden scrollen in het menu</small>
-          </span>
+          <div class="stap-tekst">
+            <span class="stap-nr">2</span>
+            <span>Kies <b>Zet op beginscherm</b> <svg class="ios-icoon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4" /><path d="M12 8.5v7M8.5 12h7" /></svg><small>Even naar beneden scrollen in het menu</small></span>
+          </div>
+          <!-- Het deelmenu, met de goede regel gemarkeerd -->
+          <div class="ios-plaatje ios-lijst" aria-hidden="true">
+            <span class="ios-regel">Voeg toe aan favorieten <i>☆</i></span>
+            <span class="ios-regel ios-doel-regel">Zet op beginscherm <svg class="ios-icoon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4" /><path d="M12 8.5v7M8.5 12h7" /></svg></span>
+          </div>
         </li>
         <li>
-          <span class="stap-nr">3</span>
-          <span>Laat <b>Open als webapp</b> aan staan en tik op <b>Voeg toe</b></span>
-        </li>
-        <li>
-          <span class="stap-nr">4</span>
-          <span>Open me via het nieuwe <b>hartjes-icoon</b> op je beginscherm.</span>
+          <div class="stap-tekst">
+            <span class="stap-nr">3</span>
+            <span>Laat <b>Open als webapp</b> aan staan en tik op <b>Voeg toe</b></span>
+          </div>
+          <!-- Het laatste venster: Voeg toe rechtsboven -->
+          <div class="ios-plaatje ios-venster" aria-hidden="true">
+            <div class="ios-venster-kop"><span>Annuleer</span><b>Zet op beginscherm</b><span class="ios-doel-tekst">Voeg toe</span></div>
+            <div class="ios-venster-app"><img src="icons/icon-192.png" alt="" width="34" height="34"><span>Voor Davinia</span></div>
+            <div class="ios-venster-schakel"><span>Open als webapp</span><span class="ios-schakel"></span></div>
+          </div>
         </li>
       </ol>
+
+      <p class="installeer-slot">Daarna open je me via het hartjes-icoon. Succes 😁</p>
     </div>
   </section>
 

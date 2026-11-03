@@ -397,6 +397,12 @@ self.CONTENT = {
       goed: 0,
       reactie: "Drie dagen met de Angels. Ik heb het overleefd, Siem maakte het niet makkelijker 💀",
     },
+    {
+      vraag: "Waar kun jij het slechtst tegen?",
+      opties: ["In je nek ademen","Kietelen","Koude handen","Harde muziek"],
+      goed: 0,
+      reactie: "In je nek ademen. Daarom doe ik het ook zo vaak 😁",
+    },
   ],
 
   // ----------------------------------------------------------
@@ -573,6 +579,7 @@ self.CONTENT = {
       { woord: "ZIGGO DOME", hint: "Waar we op Valentijnsdag CHO zagen", herinnering: "CHO op Valentijnsdag ❤️", foto: 'images/foto-21.jpg' },
       { woord: "WINTER EFTELING", hint: "Pretpark in de kou, mutsen op", herinnering: "Winter Efteling. Mooie dag, koudste dag 🥲", foto: 'images/foto-13.jpg' },
       { woord: "KLEIMASKER", hint: "Groen in het gezicht, op de boot", herinnering: "Kleimaskers op. Niet de mooiste foto van de vakantie 💀", foto: 'images/foto-37.jpg' },
+      { woord: "FUCKERTJE", hint: "Een woord dat jij vaak zegt", herinnering: "Jouw woord. Ik zeg verder niks 😂" },
     ],
   },
 

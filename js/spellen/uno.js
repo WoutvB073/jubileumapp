@@ -305,6 +305,7 @@
   }
 
   function opruimen() {
+    if (self.Plaag) Plaag.stop();
     if (kamerRef && kamerLuisteraar) kamerRef.off('value', kamerLuisteraar);
     if (tellerRef && tellerLuisteraar) tellerRef.off('value', tellerLuisteraar);
     if (stopAanwezig) stopAanwezig();
@@ -421,6 +422,7 @@
     opruimen();
     code = c;
     laatsteZet = -1;
+    let eerste = true;
     const { db } = await Online.start();
     kamerRef = db.ref(`kamers/${code}`);
     stopAanwezig = await Online.aanwezig(code, ik);
@@ -430,6 +432,8 @@
       kamer = snap.val();
       if (!kamer) { toonFout('Deze kamer bestaat niet meer.'); Online.onthoud('uno', null); return; }
       kamer.stand = normaal(kamer.stand || { status: 'wacht' });
+      // Plaagjes van de ander tonen (wat er al stond bij het openen niet)
+      if (eerste) { Plaag.begin(kamer.stand); eerste = false; } else Plaag.bekijk(kamer.stand, ik, NAMEN);
       // Beide spelers er? Dan delen (wie het eerst ziet, deelt; de transactie zorgt dat het maar één keer gebeurt).
       if (kamer.stand.status === 'wacht' && kamer.spelers && kamer.spelers.wout && kamer.spelers.davinia) {
         zet((s) => (s.status === 'wacht' ? deel(Math.random() < 0.5 ? 'wout' : 'davinia') : undefined));
@@ -483,6 +487,7 @@
     const boven = el('div', 'uno-tegen');
     const naam = el('div', 'uno-naam');
     naam.append(el('span', 'uno-stip' + (online ? ' aan' : ''), ''), el('b', '', NAMEN[tegen]), el('span', 'uno-aantal', `${zijnHand.length} ${zijnHand.length === 1 ? 'kaart' : 'kaarten'}`));
+    if (self.Plaag) naam.append(Plaag.knop(() => kamerRef, ik));
     boven.append(naam);
     const waaier = el('div', 'uno-waaier');
     zijnHand.slice(0, 12).forEach(() => waaier.append(rugEl()));
